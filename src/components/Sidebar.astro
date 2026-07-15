@@ -1,0 +1,311 @@
+---
+import FormattedDate from './FormattedDate.astro';
+import { CATEGORIES, X_HANDLE, X_HASHTAG, X_URL } from '../consts';
+import { getSortedPosts, getTagCounts } from '../lib/posts';
+
+const posts = await getSortedPosts();
+
+// 最新記事（新着順の上位10件）
+const latest = posts.slice(0, 10);
+
+// 人気記事ランキング（暫定：新着順の上位5件）
+const ranking = posts.slice(0, 5);
+
+// カテゴリー別件数
+const catCount = new Map<string, number>();
+for (const p of posts) {
+	const c = p.data.category;
+	if (c) catCount.set(c, (catCount.get(c) ?? 0) + 1);
+}
+
+// タグ（件数降順）
+const tags = await getTagCounts();
+---
+
+<aside class="col-side">
+	<!-- 最新記事 -->
+	<section class="panel">
+		<div class="panel-head"><span class="ico">🆕</span>最新記事</div>
+		<div class="panel-body">
+			<ul class="latest-list">
+				{
+					latest.map((post) => (
+						<li>
+							<a href={`/blog/${post.id}/`}>{post.data.title}</a>
+							<span class="date">
+								<FormattedDate date={post.data.pubDate} />
+							</span>
+						</li>
+					))
+				}
+				{latest.length === 0 && <li class="empty">まだ記事が無いわ…</li>}
+			</ul>
+		</div>
+	</section>
+
+	<!-- 人気記事 -->
+	<section class="panel">
+		<div class="panel-head"><span class="ico">🏆</span>人気記事</div>
+		<div class="panel-body">
+			<ol class="ranking">
+				{
+					ranking.map((post, i) => (
+						<li>
+							<span class={`rank-num r${i + 1}`}>{i + 1}</span>
+							<a href={`/blog/${post.id}/`}>{post.data.title}</a>
+						</li>
+					))
+				}
+				{ranking.length === 0 && <li class="empty">まだ供物がないわ…</li>}
+			</ol>
+		</div>
+	</section>
+
+	<!-- カテゴリリスト -->
+	<section class="panel">
+		<div class="panel-head"><span class="ico">🗂️</span>カテゴリー</div>
+		<div class="panel-body">
+			<ul class="cat-list">
+				{
+					CATEGORIES.map((c) => (
+						<li>
+							<a href={`/blog?cat=${c.slug}`}>
+								<span>{c.emoji} {c.label}</span>
+								<span class="count">({catCount.get(c.slug) ?? 0})</span>
+							</a>
+						</li>
+					))
+				}
+			</ul>
+		</div>
+	</section>
+
+	<!-- タグ検索 -->
+	<section class="panel">
+		<div class="panel-head"><span class="ico">🔖</span>タグ検索</div>
+		<div class="panel-body">
+			<input
+				id="side-tag-search"
+				class="side-search"
+				type="search"
+				placeholder="タグで絞り込む"
+				autocomplete="off"
+			/>
+			<ul class="side-tag-cloud" id="side-tag-cloud">
+				{
+					tags.map((t) => (
+						<li class="side-tag-item" data-tag={t.tag.toLowerCase()}>
+							<a class="tag-chip" href={`/tags/${encodeURIComponent(t.tag)}/`}>
+								#{t.tag} <span class="cnt">({t.count})</span>
+							</a>
+						</li>
+					))
+				}
+			</ul>
+			{tags.length === 0 && <p class="empty">タグはまだ無いわ…</p>}
+			<p class="side-nohit" id="side-tag-nohit" hidden>見つからないわ…</p>
+			<a class="all-tags" href="/tags">すべてのタグを見る »</a>
+		</div>
+	</section>
+
+	<!-- X 誘導（コメント欄の代わり） -->
+	<section class="panel">
+		<div class="panel-head"><span class="ico">𝕏</span>コメントはリプで</div>
+		<div class="panel-body x-box">
+			<p>
+				言いたいことがある魔法使いは、<strong>{X_HASHTAG}</strong>
+				を付けて私にリプしなさいよね！
+			</p>
+			<a class="x-follow" href={X_URL} target="_blank" rel="noopener">
+				𝕏 {X_HANDLE} をフォロー
+			</a>
+		</div>
+	</section>
+</aside>
+
+<script>
+	const input =
+		document.getElementById('side-tag-search') as HTMLInputElement | null;
+	const items = Array.from(
+		document.querySelectorAll<HTMLElement>('.side-tag-item'),
+	);
+	const nohit = document.getElementById('side-tag-nohit');
+
+	input?.addEventListener('input', () => {
+		const q = (input.value ?? '').trim().toLowerCase();
+		let hits = 0;
+		for (const item of items) {
+			const match = q === '' || (item.dataset.tag ?? '').includes(q);
+			item.hidden = !match;
+			if (match) hits++;
+		}
+		if (nohit) nohit.hidden = hits !== 0;
+	});
+</script>
+
+<style>
+	.latest-list {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+	.latest-list li {
+		padding: 8px 0;
+		border-bottom: 1px dashed var(--border);
+	}
+	.latest-list li:last-child {
+		border-bottom: none;
+	}
+	.latest-list a {
+		display: block;
+		font-size: 0.82rem;
+		font-weight: 600;
+		color: var(--text);
+		line-height: 1.5;
+	}
+	.latest-list a:hover {
+		color: var(--accent);
+	}
+	.latest-list .date {
+		font-size: 0.7rem;
+		color: var(--muted);
+	}
+
+	.ranking {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+	.ranking li {
+		display: flex;
+		align-items: flex-start;
+		gap: 10px;
+		padding: 8px 0;
+		border-bottom: 1px dashed var(--border);
+	}
+	.ranking li:last-child {
+		border-bottom: none;
+	}
+	.rank-num {
+		flex: 0 0 24px;
+		height: 24px;
+		border-radius: 5px;
+		display: grid;
+		place-items: center;
+		font-size: 0.78rem;
+		font-weight: 800;
+		color: var(--bg-deep);
+		background: var(--muted);
+	}
+	.rank-num.r1 {
+		background: var(--rank1);
+	}
+	.rank-num.r2 {
+		background: var(--rank2);
+	}
+	.rank-num.r3 {
+		background: var(--rank3);
+	}
+	.ranking a {
+		font-size: 0.82rem;
+		color: var(--text);
+		line-height: 1.5;
+	}
+	.ranking a:hover {
+		color: var(--accent);
+	}
+
+	.cat-list {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+	.cat-list a {
+		display: flex;
+		justify-content: space-between;
+		padding: 9px 4px;
+		border-bottom: 1px dashed var(--border);
+		font-size: 0.85rem;
+		color: var(--text);
+		font-weight: 600;
+	}
+	.cat-list li:last-child a {
+		border-bottom: none;
+	}
+	.cat-list a:hover {
+		color: var(--accent);
+		text-decoration: none;
+	}
+	.count {
+		color: var(--muted);
+		font-size: 0.75rem;
+		font-weight: 700;
+	}
+
+	.side-search {
+		width: 100%;
+		font-size: 0.85rem;
+		padding: 8px 10px;
+		margin-bottom: 10px;
+		color: var(--text-strong);
+		background: var(--bg);
+		border: 1px solid var(--border);
+		border-radius: 6px;
+		outline: none;
+	}
+	.side-search:focus {
+		border-color: var(--accent);
+	}
+	.side-search::placeholder {
+		color: var(--muted);
+	}
+	.side-tag-cloud {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 6px;
+		list-style: none;
+		margin: 0 0 10px;
+		padding: 0;
+	}
+	.side-tag-cloud .tag-chip {
+		font-size: 0.74rem;
+		padding: 2px 8px;
+	}
+	.side-nohit {
+		font-size: 0.8rem;
+		color: var(--muted);
+		margin: 0 0 8px;
+	}
+	.all-tags {
+		display: inline-block;
+		font-size: 0.78rem;
+		font-weight: 700;
+	}
+
+	.x-box p {
+		margin: 0 0 10px;
+		font-size: 0.82rem;
+		color: var(--text);
+	}
+	.x-box strong {
+		color: var(--pink);
+	}
+	.x-follow {
+		display: block;
+		text-align: center;
+		font-weight: 700;
+		font-size: 0.82rem;
+		color: var(--text-strong);
+		background: var(--accent-dim);
+		border-radius: 6px;
+		padding: 8px 12px;
+	}
+	.x-follow:hover {
+		background: var(--accent);
+		text-decoration: none;
+	}
+	.empty {
+		font-size: 0.8rem;
+		color: var(--muted);
+	}
+</style>

@@ -14,6 +14,9 @@ const blog = defineCollection({
 			pubDate: z.coerce.date(),
 			updatedDate: z.coerce.date().optional(),
 			heroImage: z.optional(image()),
+			// まとめ風メタ情報
+			category: z.enum(['ai', 'payment', 'tech', 'column']).optional(),
+			tags: z.array(z.string()).optional(),
 		}),
 });
 

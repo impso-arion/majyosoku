@@ -1,7 +1,17 @@
-# YokaiAstro
+# 魔女速報（まじょそくほう） / 賀田野リナの魔女速報
 
-Astro 公式 Blog テンプレートをベースにしたブログサイトです。  
-アフィリエイト審査を通すための基本サイトとして運用し、将来的には Cloudflare Pages / Functions 経由で外部 Web API（FANZA API など）と連携する予定です。
+**AIトレンド × エロ魔女**をテーマにしたまとめ風アフィリエイトブログです。  
+かつて流行した「暇人速報」系まとめブログのレイアウトをオマージュした2カラム構成で、画像生成AIの規制動向やクレカ決済規制の抜け道などを、へっぽこ魔女「賀田野リナ」の口調でお届けします。
+
+将来的には Cloudflare Pages / Functions 経由で外部 Web API（FANZA API など）と連携する予定です。
+
+## サイトの特徴
+
+- 暇人速報オマージュの2カラム（メイン＋サイドバー）レイアウト
+- ダークマジカルな配色（魔女パープル × ホットピンク）
+- カテゴリー：AI画像生成 / 決済・クレカ規制 / 魔女の技術メモ / 今夜の黒ミサ
+- **コメント欄なし**（プランC）：感想は 𝕏 の `#魔女速報` タグでリプ誘導
+- 記事末尾・サイドバーに X 誘導コンポーネントを配置
 
 ## 技術スタック
 
@@ -37,7 +47,7 @@ npm --version
 リポジトリをクローンしたあと、依存関係をインストールします。
 
 ```powershell
-cd C:\Users\user\Documents\GitHub\YokaiAstro
+cd C:\Users\user\Documents\GitHub\majyosoku
 npm install
 ```
 
@@ -84,14 +94,13 @@ Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
 ```text
 ├── public/                  # ファビコンなどの静的ファイル
 ├── src/
-│   ├── assets/              # 画像・フォント
-│   ├── components/          # ヘッダー・フッター等
+│   ├── components/          # Header / Footer / Sidebar / XReply 等
 │   ├── content/
 │   │   └── blog/            # ★ ブログ記事（Markdown / MDX）
-│   ├── layouts/             # ページレイアウト
-│   ├── pages/               # ルーティング（トップ・About 等）
-│   ├── styles/              # グローバル CSS
-│   ├── consts.ts            # サイトタイトル・説明文
+│   ├── layouts/             # ページレイアウト（BlogPost）
+│   ├── pages/               # ルーティング（トップ・記事一覧・About 等）
+│   ├── styles/              # グローバル CSS（まとめ風テーマ）
+│   ├── consts.ts            # サイト名・管理人情報・X・カテゴリ定義
 │   └── content.config.ts    # 記事のフロントマタースキーマ
 ├── astro.config.mjs         # Astro + Cloudflare 設定
 ├── wrangler.jsonc           # Cloudflare デプロイ設定
@@ -106,10 +115,16 @@ Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
 ---
 title: '記事タイトル'
 description: '記事の概要（一覧・OGP用）'
-pubDate: '2026-07-13'
+pubDate: '2026-07-15'
+category: 'ai'
+tags: ['画像生成AI', '規制']
 ---
 
 ここから本文を書きます。
+
+<div class="rina-say">
+リナちゃんのセリフはこのボックスで表示されるわ。
+</div>
 ```
 
 ### フロントマター
@@ -120,7 +135,11 @@ pubDate: '2026-07-13'
 | `description` | ✅ | 記事の概要 |
 | `pubDate` | ✅ | 公開日 |
 | `updatedDate` | 任意 | 更新日 |
-| `heroImage` | 任意 | アイキャッチ画像（例: `'../../assets/blog-placeholder-1.jpg'`） |
+| `category` | 任意 | `ai` / `payment` / `tech` / `column` のいずれか |
+| `tags` | 任意 | タグの配列（例: `['画像生成AI', '規制']`） |
+| `heroImage` | 任意 | アイキャッチ画像（`src/assets/` に画像を置いて指定） |
+
+> メモ: 本文の `.md` 内では `import` は使えません。リナちゃんのセリフは `<div class="rina-say">…</div>` の生 HTML で書いてください。
 
 保存すると開発サーバーが自動でリロードされ、記事が反映されます。
 
@@ -128,11 +147,13 @@ pubDate: '2026-07-13'
 
 | ファイル | 編集内容 |
 |---------|---------|
-| `src/consts.ts` | サイトタイトル・説明文 |
+| `src/consts.ts` | サイト名・管理人プロフィール・X アカウント・カテゴリ |
 | `astro.config.mjs` の `site` | 本番ドメイン（現在は `https://example.com`） |
-| `src/pages/index.astro` | トップページ |
-| `src/pages/about.astro` | About ページ |
-| `src/components/Header.astro` | ナビゲーション |
+| `src/pages/index.astro` | トップページ（新着記事一覧） |
+| `src/pages/about.astro` | 運営者情報・プロフィール |
+| `src/components/Header.astro` | ロゴ・カテゴリナビ |
+| `src/components/Sidebar.astro` | プロフィール・ランキング・カテゴリ・X・アーカイブ・PR枠 |
+| `src/components/XReply.astro` | コメント欄代替の X 誘導ブロック |
 
 ## Cloudflare へのデプロイ（予定）
 

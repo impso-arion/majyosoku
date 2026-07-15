@@ -1,114 +1,162 @@
 ---
-import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
 import Header from '../../components/Header.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
+import Sidebar from '../../components/Sidebar.astro';
+import { CATEGORIES, SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
 
 const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
+
+const catInfo = (slug?: string) => CATEGORIES.find((c) => c.slug === slug);
+const pageTitle = `記事一覧 | ${SITE_TITLE}`;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="ja">
 	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-		<style>
-			main {
-				width: 960px;
-			}
-			ul {
-				display: flex;
-				flex-wrap: wrap;
-				gap: 2rem;
-				list-style-type: none;
-				margin: 0;
-				padding: 0;
-			}
-			ul li {
-				width: calc(50% - 1rem);
-			}
-			ul li * {
-				text-decoration: none;
-				transition: 0.2s ease;
-			}
-			ul li:first-child {
-				width: 100%;
-				margin-bottom: 1rem;
-				text-align: center;
-			}
-			ul li:first-child img {
-				width: 100%;
-			}
-			ul li:first-child .title {
-				font-size: 2.369rem;
-			}
-			ul li img {
-				margin-bottom: 0.5rem;
-				border-radius: 12px;
-			}
-			ul li a {
-				display: block;
-			}
-			.title {
-				margin: 0;
-				color: rgb(var(--black));
-				line-height: 1;
-			}
-			.date {
-				margin: 0;
-				color: rgb(var(--gray));
-			}
-			ul li a:hover h4,
-			ul li a:hover .date {
-				color: rgb(var(--accent));
-			}
-			ul a:hover img {
-				box-shadow: var(--box-shadow);
-			}
-			@media (max-width: 720px) {
-				ul {
-					gap: 0.5em;
-				}
-				ul li {
-					width: 100%;
-					text-align: center;
-				}
-				ul li:first-child {
-					margin-bottom: 0;
-				}
-				ul li:first-child .title {
-					font-size: 1.563em;
-				}
-			}
-		</style>
+		<BaseHead title={pageTitle} description={SITE_DESCRIPTION} />
 	</head>
 	<body>
 		<Header />
-		<main>
-			<section>
-				<ul>
-					{
-						posts.map((post) => (
-							<li>
-								<a href={`/blog/${post.id}/`}>
-									{post.data.heroImage && (
-										<Image width={720} height={360} src={post.data.heroImage} alt="" />
-									)}
-									<h4 class="title">{post.data.title}</h4>
-									<p class="date">
-										<FormattedDate date={post.data.pubDate} />
-									</p>
-								</a>
-							</li>
-						))
-					}
-				</ul>
-			</section>
-		</main>
+		<div class="wrap">
+			<div class="site-layout">
+				<Sidebar />
+				<main class="col-main">
+					<div class="section-bar"><span>📚</span>記事一覧</div>
+
+					<div class="cat-filter" role="tablist">
+						<button class="filter-btn active" data-filter="all">すべて</button>
+						{
+							CATEGORIES.map((c) => (
+								<button class="filter-btn" data-filter={c.slug}>
+									{c.emoji} {c.label}
+								</button>
+							))
+						}
+					</div>
+
+					<ul class="post-list" id="post-list">
+						{
+							posts.map((post) => {
+								const cat = catInfo(post.data.category);
+								return (
+									<li class="post-item" data-cat={post.data.category ?? 'none'}>
+										<article class="post-card">
+											{cat && (
+												<span class="cat-tag">
+													{cat.emoji} {cat.label}
+												</span>
+											)}
+											<h2 class="post-title">
+												<a href={`/blog/${post.id}/`}>{post.data.title}</a>
+											</h2>
+											<div class="post-meta">
+												<span>🗓 <FormattedDate date={post.data.pubDate} /></span>
+												<span class="no-comment">💬 コメント欄なし（𝕏へリプ）</span>
+											</div>
+											<p class="post-excerpt">{post.data.description}</p>
+											{post.data.tags && post.data.tags.length > 0 && (
+												<div class="card-tags">
+													{post.data.tags.map((t) => (
+														<a
+															class="tag-chip"
+															href={`/tags/${encodeURIComponent(t)}/`}
+														>
+															#{t}
+														</a>
+													))}
+												</div>
+											)}
+											<a class="readmore" href={`/blog/${post.id}/`}>
+												続きを読む »
+											</a>
+										</article>
+									</li>
+								);
+							})
+						}
+					</ul>
+					<p class="no-hit" id="no-hit" hidden>このカテゴリの供物はまだ無いわ…</p>
+				</main>
+			</div>
+		</div>
 		<Footer />
+
+		<script>
+			const params = new URLSearchParams(location.search);
+			const initial = params.get('cat') || 'all';
+			const buttons = Array.from(
+				document.querySelectorAll<HTMLButtonElement>('.filter-btn'),
+			);
+			const items = Array.from(
+				document.querySelectorAll<HTMLElement>('.post-item'),
+			);
+			const noHit = document.getElementById('no-hit');
+
+			function applyFilter(filter: string) {
+				let hits = 0;
+				for (const item of items) {
+					const match = filter === 'all' || item.dataset.cat === filter;
+					item.hidden = !match;
+					if (match) hits++;
+				}
+				for (const b of buttons) {
+					b.classList.toggle('active', b.dataset.filter === filter);
+				}
+				if (noHit) noHit.hidden = hits !== 0;
+			}
+
+			for (const b of buttons) {
+				b.addEventListener('click', () => {
+					const f = b.dataset.filter || 'all';
+					applyFilter(f);
+					const url = new URL(location.href);
+					if (f === 'all') url.searchParams.delete('cat');
+					else url.searchParams.set('cat', f);
+					history.replaceState(null, '', url);
+				});
+			}
+
+			applyFilter(initial);
+		</script>
+
+		<style>
+			.cat-filter {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 8px;
+				margin-bottom: 18px;
+			}
+			.filter-btn {
+				font-family: inherit;
+				font-size: 0.8rem;
+				font-weight: 700;
+				color: var(--accent);
+				background: var(--surface);
+				border: 1px solid var(--border);
+				border-radius: 999px;
+				padding: 6px 14px;
+				cursor: pointer;
+				transition: all 0.15s ease;
+			}
+			.filter-btn:hover {
+				border-color: var(--accent);
+				background: var(--surface-2);
+			}
+			.filter-btn.active {
+				color: var(--text-strong);
+				background: var(--accent-dim);
+				border-color: transparent;
+			}
+			.no-hit {
+				color: var(--muted);
+				text-align: center;
+				padding: 20px 0;
+			}
+		</style>
 	</body>
 </html>

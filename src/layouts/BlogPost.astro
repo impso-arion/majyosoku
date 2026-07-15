@@ -5,82 +5,148 @@ import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
+import Sidebar from '../components/Sidebar.astro';
+import XReply from '../components/XReply.astro';
+import { CATEGORIES } from '../consts';
 
 type Props = CollectionEntry<'blog'>['data'];
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, category, tags } =
+	Astro.props;
+const cat = CATEGORIES.find((c) => c.slug === category);
 ---
 
-<html lang="en">
+<html lang="ja">
 	<head>
-		<BaseHead title={title} description={description} />
-		<style>
-			main {
-				width: calc(100% - 2em);
-				max-width: 100%;
-				margin: 0;
-			}
-			.hero-image {
-				width: 100%;
-			}
-			.hero-image img {
-				display: block;
-				margin: 0 auto;
-				border-radius: 12px;
-				box-shadow: var(--box-shadow);
-			}
-			.prose {
-				width: 720px;
-				max-width: calc(100% - 2em);
-				margin: auto;
-				padding: 1em;
-				color: rgb(var(--gray-dark));
-			}
-			.title {
-				margin-bottom: 1em;
-				padding: 1em 0;
-				text-align: center;
-				line-height: 1;
-			}
-			.title h1 {
-				margin: 0 0 0.5em 0;
-			}
-			.date {
-				margin-bottom: 0.5em;
-				color: rgb(var(--gray));
-			}
-			.last-updated-on {
-				font-style: italic;
-			}
-		</style>
+		<BaseHead title={title} description={description} image={heroImage} />
 	</head>
 
 	<body>
 		<Header />
-		<main>
-			<article>
-				<div class="hero-image">
-					{heroImage && <Image width={1020} height={510} src={heroImage} alt="" />}
-				</div>
-				<div class="prose">
-					<div class="title">
-						<div class="date">
-							<FormattedDate date={pubDate} />
+		<div class="wrap">
+			<div class="site-layout">
+				<Sidebar />
+				<main class="col-main">
+					<article class="panel article">
+						<div class="article-head">
 							{
-								updatedDate && (
-									<div class="last-updated-on">
-										Last updated on <FormattedDate date={updatedDate} />
-									</div>
+								cat && (
+									<a class="cat-tag" href={`/blog?cat=${cat.slug}`}>
+										{cat.emoji} {cat.label}
+									</a>
 								)
 							}
+							<h1 class="article-title">{title}</h1>
+							<div class="post-meta">
+								<span>🗓 <FormattedDate date={pubDate} /></span>
+								{
+									updatedDate && (
+										<span>
+											✏️ 更新 <FormattedDate date={updatedDate} />
+										</span>
+									)
+								}
+								<span class="no-comment">💬 コメント欄なし（𝕏へリプ）</span>
+							</div>
 						</div>
-						<h1>{title}</h1>
-						<hr />
-					</div>
-					<slot />
-				</div>
-			</article>
-		</main>
+
+						{
+							heroImage && (
+								<div class="hero-image">
+									<Image width={1020} height={510} src={heroImage} alt="" />
+								</div>
+							)
+						}
+
+						<div class="prose article-body">
+							<slot />
+						</div>
+
+						{
+							tags && tags.length > 0 && (
+								<div class="tag-row">
+									{tags.map((t) => (
+										<a class="tag-chip" href={`/tags/${encodeURIComponent(t)}/`}>
+											#{t}
+										</a>
+									))}
+								</div>
+							)
+						}
+
+						<XReply title={title} />
+
+						<div class="back-row">
+							<a class="readmore" href="/blog">« 記事一覧に戻る</a>
+						</div>
+					</article>
+				</main>
+			</div>
+		</div>
 		<Footer />
 	</body>
 </html>
+
+<style>
+	.article {
+		padding: 0;
+	}
+	.article-head {
+		padding: 22px 22px 16px;
+		border-bottom: 1px solid var(--border);
+		background: var(--surface-2);
+	}
+	.article-head .cat-tag {
+		display: inline-block;
+		font-size: 0.74rem;
+		font-weight: 700;
+		color: var(--accent);
+		border: 1px solid var(--accent-dim);
+		border-radius: 4px;
+		padding: 3px 12px;
+		margin-bottom: 10px;
+	}
+	.article-head .cat-tag:hover {
+		color: var(--text-strong);
+		background: var(--accent-dim);
+		text-decoration: none;
+	}
+	.article-title {
+		font-size: 1.7rem;
+		font-weight: 800;
+		line-height: 1.4;
+		margin: 0 0 10px;
+	}
+	.hero-image {
+		padding: 18px 22px 0;
+	}
+	.hero-image :global(img) {
+		display: block;
+		width: 100%;
+		height: auto;
+		border-radius: 10px;
+		box-shadow: var(--box-shadow);
+	}
+	.article-body {
+		padding: 20px 22px 8px;
+	}
+	.tag-row {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px;
+		padding: 0 22px 8px;
+	}
+	.back-row {
+		padding: 0 22px 24px;
+	}
+	:global(.article .xreply) {
+		margin-left: 22px;
+		margin-right: 22px;
+	}
+
+	@media (max-width: 720px) {
+		.article-title {
+			font-size: 1.35rem;
+		}
+	}
+</style>

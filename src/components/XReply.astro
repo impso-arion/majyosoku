@@ -1,0 +1,101 @@
+---
+import { SITE_TITLE, X_HANDLE, X_HASHTAG, X_URL } from '../consts';
+
+interface Props {
+	title?: string;
+}
+
+const { title } = Astro.props;
+
+// 記事タイトル付きのリプ用テキストを用意（プランC）
+const shareText = title
+	? `「${title}」読んだわよ！ ${X_HASHTAG}`
+	: `${SITE_TITLE}見てるわ！ ${X_HASHTAG}`;
+const replyHref = `https://x.com/intent/tweet?text=${encodeURIComponent(shareText)}`;
+---
+
+<section class="xreply" aria-label="コメント（Xへのリプ）">
+	<div class="xreply-head">
+		<span class="xr-ico">🧙‍♀️</span>
+		<p class="xr-lead">今夜の黒ミサについて言いたいことがある魔法使いへ</p>
+	</div>
+	<p class="xr-body">
+		このブログにコメント欄は無いわ。感想も文句も、
+		<strong>{X_HASHTAG}</strong> を付けて私に直接リプを送りなさいよね！
+		勝手にタグを付けて盛り上がってくれたら、私が拡散の魔法をかけてあげる。
+	</p>
+	<div class="xr-actions">
+		<a class="xr-btn primary" href={replyHref} target="_blank" rel="noopener">
+			𝕏 でこの記事にリプする
+		</a>
+		<a class="xr-btn ghost" href={X_URL} target="_blank" rel="noopener">
+			{X_HANDLE} をフォロー
+		</a>
+	</div>
+</section>
+
+<style>
+	.xreply {
+		background: var(--surface);
+		border: 1px solid var(--border);
+		border-left: 3px solid var(--pink);
+		color: var(--text);
+		border-radius: 0 8px 8px 0;
+		padding: 20px;
+		margin: 32px 0 8px;
+	}
+	.xreply-head {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		margin-bottom: 8px;
+	}
+	.xr-ico {
+		font-size: 1.6rem;
+	}
+	.xr-lead {
+		margin: 0;
+		font-weight: 700;
+		font-size: 1rem;
+		color: var(--text-strong);
+	}
+	.xr-body {
+		margin: 0 0 16px;
+		font-size: 0.9rem;
+		line-height: 1.8;
+		color: var(--text);
+	}
+	.xr-body strong {
+		color: var(--pink);
+	}
+	.xr-actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 10px;
+	}
+	.xr-btn {
+		display: inline-block;
+		font-weight: 700;
+		font-size: 0.85rem;
+		padding: 10px 20px;
+		border-radius: 6px;
+	}
+	.xr-btn.primary {
+		color: var(--text-strong);
+		background: var(--accent-dim);
+	}
+	.xr-btn.primary:hover {
+		background: var(--accent);
+	}
+	.xr-btn.ghost {
+		color: var(--text);
+		border: 1px solid var(--border);
+	}
+	.xr-btn.ghost:hover {
+		border-color: var(--accent);
+		color: var(--text-strong);
+	}
+	.xr-btn:hover {
+		text-decoration: none;
+	}
+</style>

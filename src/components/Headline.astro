@@ -1,0 +1,110 @@
+---
+import { BESTSELLERS } from '../consts';
+---
+
+<section class="headline" aria-label="売れ筋ランキング">
+	<div class="headline-bar">
+		<span class="hl-deco">▼</span>
+		<span class="hl-title">H e a d L i n e ／ 今夜の売れ筋ランキング</span>
+		<span class="hl-deco">▼</span>
+	</div>
+	<p class="hl-pr">- PR / アフィリエイト広告 -</p>
+	<ol class="hl-list">
+		{
+			BESTSELLERS.map((item) => (
+				<li>
+					<span class={`hl-rank r${item.rank}`}>{item.rank}</span>
+					<a class="hl-item" href={item.url} target="_blank" rel="noopener nofollow">
+						<span class="hl-item-title">{item.title}</span>
+						<span class="hl-item-note">{item.note}</span>
+					</a>
+				</li>
+			))
+		}
+	</ol>
+</section>
+
+<style>
+	.headline {
+		background: var(--surface);
+		border: 1px solid var(--accent-dim);
+		border-radius: 8px;
+		overflow: hidden;
+		margin-bottom: 22px;
+	}
+	.headline-bar {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 10px;
+		padding: 10px 12px;
+		font-weight: 700;
+		font-size: 1rem;
+		color: var(--text-strong);
+		background: var(--surface-2);
+		border-bottom: 1px solid var(--border);
+		letter-spacing: 0.04em;
+	}
+	.hl-deco {
+		color: var(--accent);
+	}
+	.hl-pr {
+		margin: 0;
+		padding: 6px 14px 0;
+		font-size: 0.68rem;
+		letter-spacing: 0.15em;
+		color: var(--muted);
+	}
+	.hl-list {
+		list-style: none;
+		margin: 0;
+		padding: 8px 14px 14px;
+	}
+	.hl-list li {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+		padding: 10px 0;
+		border-bottom: 1px dashed var(--border);
+	}
+	.hl-list li:last-child {
+		border-bottom: none;
+	}
+	.hl-rank {
+		flex: 0 0 30px;
+		height: 30px;
+		display: grid;
+		place-items: center;
+		border-radius: 6px;
+		font-weight: 800;
+		font-size: 0.95rem;
+		color: var(--bg-deep);
+		background: var(--muted);
+	}
+	.hl-rank.r1 {
+		background: var(--rank1);
+	}
+	.hl-rank.r2 {
+		background: var(--rank2);
+	}
+	.hl-rank.r3 {
+		background: var(--rank3);
+	}
+	.hl-item {
+		display: flex;
+		flex-direction: column;
+		line-height: 1.4;
+	}
+	.hl-item-title {
+		font-weight: 700;
+		font-size: 0.92rem;
+		color: var(--text-strong);
+	}
+	.hl-item:hover .hl-item-title {
+		color: var(--accent);
+	}
+	.hl-item-note {
+		font-size: 0.74rem;
+		color: var(--muted);
+	}
+</style>
