@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+import brandIcon from '../assets/brand/icon.webp';
 import { SITE_CATCH, SITE_READING, SITE_TITLE, X_URL } from '../consts';
 import HeaderLink from './HeaderLink.astro';
 ---
@@ -6,7 +8,14 @@ import HeaderLink from './HeaderLink.astro';
 <header class="site-header">
 	<div class="wrap header-inner">
 		<a class="brand" href="/">
-			<span class="brand-mark">🧙‍♀️</span>
+			<Image
+				class="brand-mark"
+				src={brandIcon}
+				alt={SITE_TITLE}
+				width={96}
+				height={96}
+				densities={[1, 2]}
+			/>
 			<span class="brand-text">
 				<span class="brand-title">{SITE_TITLE}</span>
 				<span class="brand-reading">{SITE_READING}</span>
@@ -45,7 +54,12 @@ import HeaderLink from './HeaderLink.astro';
 		text-decoration: none;
 	}
 	.brand-mark {
-		font-size: 2.1rem;
+		width: 56px;
+		height: 56px;
+		border-radius: 12px;
+		object-fit: cover;
+		flex-shrink: 0;
+		background: var(--surface-2);
 	}
 	.brand-text {
 		display: flex;

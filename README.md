@@ -92,24 +92,45 @@ Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
 ## プロジェクト構成
 
 ```text
-├── public/                  # ファビコンなどの静的ファイル
+├── public/                     # favicon など URL 固定の静的ファイル
+├── doc/
+│   └── assets.md               # ★ 画像・部品の置き場所ガイド
 ├── src/
-│   ├── components/          # Header / Footer / Sidebar / XReply 等
+│   ├── assets/
+│   │   ├── brand/              # ロゴ・デフォルトOGP・アバター（共通）
+│   │   └── common/             # 複数記事で使い回す挿絵など（共通）
+│   ├── components/             # Header / Footer / Sidebar / XReply 等
 │   ├── content/
-│   │   └── blog/            # ★ ブログ記事（Markdown / MDX）
-│   ├── layouts/             # ページレイアウト（BlogPost）
-│   ├── pages/               # ルーティング（トップ・記事一覧・About 等）
-│   ├── styles/              # グローバル CSS（まとめ風テーマ）
-│   ├── consts.ts            # サイト名・管理人情報・X・カテゴリ定義
-│   └── content.config.ts    # 記事のフロントマタースキーマ
-├── astro.config.mjs         # Astro + Cloudflare 設定
-├── wrangler.jsonc           # Cloudflare デプロイ設定
+│   │   └── blog/
+│   │       └── <slug>/         # ★ 記事ごと（index.md + 画像）
+│   │           ├── index.md
+│   │           ├── hero.webp
+│   │           └── images/
+│   ├── layouts/
+│   ├── pages/
+│   ├── styles/
+│   ├── consts.ts
+│   └── content.config.ts
+├── astro.config.mjs
+├── wrangler.jsonc
 └── package.json
 ```
 
+画像の置き分けの詳細は [`doc/assets.md`](doc/assets.md) を参照。
+
 ## 記事の追加方法
 
-`src/content/blog/` に `.md` または `.mdx` ファイルを追加します。
+1. `src/content/blog/<スラッグ>/` フォルダを作る（スラッグ＝URL）
+2. そこに `index.md` を置く
+3. 記事用画像は同じフォルダ（アイキャッチ）または `images/`（本文用）へ
+
+```text
+src/content/blog/my-post/
+├── index.md
+├── hero.webp              # アイキャッチ（任意）
+└── images/
+    └── figure-01.webp     # 本文中の図（任意）
+```
 
 ```markdown
 ---
@@ -118,9 +139,12 @@ description: '記事の概要（一覧・OGP用）'
 pubDate: '2026-07-15'
 category: 'ai'
 tags: ['画像生成AI', '規制']
+heroImage: './hero.webp'
 ---
 
 ここから本文を書きます。
+
+![説明](./images/figure-01.webp)
 
 <div class="rina-say">
 リナちゃんのセリフはこのボックスで表示されるわ。
@@ -137,9 +161,18 @@ tags: ['画像生成AI', '規制']
 | `updatedDate` | 任意 | 更新日 |
 | `category` | 任意 | `ai` / `payment` / `tech` / `column` のいずれか |
 | `tags` | 任意 | タグの配列（例: `['画像生成AI', '規制']`） |
-| `heroImage` | 任意 | アイキャッチ画像（`src/assets/` に画像を置いて指定） |
+| `heroImage` | 任意 | アイキャッチ（`./hero.webp` のように記事フォルダからの相対パス） |
 
-> メモ: 本文の `.md` 内では `import` は使えません。リナちゃんのセリフは `<div class="rina-say">…</div>` の生 HTML で書いてください。
+### 画像の置き場所（要約）
+
+| 種類 | 場所 |
+|------|------|
+| その記事だけの画像 | `src/content/blog/<slug>/`（または `images/`） |
+| サイト共通（ロゴ等） | `src/assets/brand/` / `src/assets/common/` |
+| UI部品 | `src/components/` |
+| favicon 等 | `public/` |
+
+> メモ: 本文の `.md` 内では `import` は使えません。リナちゃんのセリフは `<div class="rina-say">…</div>` の生 HTML で書いてください。MDX なら `import` + `<Image />` も使えます。
 
 保存すると開発サーバーが自動でリロードされ、記事が反映されます。
 
