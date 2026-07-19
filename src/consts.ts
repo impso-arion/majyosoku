@@ -3,15 +3,15 @@
 export const SITE_TITLE = 'へっぽこ魔女のHなAIグリモワール';
 export const SITE_READING = 'へっぽこまじょのえっちなエーアイグリモワール';
 export const SITE_SUBTITLE = '賀田野リナのHなAIグリモワール';
-export const SITE_CATCH = 'AIトレンド × エロ魔女';
+export const SITE_CATCH = 'AI画像生成 × エロ魔女';
 export const SITE_DESCRIPTION =
-	'AIトレンド×エロ魔女。画像生成AIの規制パトロールから、クレカ決済包囲網（VISA/Mastercard規制）の突破法まで。へっぽこ魔女・賀田野リナが今夜の黒ミサ用に発信するまとめサイト。';
+	'AI画像生成×エロ魔女。Danbooruタグの解剖から、Stable Diffusionのモデル紹介、トレンド作品のプロンプト逆引きまで。へっぽこ魔女・賀田野リナが今夜の黒ミサ用に発信するまとめサイト。';
 
 // 管理人（魔女）プロフィール
 export const AUTHOR_NAME = '賀田野リナ';
 export const AUTHOR_TITLE = 'へっぽこ見習い魔女 / 当サイト管理人';
 export const AUTHOR_BIO =
-	'AIトレンドとエロの結界を彷徨うへっぽこ魔女。画像生成AIの検閲網（グレートファイアウォール）をすり抜ける裏プロンプトと、クレカ大魔王の封印を破る決済の抜け道を研究中。今夜も黒ミサのために記事を焚べるわ。';
+	'AI画像生成とエロの結界を彷徨うへっぽこ魔女。Danbooruタグの組み合わせと、Stable Diffusionのモデル選びを研究中。今夜も黒ミサのために記事を焚べるわ。';
 
 // SNS（コメント欄の代わりにXへ誘導＝プランC）
 export const X_HANDLE = '@majo_sokuho';
@@ -21,7 +21,6 @@ export const X_HASHTAG = '#へっぽこ魔女のHなAIグリモワール';
 // カテゴリー（まとめ風のナビ・サイドバーで使用）
 export const CATEGORIES = [
 	{ slug: 'ai', label: 'AI画像生成', emoji: '🪄' },
-	{ slug: 'payment', label: '決済・クレカ規制', emoji: '💳' },
 	{ slug: 'tech', label: '魔女の技術メモ', emoji: '🔮' },
 	{ slug: 'column', label: '今夜の黒ミサ', emoji: '🌙' },
 ] as const;
@@ -61,8 +60,8 @@ export const BESTSELLERS = [
 	},
 	{
 		rank: 5,
-		title: '【PR枠⑤】決済の抜け道グッズ',
-		note: 'プリペイド・ギフト系など',
+		title: '【PR枠⑤】魔女おすすめの生成ツール',
+		note: 'モデル配布・生成サービスなど',
 		url: '#',
 	},
 ] as const;

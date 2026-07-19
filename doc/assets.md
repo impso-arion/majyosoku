@@ -76,12 +76,12 @@ heroImage: './hero.webp'
 
 ```text
 src/assets/
-├── brand/          # ロゴ・サイトOGP・リナのアバターなど
-│   ├── logo.svg
-│   ├── og-default.webp
-│   └── rina-avatar.webp
+├── brand/          # ロゴ・キャラ・ファビコン原版など
+│   ├── icon.webp
+│   ├── chara.webp
+│   ├── footer.webp
+│   └── favicon.ico   # 原版。配信用は public/favicon.ico にも置く
 └── common/         # 複数記事で使い回す挿絵・バナー雛形など
-    └── placeholder.webp
 ```
 
 コンポーネントから使う例:
@@ -98,7 +98,7 @@ import { Image } from 'astro:assets';
 
 ## public/ に置くもの
 
-- `favicon.svg` / `favicon.ico`
+- `favicon.ico`（ブラウザが `/favicon.ico` を取りにくるのでここが本番配信）
 - `robots.txt`、検証用ファイルなど「URLがそのまま必要」なもの
 
 アフィリエイト用の固定URLバナーを置く場合もここ（例: `public/pr/banner-xxx.png` → `/pr/banner-xxx.png`）。

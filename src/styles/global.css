@@ -22,6 +22,8 @@
 	--text: #d7d5dd;
 	--text-strong: #f0eff3;
 	--muted: #9490a0;
+	/* ブランドアイコン（丸・角）の下地：文字色と同程度の白 */
+	--icon-bg: var(--text-strong);
 
 	/* アクセント（彩度控えめ） */
 	--accent: #b48bff;
@@ -196,9 +198,6 @@ h6 {
 	gap: 4px 14px;
 	margin-bottom: 8px;
 }
-.post-meta .no-comment {
-	color: var(--pink);
-}
 .post-excerpt {
 	font-size: 0.9rem;
 	color: var(--text);
@@ -331,7 +330,8 @@ h6 {
 	margin: 2em 0;
 }
 
-/* リナちゃんのセリフ（記事内で使えるボックス） */
+/* リナちゃんのセリフ（記事内で使えるボックス）
+   アバター画像URLは BaseHead で --rina-avatar として注入 */
 .rina-say {
 	position: relative;
 	background: var(--surface-2);
@@ -339,15 +339,20 @@ h6 {
 	border-left: 4px solid var(--pink);
 	color: var(--text);
 	border-radius: 0 8px 8px 0;
-	padding: 14px 16px 14px 54px;
+	padding: 14px 16px 14px 72px;
 	margin: 1.4em 0;
+	min-height: 72px;
 }
 .rina-say::before {
-	content: '🧙‍♀️';
+	content: '';
 	position: absolute;
-	left: 14px;
-	top: 12px;
-	font-size: 1.5rem;
+	left: 10px;
+	top: 14px;
+	width: 52px;
+	height: 52px;
+	border-radius: 50%;
+	background: var(--icon-bg) var(--rina-avatar) center / cover no-repeat;
+	border: 1px solid var(--border);
 }
 .rina-say strong {
 	color: var(--gold);

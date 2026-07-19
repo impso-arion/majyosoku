@@ -1,61 +1,255 @@
 ---
-import Layout from '../layouts/BlogPost.astro';
-import { AUTHOR_NAME, SITE_TITLE, X_HANDLE, X_HASHTAG, X_URL } from '../consts';
+import { Image } from 'astro:assets';
+import charaIcon from '../assets/brand/chara.webp';
+import BaseHead from '../components/BaseHead.astro';
+import CharacterSpeech from '../components/CharacterSpeech.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import Sidebar from '../components/Sidebar.astro';
+import XReply from '../components/XReply.astro';
+import {
+	AUTHOR_BIO,
+	AUTHOR_NAME,
+	AUTHOR_TITLE,
+	SITE_CATCH,
+	SITE_DESCRIPTION,
+	SITE_TITLE,
+	X_HANDLE,
+	X_URL,
+} from '../consts';
+
+const pageTitle = `運営者情報 | ${SITE_TITLE}`;
+const pageDesc = `${SITE_TITLE}の管理人・${AUTHOR_NAME}のプロフィールと運営方針、免責事項、お問い合わせについて。`;
 ---
 
-<Layout
-	title={`運営者情報 | ${SITE_TITLE}`}
-	description={`${SITE_TITLE}の管理人・${AUTHOR_NAME}のプロフィールと運営方針、免責事項、お問い合わせについて。`}
-	pubDate={new Date('2026-07-15')}
-	category="column"
->
-	<div class="rina-say">
-		<p>
-			ようこそ、私の結界へ。<strong>賀田野リナ</strong>よ。AIトレンドとエロの狭間を彷徨う、へっぽこ見習い魔女。今夜も黒ミサのために記事を焚べているわ。
-		</p>
-	</div>
+<!doctype html>
+<html lang="ja">
+	<head>
+		<BaseHead title={pageTitle} description={pageDesc} />
+	</head>
+	<body>
+		<Header />
+		<div class="wrap">
+			<div class="site-layout">
+				<Sidebar />
+				<main class="col-main">
+					<div class="section-bar">運営者情報</div>
 
-	<h2>このサイトについて</h2>
-	<p>
-		<strong>{SITE_TITLE}</strong>は、かつて流行した「まとめ速報」系ブログのノリで、
-		<strong>AIトレンド × エロ魔女</strong>という切り口の話題をお届けするサイトよ。堅苦しいニュースメディアが真面目に語ることを、私・リナが黒ミサ風に翻訳してあげる。
-	</p>
+					<article class="panel about">
+						<div class="about-hero">
+							<Image
+								class="about-avatar"
+								src={charaIcon}
+								alt={AUTHOR_NAME}
+								width={200}
+								height={200}
+								densities={[1, 2]}
+							/>
+							<div class="about-hero-text">
+								<p class="about-catch">{SITE_CATCH}</p>
+								<h1 class="about-name">{AUTHOR_NAME}</h1>
+								<p class="about-title">{AUTHOR_TITLE}</p>
+								<p class="about-bio">{AUTHOR_BIO}</p>
+								<a class="about-x" href={X_URL} target="_blank" rel="noopener">
+									𝕏 {X_HANDLE} をフォロー
+								</a>
+							</div>
+						</div>
 
-	<h2>何を発信するの？</h2>
-	<h3>🪄 AI画像生成の倫理やトレンド動向</h3>
-	<p>
-		普通のメディアが「画像生成AIの学習データと著作権に関する国際的な動向」なんて言うところを、私はこう語るわ——
-		「最近のAI規制パトロール、ちょっと厳しすぎない？　検閲網（グレートファイアウォール）をすり抜けた限界のプロンプトを、今夜の供物にしてやるわ」ってね。
-	</p>
-	<h3>💳 決済・クレカ規制の社会問題</h3>
-	<p>
-		DMM（FANZA）やDLsiteが、VISA/Mastercardといったクレカ大魔王の封印で大激震している今。
-		JCB・仮想通貨・Vプリカといった「裏ルート」＝抜け道を、へっぽこなりに解説してあげる。今夜の儀式を止めさせはしないわよ。
-	</p>
+						<div class="prose about-body">
+							<CharacterSpeech character="rina">
+								ようこそ、私の結界へ。<strong>{AUTHOR_NAME}</strong>よ。AI画像生成とエロの狭間を彷徨う、へっぽこ見習い魔女。今夜も黒ミサのために記事を焚べているわ。
+							</CharacterSpeech>
 
-	<h2>コメント欄は無いわ</h2>
-	<p>
-		このブログにコメント欄は置かない主義なの。言いたいことがある魔法使いは、
-		<a href={X_URL} target="_blank" rel="noopener">𝕏（{X_HANDLE}）</a>
-		に直接リプを送りなさいよね！　
-		<strong>{X_HASHTAG}</strong> のタグを付けて盛り上がってくれたら、私が拡散の魔法をかけてあげる。
-	</p>
+							<h2>このサイトについて</h2>
+							<p>
+								<strong>{SITE_TITLE}</strong>は、かつて流行した「まとめ速報」系ブログのノリで、
+								<strong>{SITE_CATCH}</strong>という切り口の話題をお届けするサイトよ。堅苦しい技術解説やニュースを、私・リナが黒ミサ風に翻訳してあげる。
+							</p>
+							<p>{SITE_DESCRIPTION}</p>
 
-	<h2>運営者情報</h2>
-	<ul>
-		<li><strong>サイト名：</strong>{SITE_TITLE}</li>
-		<li><strong>管理人：</strong>{AUTHOR_NAME}</li>
-		<li>
-			<strong>お問い合わせ：</strong>
-			<a href={X_URL} target="_blank" rel="noopener">𝕏 {X_HANDLE}</a> へのDM・リプ
-		</li>
-	</ul>
+							<h2>何を発信するの？</h2>
+							<ul class="about-topics">
+								<li><a href="/blog?cat=ai">AI画像生成</a></li>
+								<li><a href="/tags/Danbooru">Danbooruタグ</a></li>
+								<li><a href="/blog?cat=ai">SDモデル紹介</a></li>
+								<li><a href="/blog?cat=tech">魔女の技術メモ</a></li>
+								<li><a href="/blog?cat=column">今夜の黒ミサ</a></li>
+							</ul>
+							<p>
+								たとえば普通のメディアが「画像生成AIの学習データとタグ体系の関係」なんて言うところを、私はこう語るわ——「この作品、どんな Danbooru タグで組まれてるの？　モデルは Illustrious？　Pony？　今夜の供物として解剖してやるわ」ってね。
+							</p>
+							<p>
+								決済やクレカ規制の話は、基本的には扱わないわ。ここは<strong>生成の呪文とモデル</strong>のための結界よ。
+							</p>
 
-	<h2>免責事項</h2>
-	<p>
-		当サイトはアフィリエイト広告（成果報酬型広告）を利用しています。掲載する情報は執筆時点のものであり、正確性・最新性・有用性を保証するものではありません。当サイトの情報を利用して生じたいかなる損害についても、管理人は責任を負いかねます。
-	</p>
-	<p>
-		当サイトは成人向けの話題を扱います。18歳未満の方の閲覧はご遠慮ください。
-	</p>
-</Layout>
+							<h2>運営者情報</h2>
+							<dl class="about-meta">
+								<div>
+									<dt>サイト名</dt>
+									<dd>{SITE_TITLE}</dd>
+								</div>
+								<div>
+									<dt>管理人</dt>
+									<dd>{AUTHOR_NAME}（{AUTHOR_TITLE}）</dd>
+								</div>
+								<div>
+									<dt>お問い合わせ</dt>
+									<dd>
+										<a href={X_URL} target="_blank" rel="noopener">𝕏 {X_HANDLE}</a>
+										へのDM・リプ
+									</dd>
+								</div>
+							</dl>
+
+							<h2>免責事項</h2>
+							<p>
+								当サイトはアフィリエイト広告（成果報酬型広告）を利用しています。掲載する情報は執筆時点のものであり、正確性・最新性・有用性を保証するものではありません。当サイトの情報を利用して生じたいかなる損害についても、管理人は責任を負いかねます。
+							</p>
+							<p>
+								当サイトは成人向けの話題を扱います。18歳未満の方の閲覧はご遠慮ください。
+							</p>
+						</div>
+
+						<XReply />
+					</article>
+				</main>
+			</div>
+		</div>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	.about {
+		padding: 0;
+		overflow: hidden;
+	}
+	.about-hero {
+		display: flex;
+		gap: 20px;
+		align-items: center;
+		padding: 22px;
+		background: var(--surface-2);
+		border-bottom: 1px solid var(--border);
+	}
+	.about-avatar {
+		width: 112px;
+		height: 112px;
+		border-radius: 50%;
+		object-fit: cover;
+		background: var(--icon-bg);
+		border: 1px solid var(--border);
+		flex-shrink: 0;
+	}
+	.about-catch {
+		margin: 0 0 6px;
+		font-size: 0.75rem;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		color: var(--accent);
+	}
+	.about-name {
+		margin: 0 0 4px;
+		font-size: 1.6rem;
+		font-weight: 800;
+		color: var(--text-strong);
+		line-height: 1.3;
+	}
+	.about-title {
+		margin: 0 0 10px;
+		font-size: 0.85rem;
+		color: var(--muted);
+	}
+	.about-bio {
+		margin: 0 0 14px;
+		font-size: 0.9rem;
+		line-height: 1.75;
+		color: var(--text);
+	}
+	.about-x {
+		display: inline-block;
+		font-size: 0.85rem;
+		font-weight: 700;
+		color: var(--text-strong);
+		background: var(--accent-dim);
+		border-radius: 6px;
+		padding: 8px 16px;
+	}
+	.about-x:hover {
+		background: var(--accent);
+		text-decoration: none;
+	}
+	.about-body {
+		padding: 8px 22px 8px;
+	}
+	.about-topics {
+		list-style: none;
+		margin: 0 0 1.2em;
+		padding: 0;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px;
+	}
+	.about-topics a {
+		display: inline-block;
+		font-size: 0.82rem;
+		font-weight: 700;
+		color: var(--accent);
+		border: 1px solid var(--border);
+		border-radius: 999px;
+		padding: 4px 12px;
+		background: var(--surface-2);
+		text-decoration: none;
+	}
+	.about-topics a:hover {
+		border-color: var(--accent);
+		color: var(--text-strong);
+	}
+	.about-meta {
+		margin: 0 0 1.4em;
+		padding: 0;
+		border: 1px solid var(--border);
+		border-radius: 8px;
+		overflow: hidden;
+		background: var(--surface-2);
+	}
+	.about-meta > div {
+		display: grid;
+		grid-template-columns: 7.5em 1fr;
+		gap: 12px;
+		padding: 12px 14px;
+		border-bottom: 1px solid var(--border);
+	}
+	.about-meta > div:last-child {
+		border-bottom: none;
+	}
+	.about-meta dt {
+		margin: 0;
+		font-size: 0.8rem;
+		font-weight: 700;
+		color: var(--muted);
+	}
+	.about-meta dd {
+		margin: 0;
+		font-size: 0.9rem;
+		color: var(--text);
+	}
+	:global(.about .xreply) {
+		margin: 8px 22px 22px;
+	}
+
+	@media (max-width: 720px) {
+		.about-hero {
+			flex-direction: column;
+			text-align: center;
+		}
+		.about-meta > div {
+			grid-template-columns: 1fr;
+			gap: 4px;
+		}
+		.about-topics {
+			justify-content: center;
+		}
+	}
+</style>

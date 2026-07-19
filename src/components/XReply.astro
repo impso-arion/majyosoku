@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+import charaIcon from '../assets/brand/chara.webp';
 import { SITE_TITLE, X_HANDLE, X_HASHTAG, X_URL } from '../consts';
 
 interface Props {
@@ -16,7 +18,14 @@ const replyHref = `https://x.com/intent/tweet?text=${encodeURIComponent(shareTex
 
 <section class="xreply" aria-label="コメント（Xへのリプ）">
 	<div class="xreply-head">
-		<span class="xr-ico">🧙‍♀️</span>
+		<Image
+			class="xr-ico"
+			src={charaIcon}
+			alt="賀田野リナ"
+			width={80}
+			height={80}
+			densities={[1, 2]}
+		/>
 		<p class="xr-lead">今夜の黒ミサについて言いたいことがある魔法使いへ</p>
 	</div>
 	<p class="xr-body">
@@ -47,11 +56,17 @@ const replyHref = `https://x.com/intent/tweet?text=${encodeURIComponent(shareTex
 	.xreply-head {
 		display: flex;
 		align-items: center;
-		gap: 10px;
+		gap: 12px;
 		margin-bottom: 8px;
 	}
 	.xr-ico {
-		font-size: 1.6rem;
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+		object-fit: cover;
+		background: var(--icon-bg);
+		border: 1px solid var(--border);
+		flex-shrink: 0;
 	}
 	.xr-lead {
 		margin: 0;

@@ -1,4 +1,7 @@
 ---
+import { Image } from 'astro:assets';
+import charaIcon from '../assets/brand/chara.webp';
+
 interface Props {
 	character?: 'rina' | string;
 }
@@ -8,6 +11,14 @@ const label = character === 'rina' ? '賀田野リナ' : character;
 ---
 
 <aside class="speech" data-character={character}>
+	<Image
+		class="speech-avatar"
+		src={charaIcon}
+		alt={label}
+		width={96}
+		height={96}
+		densities={[1, 2]}
+	/>
 	<p class="speech-label">{label}</p>
 	<div class="speech-body">
 		<slot />
@@ -21,15 +32,20 @@ const label = character === 'rina' ? '賀田野リナ' : character;
 		border: 1px solid var(--border);
 		border-left: 4px solid var(--pink);
 		border-radius: 0 8px 8px 0;
-		padding: 14px 16px 14px 54px;
+		padding: 14px 16px 14px 72px;
 		margin: 1.4em 0;
+		min-height: 72px;
 	}
-	.speech::before {
-		content: '🧙‍♀️';
+	.speech-avatar {
 		position: absolute;
-		left: 14px;
-		top: 28px;
-		font-size: 1.5rem;
+		left: 10px;
+		top: 14px;
+		width: 52px;
+		height: 52px;
+		border-radius: 50%;
+		object-fit: cover;
+		background: var(--icon-bg);
+		border: 1px solid var(--border);
 	}
 	.speech-label {
 		margin: 0 0 6px;
