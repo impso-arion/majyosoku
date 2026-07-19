@@ -1,0 +1,63 @@
+---
+interface Props {
+	character?: 'rina' | string;
+}
+
+const { character = 'rina' } = Astro.props;
+const label = character === 'rina' ? '賀田野リナ' : character;
+---
+
+<aside class="speech" data-character={character}>
+	<p class="speech-label">{label}</p>
+	<div class="speech-body">
+		<slot />
+	</div>
+</aside>
+
+<style>
+	.speech {
+		position: relative;
+		background: var(--surface-2);
+		border: 1px solid var(--border);
+		border-left: 4px solid var(--pink);
+		border-radius: 0 8px 8px 0;
+		padding: 14px 16px 14px 54px;
+		margin: 1.4em 0;
+	}
+	.speech::before {
+		content: '🧙‍♀️';
+		position: absolute;
+		left: 14px;
+		top: 28px;
+		font-size: 1.5rem;
+	}
+	.speech-label {
+		margin: 0 0 6px;
+		font-size: 0.72rem;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		color: var(--gold);
+	}
+	.speech-body {
+		color: var(--text);
+		font-size: 0.95rem;
+		line-height: 1.85;
+	}
+	.speech-body :global(p) {
+		margin: 0 0 0.6em;
+	}
+	.speech-body :global(p:last-child) {
+		margin-bottom: 0;
+	}
+	.speech-body :global(code) {
+		font-size: 0.88em;
+		color: var(--accent);
+		background: var(--bg);
+		border: 1px solid var(--border);
+		border-radius: 4px;
+		padding: 1px 6px;
+	}
+	.speech-body :global(strong) {
+		color: var(--gold);
+	}
+</style>

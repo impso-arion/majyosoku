@@ -14,21 +14,34 @@ Astro の画像最適化（`astro:assets` / `image()`）を効かせたいもの
 
 ---
 
-## 記事ごと（推奨）
+## 記事ごと（推奨・これが基本）
 
 ```text
 src/content/blog/
-└── yokoso-majo-sokuho/          ← スラッグ＝URLの /blog/yokoso-majo-sokuho/
-    ├── index.md                 ← 本文
-    ├── hero.webp                ← アイキャッチ（任意）
-    └── images/                  ← 本文中の図・スクショ（任意）
-        ├── figure-01.webp
-        └── figure-02.webp
+└── dlsite-kurokami-shirt-lift/   ← スラッグ＝URL
+    ├── index.mdx                 ← 本文（MDXならコンポーネント import 可）
+    ├── hero.webp                 ← アイキャッチ（任意）
+    └── images/                   ← ★ その記事だけの画像はここ
+        ├── rj01612853_01.png
+        ├── rj01612853_02.png
+        ├── rj01612853_03.png
+        └── rj01612853_04.png
 ```
 
-### フロントマター（アイキャッチ）
+**生成サンプル4枚も `public/` ではなく、記事フォルダの `images/` に置いてください。**  
+フロントマターでは同じフォルダからの相対パスで指定します（Astro が最適化します）。
 
-`index.md` と同じフォルダからの相対パスで指定する。
+```yaml
+images:
+  - './images/rj01612853_01.png'
+  - './images/rj01612853_02.png'
+  - './images/rj01612853_03.png'
+  - './images/rj01612853_04.png'
+```
+
+`public/images/...` は使わなくてOK（URL直指定になり最適化されない）。迷ったら常に記事の `images/`。
+
+### フロントマター（アイキャッチ）
 
 ```markdown
 ---
@@ -43,9 +56,19 @@ heroImage: './hero.webp'
 
 ### 本文中の画像
 
-- **Markdown（.md）**: 相対パスでOK  
-  `![説明](./images/figure-01.webp)`
-- **MDX（.mdx）**: `import` + `<Image />` も使える（最適化したいとき向き）
+- **Markdown（.md）**: `![説明](./images/figure-01.webp)`
+- **MDX（.mdx）**: `import CharacterSpeech from '../../../components/CharacterSpeech.astro'` など可
+
+### トレンド逆引き記事（DLsite）
+
+フロントマターに次を書くと、本文のあとにタグ一覧＋画像グリッドが自動表示されます。
+
+| フィールド | 内容 |
+|-----------|------|
+| `dlsite_id` | 例: `RJ01612853` |
+| `dlsite_url` | アフィリエイト／作品URL |
+| `danbooru_tags` | WD14抽出タグの配列 |
+| `images` | 上記 `./images/...` の配列（最大でも何枚でも可） |
 
 ---
 
@@ -68,7 +91,7 @@ src/assets/
 import logo from '../assets/brand/logo.svg';
 import { Image } from 'astro:assets';
 ---
-<Image src={logo} alt="魔女速報" />
+<Image src={logo} alt="へっぽこ魔女のHなAIグリモワール" />
 ```
 
 ---

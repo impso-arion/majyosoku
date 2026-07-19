@@ -1,8 +1,8 @@
 // サイト全体で使う定数。ここを編集すると各ページに反映されます。
 
-export const SITE_TITLE = '魔女速報';
-export const SITE_READING = 'まじょそくほう';
-export const SITE_SUBTITLE = '賀田野リナの魔女速報';
+export const SITE_TITLE = 'へっぽこ魔女のHなAIグリモワール';
+export const SITE_READING = 'へっぽこまじょのえっちなエーアイグリモワール';
+export const SITE_SUBTITLE = '賀田野リナのHなAIグリモワール';
 export const SITE_CATCH = 'AIトレンド × エロ魔女';
 export const SITE_DESCRIPTION =
 	'AIトレンド×エロ魔女。画像生成AIの規制パトロールから、クレカ決済包囲網（VISA/Mastercard規制）の突破法まで。へっぽこ魔女・賀田野リナが今夜の黒ミサ用に発信するまとめサイト。';
@@ -16,7 +16,7 @@ export const AUTHOR_BIO =
 // SNS（コメント欄の代わりにXへ誘導＝プランC）
 export const X_HANDLE = '@majo_sokuho';
 export const X_URL = 'https://x.com/majo_sokuho';
-export const X_HASHTAG = '#魔女速報';
+export const X_HASHTAG = '#へっぽこ魔女のHなAIグリモワール';
 
 // カテゴリー（まとめ風のナビ・サイドバーで使用）
 export const CATEGORIES = [
@@ -27,6 +27,10 @@ export const CATEGORIES = [
 ] as const;
 
 export type CategorySlug = (typeof CATEGORIES)[number]['slug'];
+
+// 年齢認証（localStorage）。同意済みならモーダルを出さない。
+export const AGE_GATE_STORAGE_KEY = 'majyosoku_age_verified';
+export const AGE_GATE_STORAGE_VALUE = '1';
 
 // 売れ筋ランキング（ヘッドライン用のアフィリエイト枠プレースホルダー）
 // url をアフィリエイトリンクに、title/note を実商品に差し替えて使うわ。

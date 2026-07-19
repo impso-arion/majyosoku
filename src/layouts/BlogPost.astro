@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
+import DanbooruTrend from '../components/DanbooruTrend.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
@@ -11,9 +12,24 @@ import { CATEGORIES } from '../consts';
 
 type Props = CollectionEntry<'blog'>['data'];
 
-const { title, description, pubDate, updatedDate, heroImage, category, tags } =
-	Astro.props;
+const {
+	title,
+	description,
+	pubDate,
+	updatedDate,
+	heroImage,
+	category,
+	tags,
+	dlsite_id,
+	dlsite_url,
+	danbooru_tags,
+	images,
+} = Astro.props;
 const cat = CATEGORIES.find((c) => c.slug === category);
+const showTrend =
+	Boolean(dlsite_id || dlsite_url) ||
+	(danbooru_tags?.length ?? 0) > 0 ||
+	(images?.length ?? 0) > 0;
 ---
 
 <html lang="ja">
@@ -60,6 +76,17 @@ const cat = CATEGORIES.find((c) => c.slug === category);
 
 						<div class="prose article-body">
 							<slot />
+							{
+								showTrend && (
+									<DanbooruTrend
+										dlsiteId={dlsite_id}
+										dlsiteUrl={dlsite_url}
+										danbooruTags={danbooru_tags}
+										images={images}
+										title={title}
+									/>
+								)
+							}
 						</div>
 
 						{

@@ -1,0 +1,688 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+	dlsiteId?: string;
+	dlsiteUrl?: string;
+	danbooruTags?: string[];
+	images?: ImageMetadata[];
+	title?: string;
+}
+
+const { dlsiteId, dlsiteUrl, danbooruTags = [], images = [], title = '' } =
+	Astro.props;
+
+const hasAnything =
+	Boolean(dlsiteId || dlsiteUrl) || danbooruTags.length > 0 || images.length > 0;
+
+const promptText = danbooruTags.join(', ');
+const galleryId = `a1111-gallery-${Math.random().toString(36).slice(2, 9)}`;
+---
+
+{
+	hasAnything && (
+		<section class="trend" aria-label="トレンド逆引きパネル">
+			{dlsiteUrl && (
+				<div class="dlsite-box">
+					<p class="dlsite-label">- 元ネタ / DLsite -</p>
+					<a
+						class="dlsite-link"
+						href={dlsiteUrl}
+						target="_blank"
+						rel="noopener nofollow sponsored"
+					>
+						{dlsiteId ? `${dlsiteId} を見に行く »` : '作品ページを開く »'}
+					</a>
+					{dlsiteId && <p class="dlsite-id">product_id: {dlsiteId}</p>}
+				</div>
+			)}
+
+			{danbooruTags.length > 0 && (
+				<div class="tags-box">
+					<h3 class="box-title">🔑 キータグ（WD14抽出）</h3>
+					<ul class="tag-list">
+						{danbooruTags.map((tag) => (
+							<li>
+								<code>{tag}</code>
+							</li>
+						))}
+					</ul>
+					{promptText && (
+						<div class="copy-box">
+							<p class="copy-label">コピペ用（キータグ）</p>
+							<pre>
+								<code>{promptText}</code>
+							</pre>
+						</div>
+					)}
+				</div>
+			)}
+
+			{images.length > 0 && (
+				<div class="gallery-box" data-a1111-gallery={galleryId}>
+					<h3 class="box-title">
+						🖼 ローカル錬成サンプル（{images.length}枚）
+						<span class="gallery-hint">
+							クリックで拡大 / ←→で送り / Ctrl+ホイールで拡大縮小
+						</span>
+					</h3>
+					<ul class="gallery">
+						{images.map((img, i) => (
+							<li>
+								<button
+									type="button"
+									class="gallery-thumb"
+									data-index={i}
+									data-src={img.src}
+									data-alt={`${title || 'サンプル'} ${i + 1}`}
+									aria-label={`画像 ${i + 1} を拡大表示`}
+								>
+									<Image
+										src={img}
+										alt={`${title || 'サンプル'} ${i + 1}`}
+										widths={[320, 640]}
+										sizes="(max-width: 720px) 50vw, 280px"
+									/>
+								</button>
+							</li>
+						))}
+					</ul>
+
+					{/* A1111風ライトボックス */}
+					<dialog class="lb" data-lightbox aria-label="生成画像プレビュー">
+						<div class="lb-chrome">
+							<p class="lb-counter" data-lb-counter>
+								1 / {images.length}
+							</p>
+							<div class="lb-zoom-ui" aria-label="拡大縮小">
+								<button type="button" class="lb-zoom-btn" data-lb-zoom-out aria-label="縮小">
+									−
+								</button>
+								<button
+									type="button"
+									class="lb-zoom-label"
+									data-lb-zoom-reset
+									title="100%に戻す"
+								>
+									100%
+								</button>
+								<button type="button" class="lb-zoom-btn" data-lb-zoom-in aria-label="拡大">
+									＋
+								</button>
+							</div>
+							{/* method=dialog でブラウザ標準の閉じるも併用 */}
+							<form method="dialog" class="lb-close-form">
+								<button type="submit" class="lb-close" data-lb-close aria-label="閉じる">
+									✕
+								</button>
+							</form>
+						</div>
+						<div class="lb-body">
+							<button
+								type="button"
+								class="lb-nav prev"
+								data-lb-prev
+								aria-label="前の画像"
+							>
+								‹
+							</button>
+							<figure class="lb-stage" data-lb-stage>
+								<img data-lb-img alt="" draggable="false" />
+							</figure>
+							<button
+								type="button"
+								class="lb-nav next"
+								data-lb-next
+								aria-label="次の画像"
+							>
+								›
+							</button>
+						</div>
+						<ul class="lb-strip" data-lb-strip>
+							{images.map((img, i) => (
+								<li>
+									<button
+										type="button"
+										class="lb-strip-btn"
+										data-strip-index={i}
+										aria-label={`画像 ${i + 1}`}
+									>
+										<img src={img.src} alt="" loading="lazy" />
+									</button>
+								</li>
+							))}
+						</ul>
+					</dialog>
+				</div>
+			)}
+		</section>
+	)
+}
+
+<script>
+	function initGallery(root: HTMLElement) {
+		const dialog = root.querySelector<HTMLDialogElement>('[data-lightbox]');
+		const imgEl = root.querySelector<HTMLImageElement>('[data-lb-img]');
+		const stage = root.querySelector<HTMLElement>('[data-lb-stage]');
+		const counter = root.querySelector<HTMLElement>('[data-lb-counter]');
+		const zoomLabel = root.querySelector<HTMLElement>('[data-lb-zoom-reset]');
+		const thumbs = Array.from(
+			root.querySelectorAll<HTMLButtonElement>('.gallery-thumb'),
+		);
+		const stripBtns = Array.from(
+			root.querySelectorAll<HTMLButtonElement>('[data-strip-index]'),
+		);
+		if (!dialog || !imgEl || !stage || thumbs.length === 0) return;
+
+		const items = thumbs.map((t) => ({
+			src: t.dataset.src ?? '',
+			alt: t.dataset.alt ?? '',
+		}));
+		let index = 0;
+		let scale = 1;
+		let tx = 0;
+		let ty = 0;
+		let dragging = false;
+		let dragX = 0;
+		let dragY = 0;
+		const MIN = 0.5;
+		const MAX = 5;
+		const STEP = 0.25;
+
+		function applyTransform() {
+			imgEl!.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`;
+			stage!.classList.toggle('is-zoomed', scale > 1.01);
+			if (zoomLabel) zoomLabel.textContent = `${Math.round(scale * 100)}%`;
+		}
+
+		function setZoom(next: number, originX?: number, originY?: number) {
+			const prev = scale;
+			scale = Math.min(MAX, Math.max(MIN, next));
+			if (scale <= 1) {
+				scale = 1;
+				tx = 0;
+				ty = 0;
+			} else if (originX != null && originY != null && prev > 0) {
+				// カーソル位置を基準にズーム（ざっくり）
+				const rect = stage!.getBoundingClientRect();
+				const cx = originX - rect.left - rect.width / 2;
+				const cy = originY - rect.top - rect.height / 2;
+				const ratio = scale / prev;
+				tx = cx - (cx - tx) * ratio;
+				ty = cy - (cy - ty) * ratio;
+			}
+			applyTransform();
+		}
+
+		function resetZoom() {
+			scale = 1;
+			tx = 0;
+			ty = 0;
+			applyTransform();
+		}
+
+		function show(i: number) {
+			index = (i + items.length) % items.length;
+			const item = items[index];
+			imgEl!.src = item.src;
+			imgEl!.alt = item.alt;
+			if (counter) counter.textContent = `${index + 1} / ${items.length}`;
+			stripBtns.forEach((b, bi) => {
+				b.classList.toggle('is-active', bi === index);
+			});
+			resetZoom();
+		}
+
+		function open(i: number) {
+			show(i);
+			if (!dialog!.open) dialog!.showModal();
+			document.documentElement.classList.add('lb-open');
+		}
+
+		function close() {
+			dialog!.close();
+			document.documentElement.classList.remove('lb-open');
+			resetZoom();
+		}
+
+		thumbs.forEach((t) => {
+			t.addEventListener('click', () => open(Number(t.dataset.index ?? 0)));
+		});
+		stripBtns.forEach((b) => {
+			b.addEventListener('click', () => show(Number(b.dataset.stripIndex ?? 0)));
+		});
+		dialog.querySelector('[data-lb-prev]')?.addEventListener('click', () =>
+			show(index - 1),
+		);
+		dialog.querySelector('[data-lb-next]')?.addEventListener('click', () =>
+			show(index + 1),
+		);
+		dialog.querySelector('[data-lb-zoom-in]')?.addEventListener('click', () =>
+			setZoom(scale + STEP),
+		);
+		dialog.querySelector('[data-lb-zoom-out]')?.addEventListener('click', () =>
+			setZoom(scale - STEP),
+		);
+		dialog.querySelector('[data-lb-zoom-reset]')?.addEventListener('click', resetZoom);
+
+		// 閉じる（✕ / Esc / form method=dialog / 背景クリック）
+		dialog.querySelector('[data-lb-close]')?.addEventListener('click', (e) => {
+			e.preventDefault();
+			e.stopPropagation();
+			close();
+		});
+		dialog.addEventListener('cancel', (e) => {
+			// Esc
+			e.preventDefault();
+			close();
+		});
+		dialog.addEventListener('close', () => {
+			document.documentElement.classList.remove('lb-open');
+			resetZoom();
+		});
+		dialog.addEventListener('click', (e) => {
+			const target = e.target as HTMLElement | null;
+			if (!target) return;
+			if (target.closest('[data-lb-close]')) {
+				e.preventDefault();
+				e.stopPropagation();
+				close();
+				return;
+			}
+			// backdrop 相当（dialog 自体をクリック）
+			if (target === dialog) close();
+		});
+
+		// Ctrl + ホイールで拡大縮小
+		dialog.addEventListener(
+			'wheel',
+			(e) => {
+				if (!dialog.open || !e.ctrlKey) return;
+				e.preventDefault();
+				const delta = e.deltaY > 0 ? -STEP : STEP;
+				setZoom(scale + delta, e.clientX, e.clientY);
+			},
+			{ passive: false },
+		);
+
+		// 拡大中はドラッグでパン
+		stage.addEventListener('pointerdown', (e) => {
+			if (scale <= 1) return;
+			dragging = true;
+			dragX = e.clientX - tx;
+			dragY = e.clientY - ty;
+			stage.setPointerCapture(e.pointerId);
+			stage.classList.add('is-panning');
+		});
+		stage.addEventListener('pointermove', (e) => {
+			if (!dragging) return;
+			tx = e.clientX - dragX;
+			ty = e.clientY - dragY;
+			applyTransform();
+		});
+		const endPan = (e: PointerEvent) => {
+			if (!dragging) return;
+			dragging = false;
+			stage.classList.remove('is-panning');
+			try {
+				stage.releasePointerCapture(e.pointerId);
+			} catch {
+				/* ignore */
+			}
+		};
+		stage.addEventListener('pointerup', endPan);
+		stage.addEventListener('pointercancel', endPan);
+
+		dialog.addEventListener('keydown', (e) => {
+			if (e.key === 'Escape') {
+				e.preventDefault();
+				close();
+				return;
+			}
+			if (e.key === 'ArrowLeft') {
+				e.preventDefault();
+				show(index - 1);
+			} else if (e.key === 'ArrowRight') {
+				e.preventDefault();
+				show(index + 1);
+			} else if (e.key === '+' || e.key === '=') {
+				e.preventDefault();
+				setZoom(scale + STEP);
+			} else if (e.key === '-' || e.key === '_') {
+				e.preventDefault();
+				setZoom(scale - STEP);
+			} else if (e.key === '0') {
+				e.preventDefault();
+				resetZoom();
+			}
+		});
+	}
+
+	document
+		.querySelectorAll<HTMLElement>('[data-a1111-gallery]')
+		.forEach(initGallery);
+</script>
+
+<style>
+	.trend {
+		margin: 1.6em 0 0.4em;
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+	}
+	.dlsite-box,
+	.tags-box,
+	.gallery-box {
+		background: var(--surface-2);
+		border: 1px solid var(--border);
+		border-radius: 8px;
+		padding: 14px 16px;
+	}
+	.dlsite-label,
+	.copy-label {
+		margin: 0 0 6px;
+		font-size: 0.7rem;
+		letter-spacing: 0.12em;
+		color: var(--muted);
+		font-weight: 700;
+	}
+	.dlsite-link {
+		display: inline-block;
+		font-weight: 800;
+		font-size: 0.95rem;
+		color: var(--accent);
+	}
+	.dlsite-id {
+		margin: 6px 0 0;
+		font-size: 0.75rem;
+		color: var(--muted);
+	}
+	.box-title {
+		margin: 0 0 10px;
+		font-size: 1rem;
+		font-weight: 800;
+		color: var(--text-strong);
+	}
+	.gallery-hint {
+		display: block;
+		margin-top: 4px;
+		font-size: 0.72rem;
+		font-weight: 600;
+		color: var(--muted);
+		letter-spacing: 0;
+	}
+	.tag-list {
+		list-style: none;
+		margin: 0 0 12px;
+		padding: 0;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 6px;
+	}
+	.tag-list code {
+		display: inline-block;
+		font-size: 0.8rem;
+		color: var(--accent);
+		background: var(--bg);
+		border: 1px solid var(--border);
+		border-radius: 999px;
+		padding: 3px 10px;
+	}
+	.copy-box pre {
+		margin: 0;
+		padding: 12px;
+		background: var(--bg);
+		border: 1px solid var(--border);
+		border-radius: 6px;
+		overflow-x: auto;
+		white-space: pre-wrap;
+		word-break: break-all;
+		font-size: 0.82rem;
+		line-height: 1.6;
+		color: var(--text);
+	}
+
+	/* サムネグリッド（A1111のギャラリー枠） */
+	.gallery {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 10px;
+	}
+	.gallery-thumb {
+		display: block;
+		width: 100%;
+		padding: 0;
+		border: 1px solid var(--border);
+		border-radius: 8px;
+		overflow: hidden;
+		background: var(--bg);
+		cursor: zoom-in;
+		font: inherit;
+	}
+	.gallery-thumb:hover {
+		border-color: var(--accent);
+	}
+	.gallery-thumb:focus-visible {
+		outline: 2px solid var(--accent);
+		outline-offset: 2px;
+	}
+	/* 枠の縦横比は固定しない → 画像の自然な比率で全体表示 */
+	.gallery-thumb :global(img) {
+		display: block;
+		width: 100%;
+		height: auto;
+		border-radius: 0;
+		pointer-events: none;
+	}
+
+	/* A1111風ライトボックス：画面内に画像全体が収まる */
+	.lb {
+		width: min(100vw - 16px, 1400px);
+		height: min(100dvh - 16px, 100vh - 16px);
+		max-width: none;
+		max-height: none;
+		margin: auto;
+		padding: 0;
+		border: 1px solid #444;
+		border-radius: 6px;
+		background: #1a1a1a;
+		color: #ddd;
+		box-shadow: 0 12px 40px rgba(0, 0, 0, 0.65);
+		overflow: hidden;
+		display: flex;
+		flex-direction: column;
+	}
+	.lb::backdrop {
+		background: rgba(0, 0, 0, 0.78);
+	}
+	.lb-chrome {
+		position: relative;
+		z-index: 5;
+		flex: 0 0 auto;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 10px;
+		padding: 8px 12px;
+		background: #111;
+		border-bottom: 1px solid #333;
+		height: 48px;
+		box-sizing: border-box;
+	}
+	.lb-close-form {
+		margin: 0;
+		display: flex;
+	}
+	.lb-counter {
+		margin: 0;
+		font-size: 0.85rem;
+		font-weight: 700;
+		font-variant-numeric: tabular-nums;
+		color: #ccc;
+		min-width: 4.5em;
+	}
+	.lb-zoom-ui {
+		display: flex;
+		align-items: center;
+		gap: 4px;
+		margin-left: auto;
+	}
+	.lb-zoom-btn,
+	.lb-zoom-label,
+	.lb-close {
+		border: 1px solid #555;
+		border-radius: 4px;
+		background: #2a2a2a;
+		color: #eee;
+		cursor: pointer;
+		font-family: inherit;
+		line-height: 1;
+	}
+	.lb-zoom-btn {
+		width: 32px;
+		height: 32px;
+		font-size: 1.15rem;
+		font-weight: 700;
+	}
+	.lb-zoom-label {
+		min-width: 58px;
+		height: 32px;
+		padding: 0 8px;
+		font-size: 0.8rem;
+		font-weight: 700;
+		font-variant-numeric: tabular-nums;
+	}
+	.lb-close {
+		width: 36px;
+		height: 32px;
+		font-size: 1.4rem;
+	}
+	.lb-zoom-btn:hover,
+	.lb-zoom-label:hover,
+	.lb-close:hover {
+		background: #3a3a3a;
+		border-color: #888;
+	}
+	.lb-body {
+		position: relative;
+		flex: 1 1 auto;
+		min-height: 0; /* flex子が縮んで画像の max-height が効くように */
+		background: #0d0d0d;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.lb-stage {
+		margin: 0;
+		width: 100%;
+		height: 100%;
+		min-width: 0;
+		min-height: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 12px 56px;
+		box-sizing: border-box;
+		overflow: hidden;
+		touch-action: none;
+		user-select: none;
+	}
+	.lb-stage.is-zoomed {
+		cursor: grab;
+	}
+	.lb-stage.is-panning {
+		cursor: grabbing;
+	}
+	.lb-stage img {
+		/* フィット表示（全体が見える）＋ JS で scale / translate */
+		max-width: 100%;
+		max-height: 100%;
+		width: auto;
+		height: auto;
+		object-fit: contain;
+		transform-origin: center center;
+		will-change: transform;
+		pointer-events: none;
+	}
+	.lb-nav {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		width: 44px;
+		height: 64px;
+		border: 1px solid #555;
+		border-radius: 4px;
+		background: rgba(30, 30, 30, 0.85);
+		color: #eee;
+		font-size: 2rem;
+		line-height: 1;
+		cursor: pointer;
+		z-index: 2;
+	}
+	.lb-nav:hover {
+		background: rgba(60, 60, 60, 0.95);
+		border-color: #999;
+	}
+	.lb-nav.prev {
+		left: 10px;
+	}
+	.lb-nav.next {
+		right: 10px;
+	}
+	.lb-strip {
+		flex: 0 0 auto;
+		list-style: none;
+		margin: 0;
+		padding: 8px 10px;
+		display: flex;
+		gap: 6px;
+		overflow-x: auto;
+		background: #111;
+		border-top: 1px solid #333;
+		height: 88px;
+		box-sizing: border-box;
+	}
+	.lb-strip-btn {
+		flex: 0 0 auto;
+		width: 64px;
+		height: 64px;
+		padding: 0;
+		border: 2px solid #444;
+		border-radius: 3px;
+		background: #222;
+		cursor: pointer;
+		overflow: hidden;
+	}
+	.lb-strip-btn.is-active {
+		border-color: #f0a030;
+	}
+	.lb-strip-btn img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+		background: #0d0d0d;
+	}
+
+	:global(html.lb-open) {
+		overflow: hidden;
+	}
+
+	@media (max-width: 520px) {
+		.gallery {
+			grid-template-columns: 1fr;
+		}
+		.lb-stage {
+			padding: 8px 40px;
+		}
+		.lb-nav {
+			width: 36px;
+			height: 52px;
+			font-size: 1.6rem;
+		}
+	}
+</style>

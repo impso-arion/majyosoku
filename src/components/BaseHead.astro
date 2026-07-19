@@ -3,7 +3,7 @@
 // all pages through the use of the <BaseHead /> component.
 import '../styles/global.css';
 import type { ImageMetadata } from 'astro';
-import { SITE_TITLE } from '../consts';
+import { AGE_GATE_STORAGE_KEY, AGE_GATE_STORAGE_VALUE, SITE_TITLE } from '../consts';
 
 interface Props {
 	title: string;
@@ -31,6 +31,15 @@ const imageSrc = typeof image === 'string' ? image : image.src;
 />
 <meta name="generator" content={Astro.generator} />
 <meta name="rating" content="adult" />
+
+<!-- 年齢認証: localStorage に同意があればチラつき前に html.age-ok を付与 -->
+<script is:inline define:vars={{ AGE_GATE_STORAGE_KEY, AGE_GATE_STORAGE_VALUE }}>
+	try {
+		if (localStorage.getItem(AGE_GATE_STORAGE_KEY) === AGE_GATE_STORAGE_VALUE) {
+			document.documentElement.classList.add('age-ok');
+		}
+	} catch (e) {}
+</script>
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />

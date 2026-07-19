@@ -2,9 +2,11 @@
 import { Image } from 'astro:assets';
 import brandIcon from '../assets/brand/icon.webp';
 import { SITE_CATCH, SITE_READING, SITE_TITLE, X_URL } from '../consts';
+import AgeGate from './AgeGate.astro';
 import HeaderLink from './HeaderLink.astro';
 ---
 
+<AgeGate />
 <header class="site-header">
 	<div class="wrap header-inner">
 		<a class="brand" href="/">
@@ -64,17 +66,18 @@ import HeaderLink from './HeaderLink.astro';
 	.brand-text {
 		display: flex;
 		flex-direction: column;
-		line-height: 1.1;
+		line-height: 1.25;
+		min-width: 0;
 	}
 	.brand-title {
-		font-size: 1.9rem;
+		font-size: 1.35rem;
 		font-weight: 800;
-		letter-spacing: 0.04em;
+		letter-spacing: 0.02em;
 		color: var(--text-strong);
 	}
 	.brand-reading {
-		font-size: 0.7rem;
-		letter-spacing: 0.35em;
+		font-size: 0.65rem;
+		letter-spacing: 0.06em;
 		color: var(--muted);
 	}
 	.brand-catch {
@@ -85,6 +88,7 @@ import HeaderLink from './HeaderLink.astro';
 		color: var(--accent);
 		border: 1px solid var(--accent-dim);
 		border-radius: 999px;
+		flex-shrink: 0;
 	}
 
 	.site-nav {
@@ -124,8 +128,11 @@ import HeaderLink from './HeaderLink.astro';
 		.brand-catch {
 			display: none;
 		}
+		.brand-reading {
+			display: none;
+		}
 		.brand-title {
-			font-size: 1.5rem;
+			font-size: 1.05rem;
 		}
 		.nav-x {
 			margin-left: 0;

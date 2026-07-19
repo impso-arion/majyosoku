@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/BlogPost.astro';
-import { AUTHOR_NAME, SITE_TITLE, X_HANDLE, X_URL } from '../consts';
+import { AUTHOR_NAME, SITE_TITLE, X_HANDLE, X_HASHTAG, X_URL } from '../consts';
 ---
 
 <Layout
@@ -17,7 +17,7 @@ import { AUTHOR_NAME, SITE_TITLE, X_HANDLE, X_URL } from '../consts';
 
 	<h2>このサイトについて</h2>
 	<p>
-		<strong>{SITE_TITLE}（まじょそくほう）</strong>は、かつて流行した「まとめ速報」系ブログのノリで、
+		<strong>{SITE_TITLE}</strong>は、かつて流行した「まとめ速報」系ブログのノリで、
 		<strong>AIトレンド × エロ魔女</strong>という切り口の話題をお届けするサイトよ。堅苦しいニュースメディアが真面目に語ることを、私・リナが黒ミサ風に翻訳してあげる。
 	</p>
 
@@ -38,12 +38,12 @@ import { AUTHOR_NAME, SITE_TITLE, X_HANDLE, X_URL } from '../consts';
 		このブログにコメント欄は置かない主義なの。言いたいことがある魔法使いは、
 		<a href={X_URL} target="_blank" rel="noopener">𝕏（{X_HANDLE}）</a>
 		に直接リプを送りなさいよね！　
-		<strong>#魔女速報</strong> のタグを付けて盛り上がってくれたら、私が拡散の魔法をかけてあげる。
+		<strong>{X_HASHTAG}</strong> のタグを付けて盛り上がってくれたら、私が拡散の魔法をかけてあげる。
 	</p>
 
 	<h2>運営者情報</h2>
 	<ul>
-		<li><strong>サイト名：</strong>{SITE_TITLE}（賀田野リナの魔女速報）</li>
+		<li><strong>サイト名：</strong>{SITE_TITLE}</li>
 		<li><strong>管理人：</strong>{AUTHOR_NAME}</li>
 		<li>
 			<strong>お問い合わせ：</strong>

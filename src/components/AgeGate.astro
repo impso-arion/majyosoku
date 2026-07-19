@@ -1,0 +1,194 @@
+---
+import {
+	AGE_GATE_STORAGE_KEY,
+	AGE_GATE_STORAGE_VALUE,
+	SITE_TITLE,
+} from '../consts';
+---
+
+<!--
+  年齢認証モーダル
+  - 同意は localStorage に保存。2回目以降は出さない
+  - 先に BaseHead のインラインスクリプトが html.age-ok を付ける（チラつき防止）
+-->
+<div
+	id="age-gate"
+	class="age-gate"
+	role="dialog"
+	aria-modal="true"
+	aria-labelledby="age-gate-title"
+	aria-describedby="age-gate-desc"
+	data-storage-key={AGE_GATE_STORAGE_KEY}
+	data-storage-value={AGE_GATE_STORAGE_VALUE}
+>
+	<div class="age-gate-panel">
+		<p class="age-gate-eyebrow">AGE VERIFICATION</p>
+		<h2 id="age-gate-title" class="age-gate-title">年齢確認</h2>
+		<p id="age-gate-desc" class="age-gate-desc">
+			{SITE_TITLE}は<strong>18歳以上</strong>の方向けの成人向けコンテンツを含みます。<br
+			/>あなたは18歳以上ですか？
+		</p>
+		<div class="age-gate-actions">
+			<button type="button" class="age-btn enter" id="age-gate-enter">
+				はい（18歳以上）
+			</button>
+			<button type="button" class="age-btn leave" id="age-gate-leave">
+				いいえ（18歳未満）
+			</button>
+		</div>
+		<p class="age-gate-note">
+			「はい」を選ぶと、このブラウザに同意の記録を保存します（localStorage）。次回以降は表示しません。
+		</p>
+	</div>
+</div>
+
+<script>
+	const root = document.getElementById('age-gate');
+	const enterBtn = document.getElementById('age-gate-enter');
+	const leaveBtn = document.getElementById('age-gate-leave');
+
+	const key = root?.dataset.storageKey ?? 'majyosoku_age_verified';
+	const value = root?.dataset.storageValue ?? '1';
+
+	function isVerified(): boolean {
+		try {
+			return localStorage.getItem(key) === value;
+		} catch {
+			return false;
+		}
+	}
+
+	function openGate() {
+		document.documentElement.classList.remove('age-ok');
+		document.documentElement.classList.add('age-locked');
+		root?.removeAttribute('hidden');
+		enterBtn?.focus();
+	}
+
+	function closeGate() {
+		document.documentElement.classList.add('age-ok');
+		document.documentElement.classList.remove('age-locked');
+		root?.setAttribute('hidden', '');
+	}
+
+	function saveConsent() {
+		try {
+			localStorage.setItem(key, value);
+		} catch {
+			// private mode 等で保存できない場合も、今回の閲覧は通す
+		}
+		closeGate();
+	}
+
+	function leaveSite() {
+		location.href = 'https://www.yahoo.co.jp/';
+	}
+
+	if (!isVerified()) {
+		openGate();
+	} else {
+		closeGate();
+	}
+
+	enterBtn?.addEventListener('click', saveConsent);
+	leaveBtn?.addEventListener('click', leaveSite);
+
+	// Esc では閉じない（年齢確認をスキップさせない）
+	root?.addEventListener('keydown', (e) => {
+		if (e.key === 'Escape') e.preventDefault();
+	});
+</script>
+
+<style>
+	.age-gate {
+		position: fixed;
+		inset: 0;
+		z-index: 9999;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 24px;
+		background: rgba(10, 9, 14, 0.88);
+		backdrop-filter: blur(4px);
+	}
+	.age-gate[hidden] {
+		display: none !important;
+	}
+
+	:global(html.age-ok) .age-gate {
+		display: none !important;
+	}
+	:global(html.age-locked) {
+		overflow: hidden;
+	}
+
+	.age-gate-panel {
+		width: min(420px, 100%);
+		background: var(--surface);
+		border: 1px solid var(--border);
+		border-left: 3px solid var(--accent);
+		border-radius: 0 10px 10px 0;
+		padding: 28px 24px 22px;
+		box-shadow: var(--box-shadow);
+		text-align: center;
+	}
+	.age-gate-eyebrow {
+		margin: 0 0 8px;
+		font-size: 0.72rem;
+		letter-spacing: 0.18em;
+		color: var(--muted);
+		font-weight: 700;
+	}
+	.age-gate-title {
+		margin: 0 0 12px;
+		font-size: 1.4rem;
+		font-weight: 800;
+		color: var(--text-strong);
+	}
+	.age-gate-desc {
+		margin: 0 0 22px;
+		font-size: 0.95rem;
+		line-height: 1.75;
+		color: var(--text);
+	}
+	.age-gate-desc strong {
+		color: var(--pink);
+	}
+	.age-gate-actions {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+	}
+	.age-btn {
+		font-family: inherit;
+		font-size: 0.95rem;
+		font-weight: 700;
+		padding: 12px 16px;
+		border-radius: 6px;
+		cursor: pointer;
+		border: 1px solid transparent;
+	}
+	.age-btn.enter {
+		color: var(--text-strong);
+		background: var(--accent-dim);
+		border-color: var(--accent);
+	}
+	.age-btn.enter:hover {
+		background: var(--accent);
+	}
+	.age-btn.leave {
+		color: var(--muted);
+		background: transparent;
+		border-color: var(--border);
+	}
+	.age-btn.leave:hover {
+		color: var(--text);
+		border-color: var(--muted);
+	}
+	.age-gate-note {
+		margin: 16px 0 0;
+		font-size: 0.72rem;
+		line-height: 1.6;
+		color: var(--muted);
+	}
+</style>
