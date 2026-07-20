@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import charaIcon from '../assets/brand/chara.webp';
-import { SITE_TITLE, X_HANDLE, X_HASHTAG, X_URL } from '../consts';
+import { BSKY_HANDLE, BSKY_HASHTAG, BSKY_URL, SITE_TITLE } from '../consts';
 
 interface Props {
 	title?: string;
@@ -9,42 +9,42 @@ interface Props {
 
 const { title } = Astro.props;
 
-// 記事タイトル付きのリプ用テキストを用意（プランC）
+// 記事タイトル付きの投稿用テキストを用意（プランC・Bluesky中心）
 const shareText = title
-	? `「${title}」読んだわよ！ ${X_HASHTAG}`
-	: `${SITE_TITLE}見てるわ！ ${X_HASHTAG}`;
-const replyHref = `https://x.com/intent/tweet?text=${encodeURIComponent(shareText)}`;
+	? `「${title}」読んだわよ！ ${BSKY_HASHTAG}`
+	: `${SITE_TITLE}見てるわ！ ${BSKY_HASHTAG}`;
+const replyHref = `https://bsky.app/intent/compose?text=${encodeURIComponent(shareText)}`;
 ---
 
-<section class="xreply" aria-label="コメント（Xへのリプ）">
-	<div class="xreply-head">
+<section class="bsky-reply" aria-label="コメント（Blueskyへの返信）">
+	<div class="bsky-reply-head">
 		<Image
-			class="xr-ico"
+			class="br-ico"
 			src={charaIcon}
 			alt="賀田野リナ"
 			width={80}
 			height={80}
 			densities={[1, 2]}
 		/>
-		<p class="xr-lead">今夜の黒ミサについて言いたいことがある魔法使いへ</p>
+		<p class="br-lead">今夜の黒ミサについて言いたいことがある魔法使いへ</p>
 	</div>
-	<p class="xr-body">
+	<p class="br-body">
 		このブログにコメント欄は無いわ。感想も文句も、
-		<strong>{X_HASHTAG}</strong> を付けて私に直接リプを送りなさいよね！
+		<strong>{BSKY_HASHTAG}</strong> を付けて Bluesky で私に直接送りなさいよね！
 		勝手にタグを付けて盛り上がってくれたら、私が拡散の魔法をかけてあげる。
 	</p>
-	<div class="xr-actions">
-		<a class="xr-btn primary" href={replyHref} target="_blank" rel="noopener">
-			𝕏 でこの記事にリプする
+	<div class="br-actions">
+		<a class="br-btn primary" href={replyHref} target="_blank" rel="noopener">
+			Bluesky でこの記事に投稿する
 		</a>
-		<a class="xr-btn ghost" href={X_URL} target="_blank" rel="noopener">
-			{X_HANDLE} をフォロー
+		<a class="br-btn ghost" href={BSKY_URL} target="_blank" rel="noopener">
+			{BSKY_HANDLE} をフォロー
 		</a>
 	</div>
 </section>
 
 <style>
-	.xreply {
+	.bsky-reply {
 		background: var(--surface);
 		border: 1px solid var(--border);
 		border-left: 3px solid var(--pink);
@@ -53,13 +53,13 @@ const replyHref = `https://x.com/intent/tweet?text=${encodeURIComponent(shareTex
 		padding: 20px;
 		margin: 32px 0 8px;
 	}
-	.xreply-head {
+	.bsky-reply-head {
 		display: flex;
 		align-items: center;
 		gap: 12px;
 		margin-bottom: 8px;
 	}
-	.xr-ico {
+	.br-ico {
 		width: 40px;
 		height: 40px;
 		border-radius: 50%;
@@ -68,49 +68,49 @@ const replyHref = `https://x.com/intent/tweet?text=${encodeURIComponent(shareTex
 		border: 1px solid var(--border);
 		flex-shrink: 0;
 	}
-	.xr-lead {
+	.br-lead {
 		margin: 0;
 		font-weight: 700;
 		font-size: 1rem;
 		color: var(--text-strong);
 	}
-	.xr-body {
+	.br-body {
 		margin: 0 0 16px;
 		font-size: 0.9rem;
 		line-height: 1.8;
 		color: var(--text);
 	}
-	.xr-body strong {
+	.br-body strong {
 		color: var(--pink);
 	}
-	.xr-actions {
+	.br-actions {
 		display: flex;
 		flex-wrap: wrap;
 		gap: 10px;
 	}
-	.xr-btn {
+	.br-btn {
 		display: inline-block;
 		font-weight: 700;
 		font-size: 0.85rem;
 		padding: 10px 20px;
 		border-radius: 6px;
 	}
-	.xr-btn.primary {
+	.br-btn.primary {
 		color: var(--text-strong);
 		background: var(--accent-dim);
 	}
-	.xr-btn.primary:hover {
+	.br-btn.primary:hover {
 		background: var(--accent);
 	}
-	.xr-btn.ghost {
+	.br-btn.ghost {
 		color: var(--text);
 		border: 1px solid var(--border);
 	}
-	.xr-btn.ghost:hover {
+	.br-btn.ghost:hover {
 		border-color: var(--accent);
 		color: var(--text-strong);
 	}
-	.xr-btn:hover {
+	.br-btn:hover {
 		text-decoration: none;
 	}
 </style>

@@ -11,7 +11,7 @@
 - ダークマジカルな配色（魔女パープル × ホットピンク）
 - **カテゴリ**＝日本語シチュの棚／**タグ**＝Danbooru英語＋メタ検索／**モデル検索**＝生成モデル横断
 - DLsite トレンド逆引き記事（プロンプト解剖＋アフィカード＋錬成サンプル）
-- **コメント欄なし**（プランC）：感想は 𝕏 の `#へっぽこ魔女のHなAIグリモワール` タグでリプ誘導
+- **コメント欄なし**（プランC）：感想は Bluesky（`@celestialroamer.bsky.social`）の `#へっぽこ魔女のHなAIグリモワール` タグで誘導
 
 ## 技術スタック
 
@@ -197,7 +197,7 @@ MDX なら `CharacterSpeech` コンポーネントも使える。
 
 | ファイル | 編集内容 |
 |---------|---------|
-| `src/consts.ts` | サイト名・管理人・X・**CATEGORIES**・ヘッドライン／人気記事の件数上限 |
+| `src/consts.ts` | サイト名・管理人・Bluesky・**CATEGORIES**・ヘッドライン／人気記事の件数上限 |
 | `src/components/Headline.astro` | 解剖済み `dlsite_id` を product.json で埋めたトレンド枠 |
 | `src/content.config.ts` | フロントマター schema（`category` enum など） |
 | `astro.config.mjs` の `site` | 本番ドメイン（現在は `https://example.com`） |
@@ -206,7 +206,7 @@ MDX なら `CharacterSpeech` コンポーネントも使える。
 | `src/pages/categories/` / `tags/` / `models/` | カテゴリ・タグ・モデル検索ページ |
 | `src/components/Header.astro` / `Sidebar.astro` | ナビ・サイドバー |
 | `src/components/DanbooruTrend.astro` | トレンド逆引きパネル |
-| `src/components/XReply.astro` | コメント欄代替の X 誘導 |
+| `src/components/BlueskyReply.astro` | コメント欄代替の Bluesky 誘導 |
 
 ## Cloudflare へのデプロイ（予定）
 

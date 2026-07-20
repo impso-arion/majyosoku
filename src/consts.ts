@@ -13,10 +13,10 @@ export const AUTHOR_TITLE = 'へっぽこ見習い魔女 / 当サイト管理人
 export const AUTHOR_BIO =
 	'AI画像生成とエロの結界を彷徨うへっぽこ魔女。Danbooruタグの組み合わせと、Stable Diffusionのモデル選びを研究中。今夜も黒ミサのために記事を焚べるわ。';
 
-// SNS（コメント欄の代わりにXへ誘導＝プランC）
-export const X_HANDLE = '@majo_sokuho';
-export const X_URL = 'https://x.com/majo_sokuho';
-export const X_HASHTAG = '#へっぽこ魔女のHなAIグリモワール';
+// SNS（コメント欄の代わりに Bluesky へ誘導＝プランC）
+export const BSKY_HANDLE = '@celestialroamer.bsky.social';
+export const BSKY_URL = 'https://bsky.app/profile/celestialroamer.bsky.social';
+export const BSKY_HASHTAG = '#へっぽこ魔女のHなAIグリモワール';
 
 // カテゴリー（日本語シチュの棚。新規シチュはここに1行足してから記事で使う）
 export const CATEGORIES = [

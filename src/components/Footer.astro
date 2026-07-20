@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import footerIcon from '../assets/brand/footer.webp';
-import { SITE_SUBTITLE, SITE_TITLE, X_HANDLE, X_URL } from '../consts';
+import { BSKY_HANDLE, BSKY_URL, SITE_SUBTITLE, SITE_TITLE } from '../consts';
 const today = new Date();
 ---
 
@@ -29,15 +29,15 @@ const today = new Date();
 			<a href="/models">モデル検索</a>
 			<a href="/tags">タグ検索</a>
 			<a href="/about">運営者情報</a>
-			<a href={X_URL} target="_blank" rel="noopener">𝕏 {X_HANDLE}</a>
+			<a href={BSKY_URL} target="_blank" rel="noopener">Bluesky {BSKY_HANDLE}</a>
 		</nav>
 
 		<p class="footer-note">
 			当サイトはアフィリエイト広告（成果報酬型広告）を利用しています。掲載情報は執筆時点のものであり、正確性・最新性を保証するものではありません。
 		</p>
 		<p class="footer-r18">
-			本サイトには成人向けの話題を含みます。18歳未満の方の閲覧はご遠慮ください。ご意見・ご感想は𝕏（旧Twitter）
-			<a href={X_URL} target="_blank" rel="noopener">{X_HANDLE}</a> までリプでどうぞ。
+			本サイトには成人向けの話題を含みます。18歳未満の方の閲覧はご遠慮ください。ご意見・ご感想は Bluesky
+			<a href={BSKY_URL} target="_blank" rel="noopener">{BSKY_HANDLE}</a> までどうぞ。
 		</p>
 
 		<p class="copyright">

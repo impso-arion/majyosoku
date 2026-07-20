@@ -6,7 +6,7 @@
 |------|----------|------|
 | **記事固有の画像** | `src/content/blog/<slug>/` | 記事と画像を同じフォルダにまとめる。削除・移動が楽 |
 | **サイト共通の画像** | `src/assets/` | ロゴ・デフォルトOGP・アバターなど複数ページで再利用 |
-| **UI部品（コンポーネント）** | `src/components/` | Header / Sidebar / XReply など |
+| **UI部品（コンポーネント）** | `src/components/` | Header / Sidebar / BlueskyReply など |
 | **そのまま配信したい静的ファイル** | `public/` | favicon、robots.txt など URL 固定が必要なもの |
 
 Astro の画像最適化（`astro:assets` / `image()`）を効かせたいものは **`src/` 配下** に置く。  
@@ -116,7 +116,7 @@ src/components/
 ├── Footer.astro
 ├── Sidebar.astro
 ├── Headline.astro      # 解剖済みトレンド供物（dlsite_id → product.json）
-├── XReply.astro        # コメント欄代わりのX誘導
+├── BlueskyReply.astro  # コメント欄代わりのBluesky誘導
 └── ...
 ```
 

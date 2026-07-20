@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import brandIcon from '../assets/brand/icon.webp';
-import { SITE_CATCH, SITE_READING, SITE_TITLE, X_URL } from '../consts';
+import { BSKY_URL, SITE_CATCH, SITE_READING, SITE_TITLE } from '../consts';
 import AgeGate from './AgeGate.astro';
 import HeaderLink from './HeaderLink.astro';
 ---
@@ -33,7 +33,7 @@ import HeaderLink from './HeaderLink.astro';
 			<HeaderLink href="/models">モデル検索</HeaderLink>
 			<HeaderLink href="/tags">タグ検索</HeaderLink>
 			<HeaderLink href="/about">運営者</HeaderLink>
-			<a class="nav-x" href={X_URL} target="_blank" rel="noopener">𝕏 でリプする</a>
+			<a class="nav-bsky" href={BSKY_URL} target="_blank" rel="noopener">Bluesky で話す</a>
 		</div>
 	</nav>
 </header>
@@ -121,7 +121,7 @@ import HeaderLink from './HeaderLink.astro';
 		border-bottom-color: var(--accent);
 		text-decoration: none;
 	}
-	.nav-x {
+	.nav-bsky {
 		margin-left: auto;
 		color: var(--accent) !important;
 	}
@@ -136,7 +136,7 @@ import HeaderLink from './HeaderLink.astro';
 		.brand-title {
 			font-size: 1.05rem;
 		}
-		.nav-x {
+		.nav-bsky {
 			margin-left: 0;
 		}
 	}

@@ -6,16 +6,16 @@ import CharacterSpeech from '../components/CharacterSpeech.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import Sidebar from '../components/Sidebar.astro';
-import XReply from '../components/XReply.astro';
+import BlueskyReply from '../components/BlueskyReply.astro';
 import {
 	AUTHOR_BIO,
 	AUTHOR_NAME,
 	AUTHOR_TITLE,
+	BSKY_HANDLE,
+	BSKY_URL,
 	SITE_CATCH,
 	SITE_DESCRIPTION,
 	SITE_TITLE,
-	X_HANDLE,
-	X_URL,
 } from '../consts';
 
 const pageTitle = `運営者情報 | ${SITE_TITLE}`;
@@ -50,8 +50,8 @@ const pageDesc = `${SITE_TITLE}の管理人・${AUTHOR_NAME}のプロフィー�
 								<h1 class="about-name">{AUTHOR_NAME}</h1>
 								<p class="about-title">{AUTHOR_TITLE}</p>
 								<p class="about-bio">{AUTHOR_BIO}</p>
-								<a class="about-x" href={X_URL} target="_blank" rel="noopener">
-									𝕏 {X_HANDLE} をフォロー
+								<a class="about-bsky" href={BSKY_URL} target="_blank" rel="noopener">
+									Bluesky {BSKY_HANDLE} をフォロー
 								</a>
 							</div>
 						</div>
@@ -96,8 +96,8 @@ const pageDesc = `${SITE_TITLE}の管理人・${AUTHOR_NAME}のプロフィー�
 								<div>
 									<dt>お問い合わせ</dt>
 									<dd>
-										<a href={X_URL} target="_blank" rel="noopener">𝕏 {X_HANDLE}</a>
-										へのDM・リプ
+										<a href={BSKY_URL} target="_blank" rel="noopener">Bluesky {BSKY_HANDLE}</a>
+										へのメンション・返信
 									</dd>
 								</div>
 							</dl>
@@ -111,7 +111,7 @@ const pageDesc = `${SITE_TITLE}の管理人・${AUTHOR_NAME}のプロフィー�
 							</p>
 						</div>
 
-						<XReply />
+						<BlueskyReply />
 					</article>
 				</main>
 			</div>
@@ -167,7 +167,7 @@ const pageDesc = `${SITE_TITLE}の管理人・${AUTHOR_NAME}のプロフィー�
 		line-height: 1.75;
 		color: var(--text);
 	}
-	.about-x {
+	.about-bsky {
 		display: inline-block;
 		font-size: 0.85rem;
 		font-weight: 700;
@@ -176,7 +176,7 @@ const pageDesc = `${SITE_TITLE}の管理人・${AUTHOR_NAME}のプロフィー�
 		border-radius: 6px;
 		padding: 8px 16px;
 	}
-	.about-x:hover {
+	.about-bsky:hover {
 		background: var(--accent);
 		text-decoration: none;
 	}

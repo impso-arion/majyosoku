@@ -1,6 +1,6 @@
 ---
 import FormattedDate from './FormattedDate.astro';
-import { CATEGORIES, X_HANDLE, X_HASHTAG, X_URL } from '../consts';
+import { BSKY_HANDLE, BSKY_HASHTAG, BSKY_URL, CATEGORIES } from '../consts';
 import { getFeaturedPosts, getModelCounts, getSortedPosts, getTagCounts } from '../lib/posts';
 
 const posts = await getSortedPosts();
@@ -130,16 +130,16 @@ const models = await getModelCounts();
 		</div>
 	</section>
 
-	<!-- X 誘導（コメント欄の代わり） -->
+	<!-- Bluesky 誘導（コメント欄の代わり） -->
 	<section class="panel">
-		<div class="panel-head"><span class="ico">𝕏</span>コメントはリプで</div>
-		<div class="panel-body x-box">
+		<div class="panel-head"><span class="ico">🦋</span>コメントは Bluesky で</div>
+		<div class="panel-body bsky-box">
 			<p>
-				言いたいことがある魔法使いは、<strong>{X_HASHTAG}</strong>
-				を付けて私にリプしなさいよね！
+				言いたいことがある魔法使いは、<strong>{BSKY_HASHTAG}</strong>
+				を付けて Bluesky で送りなさいよね！
 			</p>
-			<a class="x-follow" href={X_URL} target="_blank" rel="noopener">
-				𝕏 {X_HANDLE} をフォロー
+			<a class="bsky-follow" href={BSKY_URL} target="_blank" rel="noopener">
+				Bluesky {BSKY_HANDLE} をフォロー
 			</a>
 		</div>
 	</section>
@@ -304,15 +304,15 @@ const models = await getModelCounts();
 		font-weight: 700;
 	}
 
-	.x-box p {
+	.bsky-box p {
 		margin: 0 0 10px;
 		font-size: 0.82rem;
 		color: var(--text);
 	}
-	.x-box strong {
+	.bsky-box strong {
 		color: var(--pink);
 	}
-	.x-follow {
+	.bsky-follow {
 		display: block;
 		text-align: center;
 		font-weight: 700;
@@ -322,7 +322,7 @@ const models = await getModelCounts();
 		border-radius: 6px;
 		padding: 8px 12px;
 	}
-	.x-follow:hover {
+	.bsky-follow:hover {
 		background: var(--accent);
 		text-decoration: none;
 	}
