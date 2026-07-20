@@ -1,27 +1,60 @@
 ---
-import { BESTSELLERS } from '../consts';
+import { CATEGORIES, HEADLINE_LIMIT } from '../consts';
+import { fetchDlsiteWork } from '../lib/dlsite';
+import { getSortedPosts } from '../lib/posts';
+
+const source = (await getSortedPosts())
+	.filter((post) => post.data.dlsite_id)
+	.slice(0, HEADLINE_LIMIT);
+
+const items = await Promise.all(
+	source.map(async (post, i) => {
+		const id = post.data.dlsite_id!;
+		const card = await fetchDlsiteWork(id, post.data.dlsite_url);
+		const cat = CATEGORIES.find((c) => c.slug === post.data.category);
+		const price =
+			card?.price != null ? `¥${card.price.toLocaleString('ja-JP')}` : null;
+		const noteParts = [card?.maker, price, cat ? `解剖・${cat.label}` : 'トレンド逆引き済み'].filter(
+			Boolean,
+		);
+
+		return {
+			rank: i + 1,
+			title: card?.title ?? id,
+			note: noteParts.join(' / '),
+			url:
+				card?.workUrl ??
+				post.data.dlsite_url ??
+				`https://www.dlsite.com/maniax/work/=/product_id/${id}.html`,
+		};
+	}),
+);
 ---
 
-<section class="headline" aria-label="売れ筋ランキング">
+<section class="headline" aria-label="解剖済みトレンド供物">
 	<div class="headline-bar">
 		<span class="hl-deco">▼</span>
-		<span class="hl-title">H e a d L i n e ／ 今夜の売れ筋ランキング</span>
+		<span class="hl-title">H e a d L i n e ／ 解剖済みトレンド供物</span>
 		<span class="hl-deco">▼</span>
 	</div>
 	<p class="hl-pr">- PR / アフィリエイト広告 -</p>
-	<ol class="hl-list">
-		{
-			BESTSELLERS.map((item) => (
-				<li>
-					<span class={`hl-rank r${item.rank}`}>{item.rank}</span>
-					<a class="hl-item" href={item.url} target="_blank" rel="noopener nofollow">
-						<span class="hl-item-title">{item.title}</span>
-						<span class="hl-item-note">{item.note}</span>
-					</a>
-				</li>
-			))
-		}
-	</ol>
+	{
+		items.length > 0 ? (
+			<ol class="hl-list">
+				{items.map((item) => (
+					<li>
+						<span class={`hl-rank r${item.rank}`}>{item.rank}</span>
+						<a class="hl-item" href={item.url} target="_blank" rel="noopener nofollow">
+							<span class="hl-item-title">{item.title}</span>
+							<span class="hl-item-note">{item.note}</span>
+						</a>
+					</li>
+				))}
+			</ol>
+		) : (
+			<p class="hl-empty">まだ解剖済みの供物がないわ…</p>
+		)
+	}
 </section>
 
 <style>
@@ -105,6 +138,12 @@ import { BESTSELLERS } from '../consts';
 	}
 	.hl-item-note {
 		font-size: 0.74rem;
+		color: var(--muted);
+	}
+	.hl-empty {
+		margin: 0;
+		padding: 12px 14px 16px;
+		font-size: 0.85rem;
 		color: var(--muted);
 	}
 </style>

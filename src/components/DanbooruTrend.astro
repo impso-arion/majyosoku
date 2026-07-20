@@ -3,117 +3,63 @@ import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
 import { fetchDlsiteWork } from '../lib/dlsite';
 
+interface ModelInfo {
+	name: string;
+	trigger?: string;
+	notes?: string;
+}
+
 interface Props {
 	dlsiteId?: string;
 	dlsiteUrl?: string;
 	danbooruTags?: string[];
+	prompt?: string;
 	images?: ImageMetadata[];
+	models?: ModelInfo;
 	title?: string;
 }
 
-const { dlsiteId, dlsiteUrl, danbooruTags = [], images = [], title = '' } =
-	Astro.props;
+const {
+	dlsiteId,
+	dlsiteUrl,
+	danbooruTags = [],
+	prompt,
+	images = [],
+	models,
+	title = '',
+} = Astro.props;
 
 const dlsite = dlsiteId
 	? await fetchDlsiteWork(dlsiteId, dlsiteUrl)
 	: null;
 const dlsiteHref = dlsite?.workUrl ?? dlsiteUrl;
 const showDlsite = Boolean(dlsite || dlsiteHref);
+const showModels = Boolean(models?.name);
+const showPrompt = Boolean(prompt?.trim());
 
 const hasAnything =
-	showDlsite || danbooruTags.length > 0 || images.length > 0;
+	showDlsite ||
+	danbooruTags.length > 0 ||
+	showPrompt ||
+	images.length > 0 ||
+	showModels;
 
-const promptText = danbooruTags.join(', ');
+const keyTagsText = danbooruTags.join(', ');
 const galleryId = `a1111-gallery-${Math.random().toString(36).slice(2, 9)}`;
 const genrePreview = dlsite?.genres.slice(0, 6) ?? [];
 const priceLabel =
 	dlsite?.price != null
 		? `¥${dlsite.price.toLocaleString('ja-JP')}`
 		: null;
+const modelHref = models?.name
+	? `/models/${encodeURIComponent(models.name)}/`
+	: null;
 ---
 
 {
 	hasAnything && (
 		<section class="trend" aria-label="トレンド逆引きパネル">
-			{showDlsite && (
-				<div class="dlsite-box">
-					<p class="dlsite-label">- 元ネタ / DLsite -</p>
-					{dlsite ? (
-						<a
-							class="dlsite-card"
-							href={dlsite.workUrl}
-							target="_blank"
-							rel="noopener nofollow sponsored"
-						>
-							{dlsite.thumbUrl && (
-								<img
-									class="dlsite-thumb"
-									src={dlsite.thumbUrl}
-									alt=""
-									width={160}
-									height={120}
-									loading="lazy"
-									decoding="async"
-									referrerpolicy="no-referrer"
-								/>
-							)}
-							<div class="dlsite-meta">
-								<p class="dlsite-title">{dlsite.title}</p>
-								{dlsite.maker && <p class="dlsite-maker">{dlsite.maker}</p>}
-								{(priceLabel || dlsite.workno) && (
-									<p class="dlsite-sub">
-										{priceLabel && <span class="dlsite-price">{priceLabel}</span>}
-										<span class="dlsite-id">{dlsite.workno}</span>
-									</p>
-								)}
-								{genrePreview.length > 0 && (
-									<ul class="dlsite-genres">
-										{genrePreview.map((g) => (
-											<li>{g}</li>
-										))}
-									</ul>
-								)}
-								{dlsite.intro && <p class="dlsite-intro">{dlsite.intro}</p>}
-								<span class="dlsite-cta">DLsite で見る »</span>
-							</div>
-						</a>
-					) : (
-						<>
-							<a
-								class="dlsite-link"
-								href={dlsiteHref}
-								target="_blank"
-								rel="noopener nofollow sponsored"
-							>
-								{dlsiteId ? `${dlsiteId} を見に行く »` : '作品ページを開く »'}
-							</a>
-							{dlsiteId && <p class="dlsite-id">product_id: {dlsiteId}</p>}
-						</>
-					)}
-				</div>
-			)}
-
-			{danbooruTags.length > 0 && (
-				<div class="tags-box">
-					<h3 class="box-title">🔑 キータグ（WD14抽出）</h3>
-					<ul class="tag-list">
-						{danbooruTags.map((tag) => (
-							<li>
-								<code>{tag}</code>
-							</li>
-						))}
-					</ul>
-					{promptText && (
-						<div class="copy-box">
-							<p class="copy-label">コピペ用（キータグ）</p>
-							<pre>
-								<code>{promptText}</code>
-							</pre>
-						</div>
-					)}
-				</div>
-			)}
-
+			{/* 画像 → 生呪文 → キータグ → モデル → DLsite */}
 			{images.length > 0 && (
 				<div class="gallery-box" data-a1111-gallery={galleryId}>
 					<h3 class="box-title">
@@ -209,6 +155,115 @@ const priceLabel =
 							))}
 						</ul>
 					</dialog>
+				</div>
+			)}
+
+			{showPrompt && (
+				<div class="prompt-box">
+					<h3 class="box-title">🔮 実際に使った生呪文（Danbooruプロンプト）</h3>
+					<div class="copy-box">
+						<p class="copy-label">コピペ用</p>
+						<pre><code>{prompt}</code></pre>
+					</div>
+				</div>
+			)}
+
+			{danbooruTags.length > 0 && (
+				<div class="tags-box">
+					<h3 class="box-title">🔑 キータグ（WD14抽出）</h3>
+					<ul class="tag-list">
+						{danbooruTags.map((tag) => (
+							<li>
+								<code>{tag}</code>
+							</li>
+						))}
+					</ul>
+					{keyTagsText && (
+						<div class="copy-box">
+							<p class="copy-label">コピペ用（キータグ）</p>
+							<pre><code>{keyTagsText}</code></pre>
+						</div>
+					)}
+				</div>
+			)}
+
+			{showModels && models && (
+				<div class="models-box">
+					<h3 class="box-title">🪄 使用モデル</h3>
+					<p class="model-name">
+						{modelHref ? (
+							<a class="model-link" href={modelHref}>
+								{models.name}
+							</a>
+						) : (
+							models.name
+						)}
+					</p>
+					{models.trigger && (
+						<div class="copy-box">
+							<p class="copy-label">トリガー／品質ワード</p>
+							<pre><code>{models.trigger}</code></pre>
+						</div>
+					)}
+					{models.notes && <p class="model-notes">{models.notes}</p>}
+				</div>
+			)}
+
+			{showDlsite && (
+				<div class="dlsite-box">
+					<p class="dlsite-label">- 元ネタ / DLsite -</p>
+					{dlsite ? (
+						<a
+							class="dlsite-card"
+							href={dlsite.workUrl}
+							target="_blank"
+							rel="noopener nofollow sponsored"
+						>
+							{dlsite.thumbUrl && (
+								<img
+									class="dlsite-thumb"
+									src={dlsite.thumbUrl}
+									alt=""
+									width={160}
+									height={120}
+									loading="lazy"
+									decoding="async"
+									referrerpolicy="no-referrer"
+								/>
+							)}
+							<div class="dlsite-meta">
+								<p class="dlsite-title">{dlsite.title}</p>
+								{dlsite.maker && <p class="dlsite-maker">{dlsite.maker}</p>}
+								{(priceLabel || dlsite.workno) && (
+									<p class="dlsite-sub">
+										{priceLabel && <span class="dlsite-price">{priceLabel}</span>}
+										<span class="dlsite-id">{dlsite.workno}</span>
+									</p>
+								)}
+								{genrePreview.length > 0 && (
+									<ul class="dlsite-genres">
+										{genrePreview.map((g) => (
+											<li>{g}</li>
+										))}
+									</ul>
+								)}
+								{dlsite.intro && <p class="dlsite-intro">{dlsite.intro}</p>}
+								<span class="dlsite-cta">DLsite で見る »</span>
+							</div>
+						</a>
+					) : (
+						<>
+							<a
+								class="dlsite-link"
+								href={dlsiteHref}
+								target="_blank"
+								rel="noopener nofollow sponsored"
+							>
+								{dlsiteId ? `${dlsiteId} を見に行く »` : '作品ページを開く »'}
+							</a>
+							{dlsiteId && <p class="dlsite-id">product_id: {dlsiteId}</p>}
+						</>
+					)}
 				</div>
 			)}
 		</section>
@@ -428,11 +483,34 @@ const priceLabel =
 	}
 	.dlsite-box,
 	.tags-box,
-	.gallery-box {
+	.gallery-box,
+	.models-box,
+	.prompt-box {
 		background: var(--surface-2);
 		border: 1px solid var(--border);
 		border-radius: 8px;
 		padding: 14px 16px;
+	}
+	.model-name {
+		margin: 0 0 10px;
+		font-size: 1.05rem;
+		font-weight: 800;
+		line-height: 1.4;
+		color: var(--text-strong);
+	}
+	.model-link {
+		color: var(--text-strong);
+		text-decoration: none;
+	}
+	.model-link:hover {
+		color: var(--accent);
+		text-decoration: underline;
+	}
+	.model-notes {
+		margin: 10px 0 0;
+		font-size: 0.88rem;
+		line-height: 1.55;
+		color: var(--muted);
 	}
 	.dlsite-label,
 	.copy-label {

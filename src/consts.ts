@@ -18,11 +18,15 @@ export const X_HANDLE = '@majo_sokuho';
 export const X_URL = 'https://x.com/majo_sokuho';
 export const X_HASHTAG = '#へっぽこ魔女のHなAIグリモワール';
 
-// カテゴリー（まとめ風のナビ・サイドバーで使用）
+// カテゴリー（日本語シチュの棚。新規シチュはここに1行足してから記事で使う）
 export const CATEGORIES = [
-	{ slug: 'ai', label: 'AI画像生成', emoji: '🪄' },
-	{ slug: 'tech', label: '魔女の技術メモ', emoji: '🔮' },
-	{ slug: 'column', label: '今夜の黒ミサ', emoji: '🌙' },
+	{ slug: 'greeting', label: 'ごあいさつ', emoji: '🌙' },
+	{ slug: 'shirt-lift', label: 'シャツ捲り', emoji: '👕' },
+	{ slug: 'twin-drills', label: 'ドリルツイン', emoji: '🎀' },
+	{ slug: 'goblin', label: 'ゴブリン', emoji: '👺' },
+	{ slug: 'japanese-armor', label: '和鎧', emoji: '⚔️' },
+	{ slug: 'idol', label: 'アイドル', emoji: '🎤' },
+	{ slug: 'bikini-armor', label: 'ビキニアーマー', emoji: '👙' },
 ] as const;
 
 export type CategorySlug = (typeof CATEGORIES)[number]['slug'];
@@ -31,37 +35,8 @@ export type CategorySlug = (typeof CATEGORIES)[number]['slug'];
 export const AGE_GATE_STORAGE_KEY = 'majyosoku_age_verified';
 export const AGE_GATE_STORAGE_VALUE = '1';
 
-// 売れ筋ランキング（ヘッドライン用のアフィリエイト枠プレースホルダー）
-// url をアフィリエイトリンクに、title/note を実商品に差し替えて使うわ。
-export const BESTSELLERS = [
-	{
-		rank: 1,
-		title: '【PR枠①】ここに売れ筋の供物を捧げなさい',
-		note: 'FANZA / DLsite などのアフィリンクを差し込むわ',
-		url: '#',
-	},
-	{
-		rank: 2,
-		title: '【PR枠②】今夜の黒ミサおすすめ作品',
-		note: 'バナーorテキストリンクをここに',
-		url: '#',
-	},
-	{
-		rank: 3,
-		title: '【PR枠③】限界突破の同人・電子書籍',
-		note: '売上ランキング3位の供物',
-		url: '#',
-	},
-	{
-		rank: 4,
-		title: '【PR枠④】魔女おすすめのAIツール',
-		note: 'サブスク系アフィもここへ',
-		url: '#',
-	},
-	{
-		rank: 5,
-		title: '【PR枠⑤】魔女おすすめの生成ツール',
-		note: 'モデル配布・生成サービスなど',
-		url: '#',
-	},
-] as const;
+/** ヘッドラインに出す解剖済み DLsite 作品数（記事の dlsite_id から新着順） */
+export const HEADLINE_LIMIT = 5;
+
+/** サイドバー「人気記事」に出す featured 記事の上限 */
+export const FEATURED_LIMIT = 5;

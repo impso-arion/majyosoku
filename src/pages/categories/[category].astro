@@ -5,21 +5,22 @@ import FormattedDate from '../../components/FormattedDate.astro';
 import Header from '../../components/Header.astro';
 import Sidebar from '../../components/Sidebar.astro';
 import { CATEGORIES, SITE_TITLE } from '../../consts';
-import { getTagCounts, getPostsByTag } from '../../lib/posts';
+import { getPostsByCategory } from '../../lib/posts';
 
 export async function getStaticPaths() {
-	const tags = await getTagCounts();
 	return Promise.all(
-		tags.map(async ({ tag }) => ({
-			params: { tag },
-			props: { tag, posts: await getPostsByTag(tag) },
+		CATEGORIES.map(async (c) => ({
+			params: { category: c.slug },
+			props: {
+				category: c,
+				posts: await getPostsByCategory(c.slug),
+			},
 		})),
 	);
 }
 
-const { tag, posts } = Astro.props;
-const catInfo = (slug?: string) => CATEGORIES.find((c) => c.slug === slug);
-const pageTitle = `#${tag} の記事 | ${SITE_TITLE}`;
+const { category, posts } = Astro.props;
+const pageTitle = `${category.emoji} ${category.label} の記事 | ${SITE_TITLE}`;
 ---
 
 <!doctype html>
@@ -27,7 +28,7 @@ const pageTitle = `#${tag} の記事 | ${SITE_TITLE}`;
 	<head>
 		<BaseHead
 			title={pageTitle}
-			description={`「${tag}」タグが付いた${SITE_TITLE}の記事一覧。`}
+			description={`「${category.label}」カテゴリの${SITE_TITLE}記事一覧。`}
 		/>
 	</head>
 	<body>
@@ -37,27 +38,26 @@ const pageTitle = `#${tag} の記事 | ${SITE_TITLE}`;
 				<Sidebar />
 				<main class="col-main">
 					<div class="section-bar">
-						<span>🔖</span>タグ： #{tag}（{posts.length}件）
+						<span>{category.emoji}</span>カテゴリ： {category.label}（{posts.length}件）
 					</div>
-					<p class="back-tags"><a href="/tags">« タグ検索に戻る</a></p>
+					<p class="back-cats"><a href="/categories">« カテゴリ検索に戻る</a></p>
 
-					<ul class="post-list">
-						{
-							posts.map((post) => {
-								const cat = catInfo(post.data.category);
-								return (
+					{
+						posts.length > 0 ? (
+							<ul class="post-list">
+								{posts.map((post) => (
 									<li>
 										<article class="post-card">
-											{cat && (
-												<a class="cat-tag" href={`/categories/${cat.slug}/`}>
-													{cat.emoji} {cat.label}
-												</a>
-											)}
+											<span class="cat-tag">
+												{category.emoji} {category.label}
+											</span>
 											<h2 class="post-title">
 												<a href={`/blog/${post.id}/`}>{post.data.title}</a>
 											</h2>
 											<div class="post-meta">
-												<span>🗓 <FormattedDate date={post.data.pubDate} /></span>
+												<span>
+													🗓 <FormattedDate date={post.data.pubDate} />
+												</span>
 											</div>
 											<p class="post-excerpt">{post.data.description}</p>
 											{post.data.tags && post.data.tags.length > 0 && (
@@ -77,19 +77,25 @@ const pageTitle = `#${tag} の記事 | ${SITE_TITLE}`;
 											</a>
 										</article>
 									</li>
-								);
-							})
-						}
-					</ul>
+								))}
+							</ul>
+						) : (
+							<p class="empty">このカテゴリの供物はまだ無いわ…</p>
+						)
+					}
 				</main>
 			</div>
 		</div>
 		<Footer />
 
 		<style>
-			.back-tags {
+			.back-cats {
 				margin: -6px 0 16px;
 				font-size: 0.85rem;
+			}
+			.empty {
+				color: var(--muted);
+				padding: 16px 0;
 			}
 		</style>
 	</body>

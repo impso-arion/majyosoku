@@ -48,8 +48,8 @@ images:
 title: '記事タイトル'
 description: '概要'
 pubDate: '2026-07-15'
-category: 'ai'
-tags: ['画像生成AI']
+category: 'shirt-lift'
+tags: ['shirt_lift', 'DLsite']
 heroImage: './hero.webp'
 ---
 ```
@@ -61,14 +61,17 @@ heroImage: './hero.webp'
 
 ### トレンド逆引き記事（DLsite）
 
-フロントマターに次を書くと、本文のあとにタグ一覧＋画像グリッドが自動表示されます。
+フロントマターに次を書くと、CharacterSpeech の直後にパネルが自動表示されます  
+（表示順: 画像 → 生呪文 → キータグ → 使用モデル → DLsite）。
 
 | フィールド | 内容 |
 |-----------|------|
 | `dlsite_id` | 例: `RJ01612853` |
 | `dlsite_url` | アフィリエイト／作品URL |
-| `danbooru_tags` | WD14抽出タグの配列 |
+| `danbooru_tags` | WD14抽出タグの配列（代表のみ） |
+| `prompt` | フルプロンプト（品質／トリガーなし） |
 | `images` | 上記 `./images/...` の配列（最大でも何枚でも可） |
+| `models` | `{ name, trigger?, notes? }` 生成モデル情報（外部リンクなし。`/models` 検索対象） |
 
 ---
 
@@ -112,7 +115,7 @@ src/components/
 ├── Header.astro
 ├── Footer.astro
 ├── Sidebar.astro
-├── Headline.astro      # 売れ筋ランキング枠
+├── Headline.astro      # 解剖済みトレンド供物（dlsite_id → product.json）
 ├── XReply.astro        # コメント欄代わりのX誘導
 └── ...
 ```

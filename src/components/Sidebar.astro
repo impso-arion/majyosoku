@@ -1,15 +1,15 @@
 ---
 import FormattedDate from './FormattedDate.astro';
 import { CATEGORIES, X_HANDLE, X_HASHTAG, X_URL } from '../consts';
-import { getSortedPosts, getTagCounts } from '../lib/posts';
+import { getFeaturedPosts, getModelCounts, getSortedPosts, getTagCounts } from '../lib/posts';
 
 const posts = await getSortedPosts();
 
 // 最新記事（新着順の上位10件）
 const latest = posts.slice(0, 10);
 
-// 人気記事ランキング（暫定：新着順の上位5件）
-const ranking = posts.slice(0, 5);
+// 人気記事（featured: true・新着順）
+const ranking = await getFeaturedPosts();
 
 // カテゴリー別件数
 const catCount = new Map<string, number>();
@@ -20,6 +20,7 @@ for (const p of posts) {
 
 // タグ（件数降順）
 const tags = await getTagCounts();
+const models = await getModelCounts();
 ---
 
 <aside class="col-side">
@@ -56,7 +57,7 @@ const tags = await getTagCounts();
 						</li>
 					))
 				}
-				{ranking.length === 0 && <li class="empty">まだ供物がないわ…</li>}
+				{ranking.length === 0 && <li class="empty">featured 記事がまだないわ…</li>}
 			</ol>
 		</div>
 	</section>
@@ -69,7 +70,7 @@ const tags = await getTagCounts();
 				{
 					CATEGORIES.map((c) => (
 						<li>
-							<a href={`/blog?cat=${c.slug}`}>
+							<a href={`/categories/${c.slug}/`}>
 								<span>{c.emoji} {c.label}</span>
 								<span class="count">({catCount.get(c.slug) ?? 0})</span>
 							</a>
@@ -77,6 +78,27 @@ const tags = await getTagCounts();
 					))
 				}
 			</ul>
+			<a class="all-tags" href="/categories">すべてのカテゴリを見る »</a>
+		</div>
+	</section>
+
+	<!-- モデル検索 -->
+	<section class="panel">
+		<div class="panel-head"><span class="ico">🪄</span>モデル検索</div>
+		<div class="panel-body">
+			<ul class="side-tag-cloud">
+				{
+					models.map((m) => (
+						<li>
+							<a class="tag-chip" href={`/models/${encodeURIComponent(m.name)}/`}>
+								{m.name} <span class="cnt">({m.count})</span>
+							</a>
+						</li>
+					))
+				}
+			</ul>
+			{models.length === 0 && <p class="empty">モデルはまだ無いわ…</p>}
+			<a class="all-tags" href="/models">すべてのモデルを見る »</a>
 		</div>
 	</section>
 

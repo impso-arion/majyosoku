@@ -1,0 +1,147 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import { SITE_TITLE } from '../../consts';
+import { getModelCounts } from '../../lib/posts';
+
+const models = await getModelCounts();
+const pageTitle = `モデル検索 | ${SITE_TITLE}`;
+const total = models.length;
+---
+
+<!doctype html>
+<html lang="ja">
+	<head>
+		<BaseHead
+			title={pageTitle}
+			description={`${SITE_TITLE}で使った画像生成モデル一覧。モデル名で記事を絞り込めるわ。`}
+		/>
+	</head>
+	<body>
+		<Header />
+		<div class="wrap">
+			<div class="site-layout">
+				<Sidebar />
+				<main class="col-main">
+					<div class="section-bar"><span>🪄</span>モデル検索</div>
+
+					<div class="panel">
+						<div class="panel-body">
+							<label class="search-field">
+								<span class="sr-only">モデルを検索</span>
+								<input
+									id="model-search"
+									type="search"
+									placeholder="モデル名で絞り込む（例：NoobAI / Illustrious）"
+									autocomplete="off"
+								/>
+							</label>
+							<p class="model-count">
+								全 <strong id="visible-count">{total}</strong> 個のモデル
+							</p>
+
+							<ul class="model-cloud" id="model-cloud">
+								{
+									models.map((m) => (
+										<li class="model-item" data-model={m.name.toLowerCase()}>
+											<a
+												class="tag-chip"
+												href={`/models/${encodeURIComponent(m.name)}/`}
+											>
+												{m.name} <span class="cnt">({m.count})</span>
+											</a>
+										</li>
+									))
+								}
+							</ul>
+							{
+								total === 0 && (
+									<p class="empty">まだモデル付きの記事が無いわ…</p>
+								)
+							}
+							<p class="no-hit" id="no-hit" hidden>
+								そのキーワードのモデルは見つからないわ…
+							</p>
+						</div>
+					</div>
+				</main>
+			</div>
+		</div>
+		<Footer />
+
+		<script>
+			const input =
+				document.getElementById('model-search') as HTMLInputElement | null;
+			const items = Array.from(
+				document.querySelectorAll<HTMLElement>('.model-item'),
+			);
+			const visibleCount = document.getElementById('visible-count');
+			const noHit = document.getElementById('no-hit');
+
+			function normalize(s: string) {
+				return s.trim().toLowerCase();
+			}
+
+			function filter() {
+				const q = normalize(input?.value ?? '');
+				let hits = 0;
+				for (const item of items) {
+					const model = item.dataset.model ?? '';
+					const match = q === '' || model.includes(q);
+					item.hidden = !match;
+					if (match) hits++;
+				}
+				if (visibleCount) visibleCount.textContent = String(hits);
+				if (noHit) noHit.hidden = hits !== 0;
+			}
+
+			input?.addEventListener('input', filter);
+		</script>
+
+		<style>
+			.search-field input {
+				width: 100%;
+				font-size: 1rem;
+				padding: 12px 14px;
+				color: var(--text-strong);
+				background: var(--bg);
+				border: 1px solid var(--border);
+				border-radius: 8px;
+				outline: none;
+			}
+			.search-field input:focus {
+				border-color: var(--accent);
+			}
+			.search-field input::placeholder {
+				color: var(--muted);
+			}
+			.model-count {
+				margin: 12px 0;
+				font-size: 0.82rem;
+				color: var(--muted);
+			}
+			.model-count strong {
+				color: var(--text-strong);
+			}
+			.model-cloud {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 10px;
+				list-style: none;
+				margin: 0;
+				padding: 0;
+			}
+			.model-cloud .tag-chip {
+				font-size: 0.9rem;
+				padding: 6px 14px;
+			}
+			.no-hit,
+			.empty {
+				color: var(--muted);
+				padding: 16px 0;
+			}
+		</style>
+	</body>
+</html>

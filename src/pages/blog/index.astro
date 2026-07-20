@@ -28,28 +28,29 @@ const pageTitle = `記事一覧 | ${SITE_TITLE}`;
 				<main class="col-main">
 					<div class="section-bar"><span>📚</span>記事一覧</div>
 
-					<div class="cat-filter" role="tablist">
-						<button class="filter-btn active" data-filter="all">すべて</button>
+					<div class="cat-filter" role="navigation" aria-label="カテゴリで絞り込み">
+						<span class="filter-btn active">すべて</span>
 						{
 							CATEGORIES.map((c) => (
-								<button class="filter-btn" data-filter={c.slug}>
+								<a class="filter-btn" href={`/categories/${c.slug}/`}>
 									{c.emoji} {c.label}
-								</button>
+								</a>
 							))
 						}
+						<a class="filter-all-cats" href="/categories">カテゴリ検索 »</a>
 					</div>
 
-					<ul class="post-list" id="post-list">
+					<ul class="post-list">
 						{
 							posts.map((post) => {
 								const cat = catInfo(post.data.category);
 								return (
-									<li class="post-item" data-cat={post.data.category ?? 'none'}>
+									<li>
 										<article class="post-card">
 											{cat && (
-												<span class="cat-tag">
+												<a class="cat-tag" href={`/categories/${cat.slug}/`}>
 													{cat.emoji} {cat.label}
-												</span>
+												</a>
 											)}
 											<h2 class="post-title">
 												<a href={`/blog/${post.id}/`}>{post.data.title}</a>
@@ -79,58 +80,21 @@ const pageTitle = `記事一覧 | ${SITE_TITLE}`;
 							})
 						}
 					</ul>
-					<p class="no-hit" id="no-hit" hidden>このカテゴリの供物はまだ無いわ…</p>
 				</main>
 			</div>
 		</div>
 		<Footer />
 
-		<script>
-			const params = new URLSearchParams(location.search);
-			const initial = params.get('cat') || 'all';
-			const buttons = Array.from(
-				document.querySelectorAll<HTMLButtonElement>('.filter-btn'),
-			);
-			const items = Array.from(
-				document.querySelectorAll<HTMLElement>('.post-item'),
-			);
-			const noHit = document.getElementById('no-hit');
-
-			function applyFilter(filter: string) {
-				let hits = 0;
-				for (const item of items) {
-					const match = filter === 'all' || item.dataset.cat === filter;
-					item.hidden = !match;
-					if (match) hits++;
-				}
-				for (const b of buttons) {
-					b.classList.toggle('active', b.dataset.filter === filter);
-				}
-				if (noHit) noHit.hidden = hits !== 0;
-			}
-
-			for (const b of buttons) {
-				b.addEventListener('click', () => {
-					const f = b.dataset.filter || 'all';
-					applyFilter(f);
-					const url = new URL(location.href);
-					if (f === 'all') url.searchParams.delete('cat');
-					else url.searchParams.set('cat', f);
-					history.replaceState(null, '', url);
-				});
-			}
-
-			applyFilter(initial);
-		</script>
-
 		<style>
 			.cat-filter {
 				display: flex;
 				flex-wrap: wrap;
+				align-items: center;
 				gap: 8px;
 				margin-bottom: 18px;
 			}
 			.filter-btn {
+				display: inline-block;
 				font-family: inherit;
 				font-size: 0.8rem;
 				font-weight: 700;
@@ -139,22 +103,27 @@ const pageTitle = `記事一覧 | ${SITE_TITLE}`;
 				border: 1px solid var(--border);
 				border-radius: 999px;
 				padding: 6px 14px;
-				cursor: pointer;
+				text-decoration: none;
 				transition: all 0.15s ease;
 			}
-			.filter-btn:hover {
+			a.filter-btn:hover {
 				border-color: var(--accent);
 				background: var(--surface-2);
+				text-decoration: none;
 			}
 			.filter-btn.active {
 				color: var(--text-strong);
 				background: var(--accent-dim);
 				border-color: transparent;
 			}
-			.no-hit {
+			.filter-all-cats {
+				margin-left: auto;
+				font-size: 0.8rem;
+				font-weight: 700;
 				color: var(--muted);
-				text-align: center;
-				padding: 20px 0;
+			}
+			.filter-all-cats:hover {
+				color: var(--accent);
 			}
 		</style>
 	</body>

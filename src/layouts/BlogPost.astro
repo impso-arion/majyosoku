@@ -23,13 +23,17 @@ const {
 	dlsite_id,
 	dlsite_url,
 	danbooru_tags,
+	prompt,
 	images,
+	models,
 } = Astro.props;
 const cat = CATEGORIES.find((c) => c.slug === category);
 const showTrend =
 	Boolean(dlsite_id || dlsite_url) ||
 	(danbooru_tags?.length ?? 0) > 0 ||
-	(images?.length ?? 0) > 0;
+	Boolean(prompt) ||
+	(images?.length ?? 0) > 0 ||
+	Boolean(models?.name);
 ---
 
 <html lang="ja">
@@ -47,7 +51,7 @@ const showTrend =
 						<div class="article-head">
 							{
 								cat && (
-									<a class="cat-tag" href={`/blog?cat=${cat.slug}`}>
+									<a class="cat-tag" href={`/categories/${cat.slug}/`}>
 										{cat.emoji} {cat.label}
 									</a>
 								)
@@ -81,7 +85,9 @@ const showTrend =
 										dlsiteId={dlsite_id}
 										dlsiteUrl={dlsite_url}
 										danbooruTags={danbooru_tags}
+										prompt={prompt}
 										images={images}
+										models={models}
 										title={title}
 									/>
 								)

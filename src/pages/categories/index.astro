@@ -1,0 +1,115 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import { SITE_TITLE } from '../../consts';
+import { getCategoryCounts } from '../../lib/posts';
+
+const categories = await getCategoryCounts();
+const pageTitle = `カテゴリ検索 | ${SITE_TITLE}`;
+const total = categories.length;
+const withPosts = categories.filter((c) => c.count > 0).length;
+---
+
+<!doctype html>
+<html lang="ja">
+	<head>
+		<BaseHead
+			title={pageTitle}
+			description={`${SITE_TITLE}の日本語シチュ・カテゴリ一覧。シャツ捲りやゴブリンなど棚ごとに記事を探せるわ。`}
+		/>
+	</head>
+	<body>
+		<Header />
+		<div class="wrap">
+			<div class="site-layout">
+				<Sidebar />
+				<main class="col-main">
+					<div class="section-bar"><span>🗂️</span>カテゴリ検索</div>
+
+					<div class="panel">
+						<div class="panel-body">
+							<p class="cat-lead">
+								日本語シチュの「棚」。全 <strong>{total}</strong> カテゴリ（記事あり
+								<strong>{withPosts}</strong>）
+							</p>
+
+							<ul class="cat-grid">
+								{
+									categories.map((c) => (
+										<li>
+											<a
+												class:list={['cat-card', { empty: c.count === 0 }]}
+												href={`/categories/${c.slug}/`}
+											>
+												<span class="cat-emoji">{c.emoji}</span>
+												<span class="cat-label">{c.label}</span>
+												<span class="cat-cnt">{c.count}件</span>
+											</a>
+										</li>
+									))
+								}
+							</ul>
+						</div>
+					</div>
+				</main>
+			</div>
+		</div>
+		<Footer />
+
+		<style>
+			.cat-lead {
+				margin: 0 0 16px;
+				font-size: 0.85rem;
+				color: var(--muted);
+			}
+			.cat-lead strong {
+				color: var(--text-strong);
+			}
+			.cat-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+				gap: 10px;
+				list-style: none;
+				margin: 0;
+				padding: 0;
+			}
+			.cat-card {
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+				gap: 4px;
+				padding: 14px 12px;
+				border: 1px solid var(--border);
+				border-radius: 8px;
+				background: var(--bg);
+				color: var(--text-strong);
+				text-decoration: none;
+				transition:
+					border-color 0.15s ease,
+					background 0.15s ease;
+			}
+			.cat-card:hover {
+				border-color: var(--accent);
+				background: var(--surface-2);
+				text-decoration: none;
+			}
+			.cat-card.empty {
+				opacity: 0.55;
+			}
+			.cat-emoji {
+				font-size: 1.35rem;
+				line-height: 1;
+			}
+			.cat-label {
+				font-size: 0.95rem;
+				font-weight: 800;
+			}
+			.cat-cnt {
+				font-size: 0.75rem;
+				color: var(--muted);
+			}
+		</style>
+	</body>
+</html>
