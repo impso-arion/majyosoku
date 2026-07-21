@@ -350,6 +350,24 @@ h6 {
 	margin: 0 0 0.5em;
 }
 
+/* 元スレリンク（記事最下部） */
+.matome-source {
+	margin: 1.6em 0 0.4em;
+	padding-top: 1em;
+	border-top: 1px solid var(--border);
+	font-size: 0.85rem;
+	line-height: 1.7;
+	color: var(--muted);
+	word-break: break-all;
+}
+.matome-source a {
+	color: var(--accent);
+	font-weight: 600;
+}
+.matome-source a:hover {
+	color: var(--pink);
+}
+
 /* リナちゃんのセリフ（記事内で使えるボックス）
    アバター画像URLは BaseHead で --rina-avatar として注入 */
 .rina-say {

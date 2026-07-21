@@ -174,10 +174,11 @@ MDX なら `CharacterSpeech` コンポーネントも使える。
 手順・テンプレ・禁止事項の正本は **[`doc/reddit-matome-page.md`](doc/reddit-matome-page.md)**。要約だけ書くと:
 
 1. スラッグ `reddit-<テーマ英語>`、`category: 'reddit'`
-2. `index.mdx` で **導入（`.matome-lead`）→ `MatomeRes` のフラットなレス流し → リナの CharacterSpeech**
+2. `index.mdx` で **導入（`.matome-lead`）→ `MatomeRes` のフラットなレス流し → リナの CharacterSpeech → 元スレ（`.matome-source`）**
 3. Reddit 原文は丸写しせず、構造・論点を会話調に焼き直す
 4. レスをカード化しない（暇速寄せ）。`>>n` は `<span class="aa">`
-5. 参考実装: `src/content/blog/reddit-character-consistency/`
+5. **元スレ URL は記事最下部に必ず置く**（`target="_blank"`）
+6. 参考実装: `src/content/blog/reddit-character-consistency/` など
 
 ### フロントマター一覧
 

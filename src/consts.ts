@@ -5,13 +5,13 @@ export const SITE_READING = 'へっぽこまじょのえっちなエーアイグ
 export const SITE_SUBTITLE = '賀田野リナのHなAIグリモワール';
 export const SITE_CATCH = 'AI画像生成 × エロ魔女';
 export const SITE_DESCRIPTION =
-	'AI画像生成×エロ魔女。Danbooruタグの解剖から、Stable Diffusionのモデル紹介、トレンド作品のプロンプト逆引きまで。へっぽこ魔女・賀田野リナが今夜の黒ミサ用に発信するまとめサイト。';
+	'AI画像生成×エロ魔女。Redditで気になったネタの2chまとめ風紹介、Danbooruタグの解剖、Stable Diffusionのモデル紹介、トレンド作品のプロンプト逆引きまで。へっぽこ魔女・賀田野リナが今夜の黒ミサ用に発信するまとめサイト。';
 
 // 管理人（魔女）プロフィール
 export const AUTHOR_NAME = '賀田野リナ';
 export const AUTHOR_TITLE = 'へっぽこ見習い魔女 / 当サイト管理人';
 export const AUTHOR_BIO =
-	'AI画像生成とエロの結界を彷徨うへっぽこ魔女。Danbooruタグの組み合わせと、Stable Diffusionのモデル選びを研究中。今夜も黒ミサのために記事を焚べるわ。';
+	'AI画像生成とエロの結界を彷徨うへっぽこ魔女。Redditの気になるスレを2chまとめ風に翻訳したり、Danbooruタグとモデル選びを研究したり。今夜も黒ミサのために記事を焚べるわ。';
 
 // SNS（コメント欄の代わりに Bluesky へ誘導＝プランC）
 export const BSKY_HANDLE = '@rinasgrimoire.bsky.social';

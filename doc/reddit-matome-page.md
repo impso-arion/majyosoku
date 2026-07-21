@@ -1,7 +1,7 @@
 # Redditまとめ記事（暇人速報風）作成ルール
 
 AI が新規 Redditまとめページを作るときに読む手順書。  
-参考実装: [`src/content/blog/reddit-character-consistency/`](../src/content/blog/reddit-character-consistency/)
+参考実装: [`src/content/blog/reddit-character-consistency/`](../src/content/blog/reddit-character-consistency/) / [`reddit-ltx23-video-boom/`](../src/content/blog/reddit-ltx23-video-boom/) / [`reddit-webui-install-fail/`](../src/content/blog/reddit-webui-install-fail/)
 
 関連: [`doc/assets.md`](assets.md)、[`doc/dlsite-affiliate-page.md`](dlsite-affiliate-page.md)、[`README.md`](../README.md)
 
@@ -11,9 +11,9 @@ AI が新規 Redditまとめページを作るときに読む手順書。
 
 ## この記事タイプで何が起きるか
 
-1. ユーザーが Reddit スレ（URL・本文・コメント要約など）を渡す
+1. ユーザーが Reddit スレ（**URL必須**・本文・コメント要約など）を渡す
 2. AI が `src/content/blog/reddit-<テーマ>/index.mdx` を用意する
-3. 本文は **暇速風のフラットなレス流し（`MatomeRes`）＋末尾の CharacterSpeech（リナの締め）**
+3. 本文は **暇速風のフラットなレス流し（`MatomeRes`）＋ CharacterSpeech（リナの締め）＋元スレリンク**
 4. 原文の丸写しはしない。**構造・論点レベルで会話調に焼き直す**
 
 **画面上の表示順**
@@ -23,6 +23,7 @@ matome-lead（導入・1〜2文）
   → matome-thread（MatomeRes × N）
   → hr
   → CharacterSpeech（リナの締め）
+  → matome-source（元スレ URL・記事最下部）
 ```
 
 ---
@@ -34,6 +35,7 @@ matome-lead（導入・1〜2文）
 - 名前は緑、`>>n` は青寄り、OP の ID は下線（`op` prop）。
 - 実装コンポーネント: [`src/components/MatomeRes.astro`](../src/components/MatomeRes.astro)
 - 導入文クラス: `.matome-lead`（枠なし）。スレ入れ物: `.matome-thread`
+- 元リンククラス: `.matome-source`（リナ締めの直後・記事最下部）
 
 ---
 
@@ -55,7 +57,7 @@ matome-lead（導入・1〜2文）
 - **未成年・児童を連想させる性的コンテンツは禁止。**
 - **著作権**: Reddit 原文を長文コピーしない。論点・構造・実務ヒントに絞り、会話調に再構成する。
 - 日時・ID は **演出用のフィクションでよい**（元スレの実 ID を転記する義務はない）。
-- 元スレ URL を出す場合は導入かリナ締めに短く。必須ではない。
+- **元スレ URL は記事最下部（`.matome-source`）に必ず置く。** 導入文やリナ締めに重複掲載しない。
 - コミットはユーザー指示があるまで行わない。
 
 ---
@@ -64,10 +66,10 @@ matome-lead（導入・1〜2文）
 
 | 項目 | 例 | 必須 |
 |------|-----|------|
-| 元ネタ | Reddit URL、または本文＋コメントの要約／要点メモ | ✅ |
+| **元スレ URL** | `https://www.reddit.com/r/StableDiffusion/comments/.../` | ✅ |
+| 元ネタ本文 | スレ本文＋コメントの要約／要点メモ／スクショテキスト | ✅（URLだけでは足りないとき） |
 | テーマ要約 | 「キャラ一貫性ワークフロー」など | ✅（無ければ AI が提案） |
 | スラッグ希望 | `reddit-character-consistency` | 任意 |
-| 元スレ URL の掲載可否 | 出す／出さない | 任意（デフォルト出さない） |
 | 強調したい論点 | 「三段構え」「sampler 調整」など | 任意 |
 
 ---
@@ -107,6 +109,8 @@ tags:
 | `category` | 原則 `reddit` |
 | `tags` | `/tags` 用。必ず `Reddit` を含める |
 | `dlsite_*` / `prompt` / `danbooru_tags` / `models` | **使わない**（逆引き記事専用） |
+
+元スレ URL はフロントマターには持たない。**本文末尾の `.matome-source` に書く。**
 
 ---
 
@@ -150,7 +154,25 @@ import MatomeRes from '../../../components/MatomeRes.astro';
 	<p>要点2。解説…</p>
 	<p>締めの一言。</p>
 </CharacterSpeech>
+
+<p class="matome-source">
+	元スレ：
+	<a href={"https://www.reddit.com/r/<sub>/comments/<id>/<slug>/"} target="_blank" rel="noopener noreferrer">
+		r/&lt;sub&gt; — &lt;元投稿タイトル（短くて可）&gt;
+	</a>
+</p>
 ```
+
+### 元スレリンク（`.matome-source`）の書き方
+
+| 項目 | ルール |
+|------|--------|
+| 位置 | **リナ締め（CharacterSpeech）の直後**＝記事本文の最下部 |
+| 文言 | 先頭は `元スレ：` |
+| リンク先 | ユーザー提供の Reddit URL。**`href={"https://..."}` の JSX 式**にする（生の `href="..."` だと MDX が URL 中の `/` で落ちることがある） |
+| 表示テキスト | `r/<サブレ名> — <元タイトル>`。タイトルが長いときは要約可。開始タグの次の行に置く |
+| 属性 | `target="_blank"` と `rel="noopener noreferrer"` を付ける |
+| スタイル | 自前でカード化しない。`global.css` の `.matome-source` に任せる |
 
 ### `MatomeRes` の props
 
@@ -172,8 +194,9 @@ import MatomeRes from '../../../components/MatomeRes.astro';
 2. レスは **カードにしない**。`MatomeRes` を使い、`.matome-thread` で包む。
 3. 会話の流れを作る: OP の主張 → 賛否・比較 → 実務Tips → まとめレス。
 4. リナの締めは **実務エッセンスを 2〜4 段落**。スレの要約の焼き直し＋魔女口調。
-5. タイトルは `【Redditまとめ】…`。必要なら `【悲報】` `【朗報】` 等の暇速語彙も可（やりすぎ注意）。
-6. 技術名はそのまま残してよい（`Krea 2`, `Qwen image edit`, `Flux2 Klein` など）。長文の英語原文は載せない。
+5. **元スレ URL を最下部の `.matome-source` に必ず置く。**
+6. タイトルは `【Redditまとめ】…`。必要なら `【悲報】` `【朗報】` 等の暇速語彙も可（やりすぎ注意）。
+7. 技術名はそのまま残してよい（`Krea 2`, `Qwen image edit`, `Flux2 Klein` など）。長文の英語原文は載せない。
 
 ---
 
@@ -187,6 +210,7 @@ import MatomeRes from '../../../components/MatomeRes.astro';
 | ロードマップ／余談 | 0〜2 | 開発状況の噂など（あれば） |
 | TL;DR レス | 1 | 読者が拾える一行まとめ |
 | リナ締め | （別ブロック） | サイトの顔としての解説 |
+| 元スレ | （最下部） | 出典リンク |
 
 全体で **だいたい 8〜15 レス**。冗長な相槌だけのレスは削る。
 
@@ -195,14 +219,16 @@ import MatomeRes from '../../../components/MatomeRes.astro';
 ## 作業チェックリスト
 
 1. [ ] 元ネタから論点を抽出し、原文コピーになっていないか確認
-2. [ ] スラッグ決定（`reddit-...`）
-3. [ ] `category: 'reddit'`、`tags` に `Reddit` ＋話題キー
-4. [ ] `index.mdx` 作成（lead → thread → CharacterSpeech）
-5. [ ] 各 `MatomeRes` に `n` / `date` / `id`。OP に `op`
-6. [ ] `>>n` は `<span class="aa">`。カードスタイルを自前 CSS で足していない
-7. [ ] リナ締めで実務エッセンスを述べている
-8. [ ] 未成年示唆コンテンツが無いか確認
-9. [ ] `/blog/<slug>/` と `/categories/reddit/` に出ること
+2. [ ] **元スレ URL を受け取っている**
+3. [ ] スラッグ決定（`reddit-...`）
+4. [ ] `category: 'reddit'`、`tags` に `Reddit` ＋話題キー
+5. [ ] `index.mdx` 作成（lead → thread → CharacterSpeech → **matome-source**）
+6. [ ] 各 `MatomeRes` に `n` / `date` / `id`。OP に `op`
+7. [ ] `>>n` は `<span class="aa">`。カードスタイルを自前 CSS で足していない
+8. [ ] リナ締めで実務エッセンスを述べている
+9. [ ] **最下部に `.matome-source` で元スレリンク**（`target="_blank"` / `rel="noopener noreferrer"`）
+10. [ ] 未成年示唆コンテンツが無いか確認
+11. [ ] `/blog/<slug>/` と `/categories/reddit/` に出ること
 
 ---
 
@@ -210,6 +236,7 @@ import MatomeRes from '../../../components/MatomeRes.astro';
 
 - レスを枠付きカード／背景色付きボックスで並べる（暇速から離れる）
 - Reddit 原文の長文コピペ
+- **元スレ URL を載せない**／導入だけに書いて最下部を空にする
 - `dlsite_*` / `prompt` / `danbooru_tags` / `models` をこの記事タイプに無理に入れる
 - `.md` で `MatomeRes` を import する（MDX 必須）
 - `>>n` を `href="#"` の偽リンクにする
@@ -222,5 +249,5 @@ import MatomeRes from '../../../components/MatomeRes.astro';
 
 - 作成パス（`src/content/blog/<slug>/`）と想定 URL（`/blog/<slug>/`）
 - レス数と、拾った主な論点（3点程度）
-- 元スレ URL を載せたかどうか
+- **元スレ URL（最下部に置いたリンク）**
 - 著作権上、焼き直しにした旨の一言
