@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import { Image, getImage } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
 import { fetchDlsiteWork } from '../lib/dlsite';
 
@@ -44,6 +44,20 @@ const hasAnything =
 	images.length > 0 ||
 	showModels;
 
+const galleryItems =
+	images.length > 0
+		? await Promise.all(
+				images.map(async (img, i) => ({
+					img,
+					alt: `${title || 'サンプル'} ${i + 1}`,
+					// compile 時は img.src（ベースパス）が dist に存在しないため getImage で実 URL を取得
+					previewSrc: (await getImage({ src: img })).src,
+					stripSrc: (await getImage({ src: img, width: 128 })).src,
+					index: i,
+				})),
+			)
+		: [];
+
 const keyTagsText = danbooruTags.join(', ');
 const galleryId = `a1111-gallery-${Math.random().toString(36).slice(2, 9)}`;
 const genrePreview = dlsite?.genres.slice(0, 6) ?? [];
@@ -69,19 +83,19 @@ const modelHref = models?.name
 						</span>
 					</h3>
 					<ul class="gallery">
-						{images.map((img, i) => (
+						{galleryItems.map(({ img, alt, previewSrc, index }) => (
 							<li>
 								<button
 									type="button"
 									class="gallery-thumb"
-									data-index={i}
-									data-src={img.src}
-									data-alt={`${title || 'サンプル'} ${i + 1}`}
-									aria-label={`画像 ${i + 1} を拡大表示`}
+									data-index={index}
+									data-src={previewSrc}
+									data-alt={alt}
+									aria-label={`画像 ${index + 1} を拡大表示`}
 								>
 									<Image
 										src={img}
-										alt={`${title || 'サンプル'} ${i + 1}`}
+										alt={alt}
 										widths={[320, 640]}
 										sizes="(max-width: 720px) 50vw, 280px"
 									/>
@@ -141,15 +155,15 @@ const modelHref = models?.name
 							</button>
 						</div>
 						<ul class="lb-strip" data-lb-strip>
-							{images.map((img, i) => (
+							{galleryItems.map(({ stripSrc, alt, index }) => (
 								<li>
 									<button
 										type="button"
 										class="lb-strip-btn"
-										data-strip-index={i}
-										aria-label={`画像 ${i + 1}`}
+										data-strip-index={index}
+										aria-label={`画像 ${index + 1}`}
 									>
-										<img src={img.src} alt="" loading="lazy" />
+										<img src={stripSrc} alt="" loading="lazy" />
 									</button>
 								</li>
 							))}
@@ -285,10 +299,17 @@ const modelHref = models?.name
 		);
 		if (!dialog || !imgEl || !stage || thumbs.length === 0) return;
 
-		const items = thumbs.map((t) => ({
-			src: t.dataset.src ?? '',
-			alt: t.dataset.alt ?? '',
-		}));
+		const items = thumbs.map((t) => {
+			const thumbImg = t.querySelector('img');
+			return {
+				src:
+					t.dataset.src ||
+					thumbImg?.currentSrc ||
+					thumbImg?.src ||
+					'',
+				alt: t.dataset.alt ?? '',
+			};
+		});
 		let index = 0;
 		let scale = 1;
 		let tx = 0;

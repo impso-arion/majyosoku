@@ -12,6 +12,8 @@
 Astro の画像最適化（`astro:assets` / `image()`）を効かせたいものは **`src/` 配下** に置く。  
 `public/` は最適化されず、パスそのままで配信される。
 
+**Cloudflare Pages 本番**: `astro.config.mjs` で `imageService: 'compile'` が必須。設定・トラブルシュートは [`README.md`](../README.md) の「Cloudflare Pages へのデプロイ」「本番で画像が表示されない」を参照。ビルド後の URL は `/_astro/...webp` 形式になる（`/_image?href=...` ではない）。
+
 ---
 
 ## 記事ごと（推奨・これが基本）

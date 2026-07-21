@@ -102,7 +102,7 @@ Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
 |---------|------|
 | `npm install` | 依存関係のインストール |
 | `npm run dev` | 開発サーバー起動（`localhost:4321`） |
-| `npm run build` | 本番ビルド（`./dist/` に出力） |
+| `npm run build` | 本番ビルド（静的ファイルは `./dist/client/` に出力） |
 | `npm run preview` | ビルド結果のローカル確認 |
 | `npm run generate-types` | Wrangler の型定義を生成 |
 | `npx astro check` | TypeScript / Astro の型チェック |
@@ -208,15 +208,54 @@ MDX なら `CharacterSpeech` コンポーネントも使える。
 | `src/components/DanbooruTrend.astro` | トレンド逆引きパネル |
 | `src/components/BlueskyReply.astro` | コメント欄代替の Bluesky 誘導 |
 
-## Cloudflare へのデプロイ（予定）
+## Cloudflare Pages へのデプロイ
 
-本番デプロイ時の目安:
+Git 連携で [Cloudflare Pages](https://pages.cloudflare.com/) にデプロイする。
 
-- **ビルドコマンド**: `npm run build`
-- **出力ディレクトリ**: `dist`
-- Git 連携で Cloudflare Pages にデプロイするか、`npx wrangler deploy` を使用
+### Pages のビルド設定
 
-詳細は [Astro × Cloudflare 公式ガイド](https://docs.astro.build/ja/guides/deploy/cloudflare/) を参照してください。
+| 項目 | 値 |
+|------|-----|
+| ビルドコマンド | `npm run build` |
+| 出力ディレクトリ | **`dist/client`** |
+| Node.js バージョン | 22 以上（`package.json` の `engines` に準拠） |
+
+`dist/` 直下ではなく **`dist/client`** を指定すること。Astro 7 + `@astrojs/cloudflare` は静的 HTML を `dist/client/`、Worker 用資産を `dist/server/` に分ける。
+
+### 画像まわり（重要）
+
+`<Image>`（`astro:assets`）を Cloudflare Pages の **静的デプロイ** で使うときは、`astro.config.mjs` で次を設定する。
+
+```js
+adapter: cloudflare({
+  imageService: 'compile',  // ビルド時に Sharp で最適化（必須）
+  // ...
+}),
+```
+
+| 設定 | 結果 |
+|------|------|
+| `compile`（推奨） | HTML が `/_astro/icon.xxx.webp` など **直接パス** になる ✅ |
+| `passthrough` / `cloudflare-binding` | `/_image?href=...` になる ❌ 静的 Pages では Worker が無く **画像が HTML として返る** |
+
+ビルドログに次が出ていれば OK:
+
+```text
+[@astrojs/cloudflare] Enabling compile-time image optimization.
+```
+
+### Git にコミットしてはいけないもの
+
+| パス | 理由 |
+|------|------|
+| `.wrangler/` | ローカル Wrangler のキャッシュ。Windows パス（`\`）が入ると **Linux 上の Pages ビルドが失敗** する |
+| `dist/` | ビルド成果物（`.gitignore` 済み） |
+
+`.wrangler/deploy/config.json` がリポジトリに入っていると、Cloudflare が存在しない `..\..\dist\client\wrangler.json` を参照してデプロイが落ちる。`.gitignore` で除外済み。
+
+手動デプロイする場合は `npx wrangler deploy`（ルートの `wrangler.jsonc` を使用）。
+
+詳細: [Astro × Cloudflare 公式ガイド](https://docs.astro.build/ja/guides/deploy/cloudflare/) / [Cloudflare Pages × Astro](https://developers.cloudflare.com/pages/framework-guides/deploy-an-astro-site/)
 
 ## トラブルシューティング
 
@@ -240,6 +279,34 @@ npx astro dev stop
 npm run dev
 ```
 
+### 本番で画像（icon / chara / 記事サンプル）が表示されない
+
+**症状**: `<img src="/_image?href=/_astro/...">` になっていて、ブラウザで画像が取れない（HTML が返る）。
+
+**原因**: 静的 Cloudflare Pages には `/_image` ランタイムが無い。
+
+**対処**:
+
+1. `astro.config.mjs` の `imageService` が **`compile`** になっているか確認
+2. push 後、Pages のビルドログに `Enabling compile-time image optimization` があるか確認
+3. 出力ディレクトリが **`dist/client`** か確認
+4. デプロイ後、HTML ソースで `/_image` が **0 件**、`/_astro/` パスになっているか確認
+
+直接 URL を試す例:
+
+- ❌ `https://<site>/_image?href=%2F_astro%2Fchara.xxx.webp&w=96&h=96` → HTML
+- ✅ `https://<site>/_astro/chara.xxx.webp` → image/webp
+
+### Cloudflare Pages ビルドが Wrangler 設定で失敗する
+
+```text
+.wrangler/deploy/config.json … does not exist
+```
+
+**原因**: `.wrangler/` が Git にコミットされている（Windows ローカルパスが Linux ビルドで壊れる）。
+
+**対処**: リポジトリから `.wrangler/` を削除し、`.gitignore` で除外する（本リポジトリでは対応済み）。以後 `git add .wrangler` しない。
+
 ### ブランド画像（icon / chara / footer）を差し替えても画面が変わらない
 
 コードが読むのは次の3ファイルだけ（`.png` や別名は反映されない）:
@@ -249,12 +316,12 @@ npm run dev
 - `src/assets/brand/footer.webp`（フッター）
 
 差し替え後は **ファイルを閉じてから保存** → **dev 再起動** → **Ctrl+Shift+R**。  
-ローカルでは `imageService: 'passthrough'` で元画像をそのまま出す設定にしてある。
+本番反映には **push → Pages 再デプロイ** が必要。
 ## 今後の予定
 
 - [ ] プライバシーポリシー・運営者情報ページの整備
 - [ ] 本番ドメインの設定（`astro.config.mjs` の `site`）
-- [ ] Cloudflare Pages へのデプロイ
+- [x] Cloudflare Pages へのデプロイ
 - [ ] Cloudflare Functions（Node.js）で外部 Web API 連携
 
 ## 参考リンク
