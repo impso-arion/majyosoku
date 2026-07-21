@@ -3,6 +3,9 @@ dist/
 # generated types
 .astro/
 
+# wrangler local state (Windows paths break Cloudflare Pages builds)
+.wrangler/
+
 # dependencies
 node_modules/
 
