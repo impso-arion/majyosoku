@@ -21,6 +21,7 @@ export const BSKY_HASHTAG = '#へっぽこ魔女のHなAIグリモワール';
 // カテゴリー（日本語シチュの棚。新規シチュはここに1行足してから記事で使う）
 export const CATEGORIES = [
 	{ slug: 'greeting', label: 'ごあいさつ', emoji: '🌙' },
+	{ slug: 'reddit', label: 'Redditまとめ', emoji: '👽' },
 	{ slug: 'shirt-lift', label: 'シャツ捲り', emoji: '👕' },
 	{ slug: 'twin-drills', label: 'ドリルツイン', emoji: '🎀' },
 	{ slug: 'goblin', label: 'ゴブリン', emoji: '👺' },

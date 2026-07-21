@@ -1,0 +1,1574 @@
+メインコンテンツへスキップ
+I love LTX2.3. Cant believe we have free things that just work : r/StableDiffusion
+
+メニューを開く
+
+
+r/StableDiffusion
+現在の検索範囲は r/StableDiffusion です
+
+r/StableDiffusion フィルターを削除し、検索を Reddit 全体に拡大します
+⁨r/StableDiffusion⁩ 内を検索してください
+
+チャットを開く
+作成
+投稿を作成する
+受信トレイを開く
+
+ユーザーアバター
+ユーザーメニューを展開する
+
+戻る
+
+StableDiffusion に移動する
+r/StableDiffusion
+•
+5日前
+Beautiful_Egg6188
+
+I love LTX2.3. Cant believe we have free things that just work
+Animation - Video
+おすすめ動画
+
+r/StableDiffusion
+2nd attempt at LTX2.3 + Krea2
+126 件の賛成票 • 15 件のコメント
+1:06
+r/StableDiffusion
+KREA2 LORA using old Supermarionation 60s and 70s TV show stills (Video as Requested)
+5 件の賛成票 • 4 件のコメント
+0:09
+r/StableDiffusion
+New Foley LoRA of LTX-2.3 adds synced sound design to silent footage. Footsteps, impacts, materials, and ambience layered in to match the action. No music bed, no dialogue, ready to drop straight into your mix.
+78 件の賛成票 • 13 件のコメント
+0:07
+r/StableDiffusion
+Simple Outpaint
+13 件の賛成票 • 4 件のコメント
+0:45
+
+0:31 / 0:31
+
+
+
+
+set the frame rate to 18fps, and resolution to 720p, 6 second video takes 70-80 seconds once the clip loader is done with its work
+generated the images with Krea2+ My lora
+https://www.reddit.com/r/StableDiffusion/comments/1uxfwrw/havent_used_a_model_this_much_since_flux1dev/
+
+
+賛成に投票
+1540
+
+反対に投票
+
+122
+コメントに移動
+2
+再投稿
+
+共有
+u/TryCursor さんのアバター。
+TryCursor
+•
+広告
+
+Plan with one model. Implement with another. Cursor lets you pick the best model for the task you're working on.
+登録
+cursor.com
+Thumbnail image: Plan with one model. Implement with another. Cursor lets you pick the best model for the task you're working on.
+並べ替え基準：
+
+賛成票率順
+
+コメントを検索する
+コメント検索を展開する
+コメントセクション
+u/gmgladi007 さんのアバター。
+gmgladi007
+•
+5 日前
+Ltx 2.3 even with 15sec and audio still has major prompt adherence problems. Anything other a talking head breaks motion and character consistency breaks after 3 seconds. Wan 2.2 can prompt anything with simple words but its only 5 sec. If someone found a way to combine the best of both worlds we would be able to make short films.
+
+
+賛成に投票
+41
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+Dirty_Dragons
+•
+5 日前
+I can't even get two people to have a conversation without the wrong voices being applied.
+
+Speaker 1
+
+Speaker 2
+
+Speaker 1
+
+Speaker 2
+
+Is too complicated for LTX
+
+
+賛成に投票
+8
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/FierceFlames37 さんのアバター。
+FierceFlames37
+•
+5 日前
+Try Ltx Eros 1.4 great character consistency 60fps 30sec
+
+
+賛成に投票
+14
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/0nlyhooman6I1 さんのアバター。
+0nlyhooman6I1
+•
+5 日前
+30sec 60fps with consistency is unheard of. Pls post or just gonna assuming you're talking shit
+
+
+賛成に投票
+15
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+SuddenNeighborhood44
+•
+4 日前
+Search for it on google. It is real and a good model it just requires decent specs for 30s generation with no OOM.
+
+
+賛成に投票
+0
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+
+その他の 1 件の返信
+u/Swagmuffins94 さんのアバター。
+Swagmuffins94
+•
+5 日前
+I've been running the 1.0 guff and it's like playing a slot machine until you get a good gen.
+
+Is there a guff for 1.4?
+
+
+賛成に投票
+2
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+SuddenNeighborhood44
+•
+4 日前
+Search for 10Eros huggingface and you will find a list of fp8 versions bf16 and a link to all the GGUF versions and a new Int8 version. Version 1 is a bit outdated, it is good, but my honest opinion if you want a quick and easy to use version v1.2 is better but is a heavier model, v1.4 requires a bit more work but actually allows the use of loras instead of v1.2 and v1.1.
+
+
+賛成に投票
+1
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+sunyatasattva
+•
+3 日前
+I think the problem is far more prompt adherence itself than character consistency. Until we can have actual prompt adherence, no vision can be brought to life without huge compromises.
+
+
+賛成に投票
+1
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+
+その他の 20 件の返信
+u/martinerous さんのアバター。
+martinerous
+•
+5 日前
+Yep, yesterday I was struggling to create a video. We had a festival of bikers and one of them had this funny custom sidecar made of a bathtub. I have a friend in a wheelchair and I wanted to create a fun video with him sitting in the bathtub sidecar and the motorcycle riding down the street. LTX could not do it at all, I spent an hour prompting it different ways. The bike just kept detaching from the sidecar and driving away alone. Also, the biker glitched when sitting down, as if a few frames were skipped.
+Wan 2.2 - no such problems, did it the first try, exactly as I wanted. But now I have to glue together multiple clips of 5s (and unfortunately Wan has brightness shifts for FF/LF) and generate audio in LTX.
+
+
+賛成に投票
+4
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+kwhali
+•
+5 日前
+It's possible to fix the issue on wan 2.2 AFAIK, but I am not familiar with anyone that's done so with OSS release.
+
+There has been quite a few papers on fixing the same limitation with Wan 2.1 1.3B, nvidia adopted some of these with their sana video model IIRC (and used LTX for VAE to upscale?). One paper was extending duration to a minute, then another came out with infinite duration, another was massive speed improvement for gens enabling real-time on a 5090? (might have also been a subsequent paper that got that up from 17FPS to 60FPS on data center GPU, been a while since I looked into this).
+
+Anyway... I am pretty sure when I researched the topic that it was possible to also apply all these improvements to the newer / larger wan models too, but you need the resources to train some small model(s) but that might have been much more costly to accomplish with the wan 2.2 14B that's like 10-20x the size? I am pretty sure someone said they had done it with 5B but they hadn't shared the output publicly for others to use.
+
+So in theory, wan 2.2 14B could get fixed by implementing the public papers (there are github repos for each with python code and technical discussions / info, but mostly around wan 2.1 1.3B) to not have the limitation, I just don't know if it's feasible for a typical individual here to pull it off 😅
+
+
+賛成に投票
+1
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+
+その他の 1 件の返信
+nghtdrp
+•
+5 日前
+Bro, I was hyped about that lora last night and that video you linked on insta was vibes. I was going to make a render like this. Glad to see you did as well! Love this style, major daps for the lora.
+
+
+賛成に投票
+8
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/Beautiful_Egg6188 さんのアバター。
+Beautiful_Egg6188
+OP
+•
+5 日前
+Ping me please. i would love to see your results
+
+
+賛成に投票
+4
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+VitalikPo
+•
+5 日前
+Lovely romantic art! It gives me nostalgic feelings about a GF i didn't have 😄
+
+
+賛成に投票
+8
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/Nice-Assumption2325 さんのアバター。
+u/Nice-Assumption2325
+•
+広告
+
+I imported a video into ACE Studio and it generated editable music + SFX to match the scene.
+詳細はこちら
+acestudio.ai
+Thumbnail image: I imported a video into ACE Studio and it generated editable music + SFX to match the scene.
+amjustuser
+•
+5 日前
+Love it. Has strong Alberto Mielgo vibes. Still, waiting such gem as Krea to come out from video models, Ltx aren't there yet for me
+
+
+賛成に投票
+25
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/user83726169 さんのアバター。
+user83726169
+•
+5 日前
+Wong Kai Wai’s fallen angels, frame for frame. https://m.youtube.com/watch?v=VvVAa9ATRr8&ra=m
+
+
+賛成に投票
+30
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/Beautiful_Egg6188 さんのアバター。
+Beautiful_Egg6188
+OP
+•
+5 日前
+i even used davinci resolve for the bloom, film grain and color grading to match it to the movie.
+
+
+賛成に投票
+10
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/user83726169 さんのアバター。
+user83726169
+•
+5 日前
+Very nice; my only worry about AI is people not knowing where things came from and attribute it to the wrong thing, but i suppose it doesnt even matter any more. In a decade there may no longer be artists names, just LoRAs and model names
+
+
+賛成に投票
+11
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/Different-Muffin1016 さんのアバター。
+Different-Muffin1016
+•
+5 日前
+The lora and model system will probably be completely replaced by something even more powerful much sooner than you seem to be expecting
+
+
+賛成に投票
+2
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/Ok-Flatworm5070 さんのアバター。
+Ok-Flatworm5070
+•
+5 日前
+What's the art style?
+
+
+賛成に投票
+1
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/MietteIncarna さんのアバター。
+MietteIncarna
+•
+5 日前
+came here to say that
+
+
+賛成に投票
+3
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+herefromyoutube
+•
+4 日前
+I miss film
+
+
+賛成に投票
+1
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/Alisomarc さんのアバター。
+Alisomarc
+•
+5 日前
+i have a rtx 3060 12gb vram 32gb ram, and my experiene with ltx2.3 is 10x worst than wan2.2, dont know why
+
+
+
+
+賛成に投票
+7
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/aziib さんのアバター。
+aziib
+•
+2 日前
+you need at least 64gb ram if you want decent speed with ltx 2.3 because it's using ram for dynamic vram. mine can get 50gb ram usage when generating video with 16gb vram gpu.
+
+
+賛成に投票
+1
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/Asphyxiem さんのアバター。
+Asphyxiem
+•
+5 日前
+アチーブメント 上位 1% の投稿者 のプロフィールバッジ 上位 1% の投稿者
+Mam I am so limited by my gpu I can only do image generation. This looks super cool. Can you share the workflow .
+
+
+賛成に投票
+6
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/Beautiful_Egg6188 さんのアバター。
+Beautiful_Egg6188
+OP
+•
+5 日前
+i used the default workflow from comfyUI. my vram is 12gb, and i used the fp8 model
+
+
+賛成に投票
+5
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/Tripoai さんのアバター。
+u/Tripoai
+•
+広告
+
+Tripo Studio、ゲーム用メッシュとして思った以上に使える
+さらに表示
+studio.tripo3d.ai
+Thumbnail image: Tripo Studio、ゲーム用メッシュとして思った以上に使える
+beren0073
+•
+5 日前
+5% of the time, it works every time.
+
+
+賛成に投票
+5
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/Beautiful_Egg6188 さんのアバター。
+Beautiful_Egg6188
+OP
+•
+5 日前
+Lol. Yeah figuring it out right now. Harder to control characters when in motion. Static shots are aight
+
+
+賛成に投票
+3
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+SensitiveUse7864
+•
+5 日前
+this is great
+
+
+賛成に投票
+3
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+Big_Goal735
+•
+5 日前
+agree it “just works” for simple shots. for anything longer, i had better luck treating ltx 2.3 as i2v. my setup: comfyui, one clean ref frame to lock the face, guidance ~2.5, 18fps, then inject a second ref around frame 45, 50 on an 8s clip. that killed most identity drift for me. quick ebsynth pass on the face at the end patches the weird frames. ran on a 3090, 8s took ~110s after clip load. ymmv. are you running pure text or feeding a ref image?
+
+
+賛成に投票
+3
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+2tonehead
+•
+5 日前
+your stills yesterday were amazing. now seeing them animated is off the hook! love it. Krea2 is awesome. now you're gonna make me obsess over LTX2.3.
+
+
+賛成に投票
+3
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+No-Service2578
+•
+5 日前
+Looks so cool. Are you using a 16 gb GPU?
+
+
+賛成に投票
+2
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/Beautiful_Egg6188 さんのアバター。
+Beautiful_Egg6188
+OP
+•
+5 日前
+12gb vram :( rtx 4070 super.
+
+
+賛成に投票
+6
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+Adro_95
+•
+5 日前
+Can you share the workflow? I'd like to try it
+
+
+賛成に投票
+2
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/Beautiful_Egg6188 さんのアバター。
+Beautiful_Egg6188
+OP
+•
+5 日前
+i used the default workflow from comfyUI.
+
+
+賛成に投票
+3
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+HyperSpazdik
+•
+5 日前
+Awesome. Can you share the prompts for any of the frames you used? Some of the angles/shots are really creative - wondering how you describe that close up/high angle.
+
+
+賛成に投票
+2
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/Beautiful_Egg6188 さんのアバター。
+Beautiful_Egg6188
+OP
+•
+5 日前
+Sure can you dm me?
+
+
+賛成に投票
+1
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/vitaminssk さんのアバター。
+vitaminssk
+•
+5 日前
+I don't ever see it talked about much, but LTX has a free (for now) API service that takes care of text encoding so it completely offloads the clip loader step. I only have 8GB of VRAM and 32GB of DDR4 memory, so model swapping added up to 20 minutes for each generation every time I changed the prompt or tweaked a LoRA. I use the GemmaAPITextEncode node in all my LTX workflows and now I'm down to 4-5 minutes for a 12 second clip at 720p. Hope this helps someone.
+
+
+賛成に投票
+2
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/Beautiful_Egg6188 さんのアバター。
+Beautiful_Egg6188
+OP
+•
+5 日前
+That api takes 2 minutes to connect every time. I tired it. Its not that fast compared to regular one.
+
+
+賛成に投票
+1
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+kwhali
+•
+5 日前
+You can cache the text encoder I think, as in whatever prompt if it was adding overhead when unchanged due to something else in the workflow causing it to recompute the same prompt.
+
+I haven't done such myself yet, but I recall getting annoyed when the text encoder was processed unnecessarily (AFAIK)
+
+With caching it's output for a specific prompt it should be possible to process multiple prompts upfront more efficiently, but won't help if you want to iterate an existing prompt.
+
+Would be nice if there's a way to run the LLM outside of ComfyUI on your own self-hosted setup. Could use some caching on that side for iteration I think if it's anything like regular prompting, but I am not familiar with how to get the output ComfyUI wants instead of text.
+
+
+賛成に投票
+1
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/AlterDays9 さんのアバター。
+AlterDays9
+•
+5 日前
+Love the art style
+
+
+賛成に投票
+2
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+ffgg333
+•
+5 日前
+Nice!
+
+
+賛成に投票
+2
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+Still_Lengthiness994
+•
+5 日前
+wong kar wai did the heavy lifting
+
+
+賛成に投票
+2
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+ffzero58
+•
+5 日前
+LTX 2.3 is very fun to play when you get the settings dialed (frame rate and resolution is very important in the coherence and motion quality of the prompt). 30 fps seems to be the happy medium and keep things at 720p or higher, especially for faces that are zoomed out.
+
+However, it still has quality issues for high motion, which the only so-so fix is to raise the resolution to 60 fps.
+
+The gens still have banding, ghosting and dithering issues - regardless of the mitigating factors above.
+
+
+賛成に投票
+2
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+Zaphod_42007
+•
+5 日前
+Amazing art, captivating video. Only started using krea-2, impressive so far. Ltx-2.3 is also amazing out of the box.
+
+Just used the audio to video ltx comfyui workflow a few days ago. Dropped a suno song into the model and created each section in 25 second runs then simply used the last frame to continue or a new shot using comfyui's qwen multi angle shot workflow.
+
+Worked great. Only thing I noticed was using the 'promt enhance' toggle typically ruined to animation so I kept it off. https://www.reddit.com/r/SunoAI/s/29wwGx6NJh
+
+
+賛成に投票
+2
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/Practical-Topic-5451 さんのアバター。
+Practical-Topic-5451
+•
+5 日前
+Cool but stitches are visible
+
+
+賛成に投票
+2
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+Zaphod_42007
+•
+5 日前
+Yeah I know. Like I said, more of a test workflow to see how lip syncing would hold up. Originally just used some capcut transition effects to hide the stitching but felt it disrupted the laid back flow.
+
+Second thought was to run a first to last frame render in-between the stitch but I'm not sure of how to create that workflow with audio lipsync.
+
+Third option was Inpainting to fix the stitch along with some obvious flaws like the cigarette held wrong in a few frames.
+
+Ultimately happy with it... Learn something new with each project. Only took 10mins per 25 second run on an rtx 5060 Ti 16gb & 64gb system ram. Way faster than running wan2.2.
+
+
+賛成に投票
+1
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/Less-Honey1398 さんのアバター。
+Less-Honey1398
+•
+5 日前
+amazing artstyle
+
+
+賛成に投票
+2
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/ltx_model さんのアバター。
+ltx_model
+•
+5 日前
+アチーブメント 上位 1% の投稿者 のプロフィールバッジ 上位 1% の投稿者
+
+
+
+賛成に投票
+2
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+SanoKei
+•
+4 日前
+Are you doing motion transfer? Is ur lora just this goated? I seriously couldn't get it to do character consistency and I had to switch.
+
+
+賛成に投票
+2
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/benpptung さんのアバター。
+benpptung
+•
+4 日前
+Thank you
+
+
+賛成に投票
+2
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/One-Interaction-8982 さんのアバター。
+One-Interaction-8982
+•
+3 日前
+Look great man
+
+
+賛成に投票
+2
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/sepalus_auki さんのアバター。
+sepalus_auki
+•
+5 日前
+I keep getting banding in every generation whatever I do with LTX 2.3.
+
+I use it through Wan2gp
+
+
+賛成に投票
+1
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/Beautiful_Egg6188 さんのアバター。
+Beautiful_Egg6188
+OP
+•
+5 日前
+i use comfyui default workflow
+
+
+賛成に投票
+3
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+No_Witness_7042
+•
+5 日前
+What is your spec
+
+
+賛成に投票
+1
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/Beautiful_Egg6188 さんのアバター。
+Beautiful_Egg6188
+OP
+•
+5 日前
+rtx 4070super 12gb vram
+64gb DDR5 ram
+ryzen 7700 oc cpu
+
+
+賛成に投票
+1
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+No_Witness_7042
+•
+5 日前
+Can run this in 5070 ti 16gb ram and 32gb ram
+
+
+賛成に投票
+1
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/Beautiful_Egg6188 さんのアバター。
+Beautiful_Egg6188
+OP
+•
+5 日前
+you have to increase the windows Virtual Memory to 64gb. But im sure you will get a lot faster output.
+
+
+賛成に投票
+1
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/sev_kemae さんのアバター。
+sev_kemae
+•
+4 日前
+I havent tried ai video generation yet, and not touched ai generation in general for about a year, would my pc handle it well:
+3090
+i5-14500
+64gb ddr4
+
+Also how did you use reference video from fallen angels to make this? Is there a youtube tutorial or something that you can direct me to to try to build out the workflow you had?
+
+
+賛成に投票
+1
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+CodeIgnitor
+•
+5 日前
+Can it run on 24/512gb Mac mini ?
+
+
+賛成に投票
+1
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+Disastrous-Farm939
+•
+5 日前
+u/TinyTaters さんのアバター。
+TinyTaters
+•
+5 日前
+Great scene direction
+
+
+賛成に投票
+1
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/TheOnlyOnePEACE さんのアバター。
+TheOnlyOnePEACE
+•
+5 日前
+•
+5 日前
+に編集
+What is your ltx 2.3 workflow? I would love to use it, as 80 second generation on a 12gb card sounds great.
+
+
+賛成に投票
+1
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/Beautiful_Egg6188 さんのアバター。
+Beautiful_Egg6188
+OP
+•
+5 日前
+Default. I dont play with workflows anymore.
+
+
+賛成に投票
+1
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+themofostarboi_v2
+•
+5 日前
+I really hoped the mcp was stronger, but its just a glorified generation prompt text box.
+
+I tried with antigravity it can't even read the current state of the workflow or errors...
+
+u/Ok-Fun8708 さんのアバター。
+Ok-Fun8708
+•
+5 日前
+what a great job and great song! would you let me know what is the name of this song or if you made it, how you made it?
+
+u/Beautiful_Egg6188 さんのアバター。
+Beautiful_Egg6188
+OP
+•
+5 日前
+The marias Siennas
+
+u/Ok-Fun8708 さんのアバター。
+Ok-Fun8708
+•
+5 日前
+God bless you!
+
+u/Salt_Patience_617 さんのアバター。
+Salt_Patience_617
+•
+5 日前
+did you use video control to kept the pose of original scene be the same as vid that you generate?
+
+u/raruto_ さんのアバター。
+raruto_
+•
+5 日前
+Looks a loke like the sifu game
+
+Noeyiax
+•
+5 日前
+Hell yeah , put open source lite tricks ltx team into the open source hall of fame !!
+
+
+
+u/Beneficial_Toe_2347 さんのアバター。
+Beneficial_Toe_2347
+•
+5 日前
+Title makes no sense
+
+u/illumi_nation25 さんのアバター。
+illumi_nation25
+•
+5 日前
+Yooo I recognized Wong Kar Wai in this right away. I have to say, amazing job!!
+
+speedmonster95
+•
+5 日前
+this is great art direction nice work
+
+u/-becausereasons- さんのアバター。
+-becausereasons-
+•
+5 日前
+I've had nothing but problems with LTX, can never get anything that doesnt look like a garbled, motion issues, terrible prompt adherence. I dont get it.
+
+u/Beautiful_Egg6188 さんのアバター。
+Beautiful_Egg6188
+OP
+•
+5 日前
+I use the default workflow. Check for the correct distilled lora, if you are running 8 step that distilled lora is a must. Im getting a lot of issues with motion shots. When the frame is still it doesnt look that bad. But whenever we have a moving shot, the quality dips
+
+iiTzMYUNG
+•
+5 日前
+Welcome brother in the world of LTX 2.3 and i think this is a Arcane Art Style!
+
+
+
+u/emersonsorrel さんのアバター。
+emersonsorrel
+•
+5 日前
+I don't think I've every had anything come out of LTX nearly this clean.
+
+u/Beautiful_Egg6188 さんのアバター。
+Beautiful_Egg6188
+OP
+•
+5 日前
+only for steady shots thou. lt kinda breaks down when you introduce some motion or camera movement.
+
+u/RanklesTheOtter さんのアバター。
+RanklesTheOtter
+•
+5 日前
+For true 2D stuff LTX 2.3 never worked for me but if I make the same scene in 3D style it works nearly flawlessly 1 out of 10 times. 🤣
+
+Spoonman915
+•
+5 日前
+Love the style
+
+u/codetwin さんのアバター。
+codetwin
+•
+5 日前
+One of the best models ( of course not competing with Seedance )
+
+iiTzMYUNG
+•
+5 日前
+コメントの画像
+Amazing Lora cant wait to create more amazing images and videos with this Lora also working on a new Lora Plugin hopefully available soon!
+
+u/Gato_Puro さんのアバター。
+Gato_Puro
+•
+5 日前
+that looks so good.. whats your gpu? to take 70 sec to generate a 6sec clip?
+
+Sad_Coach_1433
+•
+5 日前
+I Made this quick test using krea to make the image scenes and then had grok make the prompt for 6 5 sec segments and plugged into LTX director
+
+
+Affectionate_Grand69
+•
+5 日前
+wong kar ai
+
+herefromyoutube
+•
+4 日前
+Wide camera angle reminds me of fallen angels movie
+
+u/Beautiful_Egg6188 さんのアバター。
+Beautiful_Egg6188
+OP
+•
+4 日前
+The bike and the escalator shots are reference shots from that movie
+
+u/ChronaticCurator さんのアバター。
+ChronaticCurator
+•
+4 日前
+I had the crazy idea of ​​creating a four-minute LTX 2.3 music video. Naturally, you quickly run up against the engine's limitations here. But with a bit of good preparation—and, above all, a lot of work on the editing—I managed to fully realize my idea. I wanted to tell a short story typical of a music video (with a little twist), and I think I succeeded:
+
+Not Safe For Work 🛠 – an Echo from the Pleasuredome [Crude Humor / Queer Vibes]
+
+supplyantsimon
+•
+4 日前
+Not sure about the subject matter but nice work (even though its not safe)
+
+Sufi_2425
+•
+4 日前
+•
+4 日前
+に編集
+The problem with LTX and seemingly all video models is that they try too hard to animate art pieces as if they are supposed to have real-life 3D movement. That's why it looks off - cuz if you picture any of these people existing in the real world, they work in terms of 3D and physics. Like you recorded them with a camera and they moved like living entities.
+
+3D animation and 2D animation are meant to follow the principles of animation, because animation simply doesn't work the way real-life movement does.
+
+But the models can be great for realistic film. Especially if you have a 3D animation driver and V2V that to make it realistic film. Should be far easier than pushing any further than MetaHuman does.
+
+u/jumboaiboy さんのアバター。
+jumboaiboy
+•
+3 日前
+Okay, quality seems good! What is the cost to generate 15s video?
+
+u/Beautiful_Egg6188 さんのアバター。
+Beautiful_Egg6188
+OP
+•
+3 日前
+I generate 6 second clips on my pc. It takes 60-70 sec max. My system is pretty inexpensive 4070super+ 64gb ram
+
+u/jumboaiboy さんのアバター。
+jumboaiboy
+•
+3 日前
+Do you already hosted it somewhere?
+
+u/Beautiful_Egg6188 さんのアバター。
+Beautiful_Egg6188
+OP
+•
+3 日前
+No, i use local models on my local close network system. You have to set it up on your system with your hardware
+
+u/jumboaiboy さんのアバター。
+jumboaiboy
+•
+3 日前
+Please reach out to me in DM
+
+Lowe-Historian5317
+•
+8 時間前
+Hey whats the prompts for this art style? Lik3 not the video just the isolated art style how do ya get that
+
+CulturedWhale
+•
+5 日前
+Now people just copy fallen angels frame by frame and get praised huh
+
+u/Beautiful_Egg6188 さんのアバター。
+Beautiful_Egg6188
+OP
+•
+5 日前
+2 out of the 6 shots were from fallen angels
+
+vlhube71
+•
+5 日前
+Damn, this would take me like 20 minutes on my 9070xt I think. Wish I got a 5070ti in retrospect.
+
+I really like this OP. Nice aesthetic to the videos.
+
+u/IrisColt さんのアバター。
+IrisColt
+•
+5 日前
+Smoking in a diner... big yikes
+
+コミュニティ情報セクション
+r/StableDiffusion
+参加
+StableDiffusion
+/r/StableDiffusion is an unofficial community embracing the open-source material of all related. Post art, ask questions, create discussions, contribute new tech, or browse the subreddit. It’s up to you.
+
+さらに表示
+2022年7月23日 に作成されました
+公開
+
+コミュニティガイド
+46万
+Diffusing
+7833
+Browsing the Art
+コミュニティのブックマーク
+Wiki
+
+Monthly Threads
+Our Rules In Full
+Our Discord
+Our Lemmy
+Projects Spreadsheet
+r/StableDiffusion のルール
+1
+Posts Must Be Open-Source or Local AI image/video/software Related
+2
+Be Respectful and Follow Reddit's Content Policy
+3
+No X-rated, lewd, or sexually suggestive content
+4
+No Gore or Excessive Violence
+5
+No Politics
+6
+No Reposts, Spam, Low-Quality, or Excessive Self-Promo
+7
+Use the Correct Flair
+8
+Mod Discretion / Unforeseen Violations
+Related Subs
+
+r/MachineLearning
+3,060,865 members
+
+r/deepdream
+110,504 members
+
+r/aiArt
+678,155 members
+r/MediaSynthesis
+48,345 members
+r/bigsleep
+63,513 members
+
+r/sdforall
+33,789 members
+
+r/DefendingAIArt
+68,686 members
+
+r/riffusion
+8,568 members
+
+r/DeepFloydIF
+2,369 members
+
+r/SDtechsupport
+2,499 members
+モデレーター

@@ -1,0 +1,135 @@
+---
+title: '【Redditまとめ】同じキャラでポーズだけ変えたい！一貫性ワークフローが熱い件'
+description: 'Redditで話題の「キャラ一貫性を保ったままポーズ違いを量産する」3段ワークフローを、2chまとめ風に実況。Krea2・Qwen・Flux2 Kleinの適材適所も。'
+pubDate: 2026-07-21
+featured: true
+category: 'reddit'
+tags:
+  - Reddit
+  - ComfyUI
+  - キャラ一貫性
+  - Flux2
+  - Krea
+  - Qwen
+  - 画像生成AI
+---
+
+import CharacterSpeech from '../../../components/CharacterSpeech.astro';
+import MatomeRes from '../../../components/MatomeRes.astro';
+
+<p class="matome-lead">
+	海外板っぽいスレを拾ってきたわ。<strong>「同じ顔のまま、ポーズとカメラだけ変えたい」</strong>問題。
+	動画生成の前処理としても使えるらしい。会話調に焼き直したから、ざっくり読みなさい。
+</p>
+
+<div class="matome-thread">
+
+<MatomeRes n={1} name="名無しさん" id="Consist0" date="2026/07/18(金) 21:04:12.33" op>
+	<p>
+		キャラの一貫性（consistency）を上げて、動画生成に回すためのワークフロー試したから共有するわ。
+	</p>
+	<p>手順はだいたい3段。</p>
+	<p>
+		① Z-ImageTurbo か Krea 2 で「元画像」を作る<br />
+		② Qwen image edit で服・背景だけ変えた2枚目を作る（顔は維持）<br />
+		③ Flux2 Klein ベースの i2i（ComfyUI）で、各初期画像から16バリエーションずつ。ポーズとカメラ位置だけいじる
+	</p>
+	<p>
+		こうしておくと、LTX みたいな動画生成で「同じ子が動いてる」感が出やすい。<br />
+		自分は ComfyUI 詳しくないから LLM に手伝わせて組んだ。アマチュアWFは Pastebin に置いとく。
+	</p>
+</MatomeRes>
+
+<MatomeRes n={2} name="名無しさん" id="EditLuvr" date="2026/07/18(金) 21:06:01.18">
+	<p>
+		<span class="aa">&gt;&gt;1</span><br />
+		おお、三段構えか。最初に「固定キャラの種」を少数作ってから、編集モデルで派生、最後に i2i でポーズ増殖……筋は通ってるな。
+	</p>
+</MatomeRes>
+
+<MatomeRes n={3} name="名無しさん" id="KreaFan" date="2026/07/18(金) 21:08:44.90">
+	<p>
+		Krea 2 edit 使うと一貫性かなり高いぞ。ただしスタイル維持が崩れるケースもあって、毎回神ではない。
+	</p>
+</MatomeRes>
+
+<MatomeRes n={4} name="名無しさん" id="F2K9B" date="2026/07/18(金) 21:11:22.05">
+	<p>
+		F2K9B（Flux2 Klein 9B系）はリアル寄りで好きなんだけど、テキスト崩しと身体の形（多肢・欠損）がたまに怖い。<br />
+		turbo系使うならステップ12くらいまで上げて、Euler / Simple 試せ。body horror 減る。
+	</p>
+</MatomeRes>
+
+<MatomeRes n={5} name="名無しさん" id="QwenP" date="2026/07/18(金) 21:14:03.71">
+	<p>
+		Qwen image edit はポーズいじり強い。ただ質感がちょっとプラスチックっぽい時あるよな。速度も好み分かれる。
+	</p>
+</MatomeRes>
+
+<MatomeRes n={6} name="名無しさん" id="LoRASet" date="2026/07/18(金) 21:17:55.42">
+	<p>
+		俺は LoRA 学習用データセット作りたくて、ポーズだけ変えてキャラ固定できる編集モデル探してるんだけど、おすすめある？
+	</p>
+</MatomeRes>
+
+<MatomeRes n={7} name="名無しさん" id="Pragmat" date="2026/07/18(金) 21:20:10.88">
+	<p>
+		<span class="aa">&gt;&gt;6</span><br />
+		実務なら適材適所だろ。<br />
+		・Krea 2 edit LoRA ……一貫性重視<br />
+		・F2K9B ……リアル寄り・速度。ステップと sampler 調整必須<br />
+		・Qwen でポーズ編集 → F2K9B でリアリティ足し ……併用もあり
+	</p>
+</MatomeRes>
+
+<MatomeRes n={8} name="名無しさん" id="Roadmap" date="2026/07/18(金) 21:24:36.19">
+	<p>
+		ところで Krea 側、edit version 開発中って言ってたよな。タイムラインは約束できない、みたいな書き方だった気がする。
+	</p>
+</MatomeRes>
+
+<MatomeRes n={9} name="名無しさん" id="Misread" date="2026/07/18(金) 21:26:02.50">
+	<p>
+		<span class="aa">&gt;&gt;8</span><br />
+		「Krea2 が成功したら edit 出す」って読んだ人いたけど、原文はそこまで断言してないぞ。成功条件付きじゃない。
+	</p>
+</MatomeRes>
+
+<MatomeRes n={10} name="名無しさん" id="ZWait" date="2026/07/18(金) 21:29:41.07">
+	<p>
+		Z-Image edit 待ち勢もいる。Turbo はあるのに edit いつ来るんだ問題。期待と不信が同居してるスレだわこれ。
+	</p>
+</MatomeRes>
+
+<MatomeRes n={11} name="名無しさん" id="TLDR" date="2026/07/18(金) 21:33:18.64">
+	<p>
+		要するに<br />
+		<strong>種画像少数 → 軽い編集で派生 → i2i でポーズ量産</strong><br />
+		この設計が「顔キープ × ポーズ多様 × 動画用フレーム確保」を両立させる、って話だな。
+	</p>
+</MatomeRes>
+
+<MatomeRes n={12} name="名無しさん" id="Bookmk" date="2026/07/18(金) 21:35:55.21">
+	<p>
+		<span class="aa">&gt;&gt;4</span> のステップ12＋Euler/Simple、検証パラメータとしてメモった。ありがとう。
+	</p>
+</MatomeRes>
+
+</div>
+
+<hr />
+
+<CharacterSpeech character="rina">
+	<p>まとめるとこうよ。</p>
+	<p>
+		<strong>一貫性は「一発生成」じゃなく、パイプラインで作る。</strong>
+		種を少数固めて、編集モデルで服・背景だけ動かし、最後に i2i でポーズとカメラをばら撒く。動画前処理にもそのまま使える設計ね。
+	</p>
+	<p>
+		モデルの役割分担も覚えておきなさい。Krea系は一貫性、Qwenはポーズ編集、Flux2 Klein系はリアル寄りだけど形状崩れに注意。
+		ステップ数と sampler をいじるだけで「身体が壊れる儀式」はかなり減らせるわ。
+	</p>
+	<p>
+		海外スレの熱量、こういう実務メモに落とすと案外使えるのよね。また拾ってきたら焚べるわ。
+	</p>
+</CharacterSpeech>

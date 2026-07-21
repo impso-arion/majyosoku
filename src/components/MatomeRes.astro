@@ -1,0 +1,99 @@
+---
+interface Props {
+	/** レス番号（表示用） */
+	n: number;
+	/** 名前欄。省略時は「名無しさん」 */
+	name?: string;
+	/** ID風の短い識別子（任意） */
+	id?: string;
+	/** 投稿日時表示（任意）。例: 2026/07/18(金) 21:04:12.33 */
+	date?: string;
+	/** OP（スレ主）かどうか。IDに下線 */
+	op?: boolean;
+}
+
+const { n, name = '名無しさん', id, date, op = false } = Astro.props;
+---
+
+<div class:list={['matome-res', { 'is-op': op }]} data-n={n} id={`res-${n}`}>
+	<div class="matome-meta">
+		<span class="matome-n">{n}</span><span class="matome-sep">: </span><span
+			class="matome-name">{name}</span
+		>{date && <span class="matome-date"> {date}</span>}{id && (
+			<span class:list={['matome-id', { 'is-op-id': op }]}> ID:{id}</span>
+		)}
+	</div>
+	<div class="matome-body">
+		<slot />
+	</div>
+</div>
+
+<style>
+	/* 暇人速報風：カード無し・スレ本文が続くフラット流し */
+	.matome-res {
+		margin: 0 0 1.35em;
+		padding: 0;
+		background: none;
+		border: none;
+	}
+	.matome-meta {
+		font-size: 0.82rem;
+		line-height: 1.55;
+		color: var(--muted);
+		margin: 0 0 0.35em;
+		word-break: break-all;
+	}
+	.matome-n {
+		font-weight: 700;
+		color: var(--text);
+	}
+	.matome-sep {
+		color: var(--text);
+	}
+	/* 2ch/暇速の緑ネーム寄せ */
+	.matome-name {
+		color: #6dbf7a;
+		font-weight: 700;
+	}
+	.matome-date {
+		color: var(--muted);
+	}
+	.matome-id {
+		font-family: ui-monospace, 'Cascadia Code', Consolas, monospace;
+		font-size: 0.92em;
+		color: var(--muted);
+	}
+	.matome-id.is-op-id {
+		text-decoration: underline;
+		text-underline-offset: 2px;
+		color: var(--text);
+	}
+	.matome-body {
+		font-size: 0.95rem;
+		line-height: 1.75;
+		color: var(--text);
+		padding-left: 0.15em;
+	}
+	.matome-body :global(p) {
+		margin: 0 0 0.45em;
+	}
+	.matome-body :global(p:last-child) {
+		margin-bottom: 0;
+	}
+	.matome-body :global(strong) {
+		color: var(--text-strong);
+		font-weight: 700;
+	}
+	.matome-body :global(code) {
+		font-size: 0.88em;
+		color: var(--accent);
+		background: transparent;
+		border: none;
+		padding: 0;
+	}
+	/* >>n アンカー（暇速の青寄りリンク） */
+	.matome-body :global(.aa) {
+		color: #7eb6ff;
+		font-weight: 700;
+	}
+</style>

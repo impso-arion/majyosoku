@@ -1,0 +1,142 @@
+---
+title: '【Redditまとめ】LTX 2.3「無料なのに動くの信じられない」——動画生成が板を占領してる件'
+description: 'LTX 2.3愛スレを暇速風にまとめ。Krea2静止画→動画、Wan 2.2との使い分け、VRAM/RAM事情、動きで崩れる問題まで。ローカル動画生成が熱い今の空気。'
+pubDate: 2026-07-21
+featured: true
+category: 'reddit'
+tags:
+  - Reddit
+  - LTX
+  - Wan
+  - Krea
+  - ComfyUI
+  - 動画生成AI
+  - 画像生成AI
+---
+
+import CharacterSpeech from '../../../components/CharacterSpeech.astro';
+import MatomeRes from '../../../components/MatomeRes.astro';
+
+<p class="matome-lead">
+	静止画だけの時代、もう終わりかけてるわよ。<strong>「LTX 2.3、無料なのにちゃんと動くの信じられない」</strong>スレが盛り上がってた。
+	Krea2で絵を固めてから動画にする派、Wan派、スペック論争まで一気に出てくる。焼き直したから読みなさい。
+</p>
+
+<div class="matome-thread">
+
+<MatomeRes n={1} name="名無しさん" id="LtxLove0" date="2026/07/16(木) 20:11:04.22" op>
+	<p>
+		LTX 2.3、好きすぎる。無料なのに「とりあえず動く」のが信じられない。<br />
+		静止画は Krea2＋自分の LoRA。動画は 18fps・720p・6秒で、clip loader 終わったあとだいたい 70〜80秒。ComfyUI のデフォルトWFで回してる。
+	</p>
+</MatomeRes>
+
+<MatomeRes n={2} name="名無しさん" id="PromptBrk" date="2026/07/16(木) 20:24:51.08">
+	<p>
+		<span class="aa">&gt;&gt;1</span><br />
+		15秒＋音声でも、プロンプト追従はまだ怪しいぞ。トーキングヘッド以外は動きが壊れやすいし、キャラ一貫性も数秒で崩れる。<br />
+		Wan 2.2 は単純な言葉でもだいたい言うこと聞くけど、尺が短い。両方のいいとこ取りができたら短編映画いけるのに……。
+	</p>
+</MatomeRes>
+
+<MatomeRes n={3} name="名無しさん" id="Sidecar" date="2026/07/16(木) 20:41:33.70">
+	<p>
+		わかる。バイク＋サイドカーの変な構図、LTX は1時間いじってもサイドカーごと置いてバイクだけ走るし、着座がコマ飛びする。<br />
+		Wan 2.2 は一発で意図どおり。でも5秒クリップを継ぎ足す地獄と、明度シフトが残る。音声は結局 LTX 側……みたいな分担になってるわ。
+	</p>
+</MatomeRes>
+
+<MatomeRes n={4} name="名無しさん" id="ErosClm" date="2026/07/16(木) 20:55:12.41">
+	<p>
+		LTX Eros 1.4 試せ。キャラ一貫性いいし 60fps・30秒いける。
+	</p>
+</MatomeRes>
+
+<MatomeRes n={5} name="名無しさん" id="CapOrLie" date="2026/07/16(木) 20:56:48.19">
+	<p>
+		<span class="aa">&gt;&gt;4</span><br />
+		30秒60fpsで一貫性とか聞いたことないんだけど、サンプル出せ。でないと盛ってる認定するぞ。
+	</p>
+</MatomeRes>
+
+<MatomeRes n={6} name="名無しさん" id="SpecTalk" date="2026/07/16(木) 21:08:02.55">
+	<p>
+		スペック次第だろ。ちゃんと用意すれば OOM なしで30秒も現実味ある、って話はある。<br />
+		一方で 3060 12GB＋RAM32 だと LTX 2.3 の体感が Wan より10倍キツい、って報告もある。LTX は dynamic VRAM で RAM 食うから、快適さは64GB目安みたいな声が出てる。
+	</p>
+</MatomeRes>
+
+<MatomeRes n={7} name="名無しさん" id="LtxLove0" date="2026/07/16(木) 21:15:40.03" op>
+	<p>
+		うちは RTX 4070 Super 12GB、RAM 64GB、Ryzen 7700。fp8。デフォルトWFのまま。<br />
+		静止ショットはかなり綺麗。動くショットやカメラ移動を入れると一気に崩れる——そこは自覚してる。
+	</p>
+</MatomeRes>
+
+<MatomeRes n={8} name="名無しさん" id="I2VHack" date="2026/07/16(木) 21:28:17.66">
+	<p>
+		長めにやるなら LTX はほぼ i2v 扱いが勝ちだった。<br />
+		きれいな参照1枚で顔をロック → guidance だいたい 2.5 → 18fps → 8秒クリップの中盤でもう1枚参照を差し込む。<br />
+		最後に顔だけ ebsynth で変なフレームを潰す。3090 で8秒がだいたい110秒前後。テキスト純正より参照ありのほうが安定する印象。
+	</p>
+</MatomeRes>
+
+<MatomeRes n={9} name="名無しさん" id="FpsDial" date="2026/07/16(木) 21:40:55.12">
+	<p>
+		設定詰めると楽しい。fps と解像度がコヒーレンスと動きの質に効く。<br />
+		30fps・720p以上が無難、顔が遠いときは特に解像度をケチるな、って意見もある。高モーションはまだ banding / ghosting / dither が残るけど。
+	</p>
+</MatomeRes>
+
+<MatomeRes n={10} name="名無しさん" id="FilmCite" date="2026/07/16(木) 21:52:08.90">
+	<p>
+		構図、ウォン・カーウァイ『天使の涙（Fallen Angels）』そのものじゃね？
+	</p>
+</MatomeRes>
+
+<MatomeRes n={11} name="名無しさん" id="LtxLove0" date="2026/07/16(木) 21:54:21.44" op>
+	<p>
+		<span class="aa">&gt;&gt;10</span><br />
+		わかる人いるんだ。バイクとエスカレーター周りは参照ショット。Bloom・フィルムグレイン・カラグレは DaVinci Resolve で寄せた。
+	</p>
+</MatomeRes>
+
+<MatomeRes n={12} name="名無しさん" id="Attrib" date="2026/07/16(木) 22:03:36.18">
+	<p>
+		綺麗なんだけど、出典が消えて「LoRA名とモデル名だけが作家」になる未来が怖い……って感想も出るスレだな。
+	</p>
+</MatomeRes>
+
+<MatomeRes n={13} name="名無しさん" id="JustWorks" date="2026/07/16(木) 22:11:49.77">
+	<p>
+		「5%の確率で毎回うまくいく」——わかる。静止はまあまあ、動き出すと儀式失敗が増える。
+	</p>
+</MatomeRes>
+
+<MatomeRes n={14} name="名無しさん" id="TLDRVid" date="2026/07/16(木) 22:18:05.31">
+	<p>
+		要するに<br />
+		<strong>ローカル動画はもう「実験」じゃなくて板の主戦場。</strong><br />
+		LTX＝手軽さ・尺・音／Wan＝指示追従・複雑な構図。静止画は Krea2 などで固めてから動画へ、が今どきの型。<br />
+		スペックは VRAM だけじゃなく RAM も見ろ。動きのショットはまだ運ゲー寄り——って空気だな。
+	</p>
+</MatomeRes>
+
+</div>
+
+<hr />
+
+<CharacterSpeech character="rina">
+	<p>まとめるとこうよ。</p>
+	<p>
+		<strong>動画生成、ちゃんと盛り上がってるわ。</strong>
+		「無料なのに動く」感動と、「動きを入れた瞬間に壊れる」現実が同じスレに同居してる。LTX 2.3 は入口として強い。Wan 2.2 は言うことを聞く代わりに短尺と継ぎ足しが宿題。適材適所ね。
+	</p>
+	<p>
+		実務の型も見えてきたわ。Krea2 などでキービジュアルを固める → LTX を i2v 寄りで回す → fps／解像度／参照フレームでドリフトを抑える → 必要なら後処理。
+		VRAM 12GB でも fp8＋RAM余裕があれば遊べる、という報告もある。逆に RAM 不足だと体感が激重になるから、箱の見積もりを間違えないこと。
+	</p>
+	<p>
+		映画の構図を借りる話まで出てくるあたり、もう「動く画像」じゃなくて映像文化の側に踏み込み始めてるのよね。また熱いスレがあったら焚べるわ。
+	</p>
+</CharacterSpeech>

@@ -11,6 +11,7 @@
 - ダークマジカルな配色（魔女パープル × ホットピンク）
 - **カテゴリ**＝日本語シチュの棚／**タグ**＝Danbooru英語＋メタ検索／**モデル検索**＝生成モデル横断
 - DLsite トレンド逆引き記事（プロンプト解剖＋アフィカード＋錬成サンプル）
+- Redditまとめ記事（暇人速報風のレス流し＋リナの締め）
 - **コメント欄なし**（プランC）：感想は Bluesky（`@rinasgrimoire.bsky.social`）の `#へっぽこ魔女のHなAIグリモワール` タグで誘導
 
 ## 技術スタック
@@ -112,13 +113,14 @@ Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
 ```text
 ├── public/                     # favicon など URL 固定の静的ファイル
 ├── doc/
-│   ├── assets.md               # 画像・部品の置き場所
-│   └── dlsite-affiliate-page.md # ★ DLsite トレンド逆引き記事の手順書
+│   ├── assets.md                 # 画像・部品の置き場所
+│   ├── dlsite-affiliate-page.md  # ★ DLsite トレンド逆引き記事の手順書
+│   └── reddit-matome-page.md     # ★ Redditまとめ（暇速風）記事の手順書
 ├── src/
 │   ├── assets/
 │   │   ├── brand/              # icon.webp / chara.webp / footer.webp
 │   │   └── common/
-│   ├── components/             # Header / Sidebar / DanbooruTrend 等
+│   ├── components/             # Header / Sidebar / MatomeRes / DanbooruTrend 等
 │   ├── content/blog/<slug>/    # 記事（index.md|mdx + images/）
 │   ├── pages/
 │   │   ├── blog/               # 一覧・個別
@@ -132,6 +134,7 @@ Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
 
 - 画像の置き分け: [`doc/assets.md`](doc/assets.md)
 - DLsite 逆引き記事の作り方（詳細）: [`doc/dlsite-affiliate-page.md`](doc/dlsite-affiliate-page.md)
+- Redditまとめ記事の作り方（詳細）: [`doc/reddit-matome-page.md`](doc/reddit-matome-page.md)
 
 ## 記事の追加方法
 
@@ -166,6 +169,16 @@ MDX なら `CharacterSpeech` コンポーネントも使える。
 4. パネル表示順は **画像 → 生呪文 → キータグ → モデル → DLsite**
 5. 画像未着時は `images` 省略。プレースホルダー画像は作らず、報告に追加用 YAML を出す
 
+### Redditまとめ記事（暇人速報風）
+
+手順・テンプレ・禁止事項の正本は **[`doc/reddit-matome-page.md`](doc/reddit-matome-page.md)**。要約だけ書くと:
+
+1. スラッグ `reddit-<テーマ英語>`、`category: 'reddit'`
+2. `index.mdx` で **導入（`.matome-lead`）→ `MatomeRes` のフラットなレス流し → リナの CharacterSpeech**
+3. Reddit 原文は丸写しせず、構造・論点を会話調に焼き直す
+4. レスをカード化しない（暇速寄せ）。`>>n` は `<span class="aa">`
+5. 参考実装: `src/content/blog/reddit-character-consistency/`
+
 ### フロントマター一覧
 
 | フィールド | 必須 | 説明 |
@@ -174,7 +187,7 @@ MDX なら `CharacterSpeech` コンポーネントも使える。
 | `description` | ✅ | 記事の概要 |
 | `pubDate` | ✅ | 公開日 |
 | `updatedDate` | 任意 | 更新日 |
-| `category` | 任意 | 日本語シチュ slug（`CATEGORIES`）。例: `idol` / `greeting` |
+| `category` | 任意 | 日本語シチュ／棚 slug（`CATEGORIES`）。例: `idol` / `greeting` / `reddit` |
 | `featured` | 任意 | `true` でサイドバー「人気記事」に掲載（新着順・上限あり） |
 | `tags` | 任意 | `/tags` 用。Danbooru英語＋メタ |
 | `heroImage` | 任意 | アイキャッチ（相対パス） |
@@ -326,7 +339,7 @@ npm run dev
 
 ## 参考リンク
 
-- サイト内ドキュメント: [`doc/dlsite-affiliate-page.md`](doc/dlsite-affiliate-page.md) / [`doc/assets.md`](doc/assets.md)
+- サイト内ドキュメント: [`doc/dlsite-affiliate-page.md`](doc/dlsite-affiliate-page.md) / [`doc/reddit-matome-page.md`](doc/reddit-matome-page.md) / [`doc/assets.md`](doc/assets.md)
 - [Astro ドキュメント](https://docs.astro.build/ja/)
 - [Astro Content Collections](https://docs.astro.build/ja/guides/content-collections/)
 - [Cloudflare Pages × Astro](https://developers.cloudflare.com/pages/framework-guides/deploy-an-astro-site/)

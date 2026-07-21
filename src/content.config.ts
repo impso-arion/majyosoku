@@ -15,6 +15,7 @@ const blog = defineCollection({
 			category: z
 				.enum([
 					'greeting',
+					'reddit',
 					'shirt-lift',
 					'twin-drills',
 					'goblin',

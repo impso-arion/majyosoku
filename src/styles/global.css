@@ -330,6 +330,26 @@ h6 {
 	margin: 2em 0;
 }
 
+/* Reddit／2chまとめ記事の導入文（管理人コメント） */
+.matome-lead {
+	margin: 0 0 1.6em;
+	padding: 0;
+	background: none;
+	border: none;
+	border-radius: 0;
+	font-size: 0.95rem;
+	line-height: 1.85;
+	color: var(--text);
+}
+.matome-lead strong {
+	color: var(--text-strong);
+}
+
+/* スレ本体の入れ物（見た目はフラット） */
+.matome-thread {
+	margin: 0 0 0.5em;
+}
+
 /* リナちゃんのセリフ（記事内で使えるボックス）
    アバター画像URLは BaseHead で --rina-avatar として注入 */
 .rina-say {
