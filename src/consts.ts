@@ -18,6 +18,9 @@ export const BSKY_HANDLE = '@rinasgrimoire.bsky.social';
 export const BSKY_URL = 'https://bsky.app/profile/rinasgrimoire.bsky.social';
 export const BSKY_HASHTAG = '#へっぽこ魔女のHなAIグリモワール';
 
+/** DLsite アフィリエイト ID（全作品リンクに自動付与） */
+export const DLSITE_AFFILIATE_ID = 'rinasgrimoire';
+
 // カテゴリー（日本語シチュの棚。新規シチュはここに1行足してから記事で使う）
 export const CATEGORIES = [
 	{ slug: 'greeting', label: 'ごあいさつ', emoji: '🌙' },

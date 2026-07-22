@@ -1,6 +1,6 @@
 ---
 import { CATEGORIES, HEADLINE_LIMIT } from '../consts';
-import { fetchDlsiteWork } from '../lib/dlsite';
+import { affiliateWorkUrl, fetchDlsiteWork, toDlsiteAffiliateUrl } from '../lib/dlsite';
 import { getSortedPosts } from '../lib/posts';
 
 const source = (await getSortedPosts())
@@ -24,8 +24,9 @@ const items = await Promise.all(
 			note: noteParts.join(' / '),
 			url:
 				card?.workUrl ??
-				post.data.dlsite_url ??
-				`https://www.dlsite.com/maniax/work/=/product_id/${id}.html`,
+				(post.data.dlsite_url
+					? toDlsiteAffiliateUrl(post.data.dlsite_url)
+					: affiliateWorkUrl(id)),
 		};
 	}),
 );

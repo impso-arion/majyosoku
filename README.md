@@ -211,7 +211,7 @@ MDX なら `CharacterSpeech` コンポーネントも使える。
 
 | ファイル | 編集内容 |
 |---------|---------|
-| `src/consts.ts` | サイト名・管理人・Bluesky・**CATEGORIES**・ヘッドライン／人気記事の件数上限 |
+| `src/consts.ts` | サイト名・管理人・Bluesky・**CATEGORIES**・DLsite アフィID・ヘッドライン／人気記事の件数上限 |
 | `src/components/Headline.astro` | 解剖済み `dlsite_id` を product.json で埋めたトレンド枠 |
 | `src/content.config.ts` | フロントマター schema（`category` enum など） |
 | `astro.config.mjs` の `site` | 本番ドメイン（`https://rinasgrimoire.midnight-cruise.top`） |

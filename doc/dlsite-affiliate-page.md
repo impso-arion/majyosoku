@@ -79,7 +79,7 @@ CharacterSpeech（本文）
 | 実装 | [`src/lib/dlsite.ts`](../src/lib/dlsite.ts) の `fetchDlsiteWork` |
 | エンドポイント | `https://www.dlsite.com/maniax/api/=/product.json?workno=<RJ番号>` |
 | 呼び出し元 | 記事末尾パネル（`DanbooruTrend.astro`）がビルド時に自動取得 |
-| 記事側に書くもの | `dlsite_id`（必須）と任意で `dlsite_url`。タイトル等は MDX に手書きしない |
+| `dlsite_id`（必須）と任意で `dlsite_url`（フロア判定用のプレーン作品URLで可）。アフィID `rinasgrimoire` は `src/consts.ts` の `DLSITE_AFFILIATE_ID` からリンク生成時に自動付与 |
 
 **記事作成時の使い方（AI）**
 
