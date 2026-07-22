@@ -214,7 +214,7 @@ MDX なら `CharacterSpeech` コンポーネントも使える。
 | `src/consts.ts` | サイト名・管理人・Bluesky・**CATEGORIES**・ヘッドライン／人気記事の件数上限 |
 | `src/components/Headline.astro` | 解剖済み `dlsite_id` を product.json で埋めたトレンド枠 |
 | `src/content.config.ts` | フロントマター schema（`category` enum など） |
-| `astro.config.mjs` の `site` | 本番ドメイン（現在は `https://example.com`） |
+| `astro.config.mjs` の `site` | 本番ドメイン（`https://rinasgrimoire.midnight-cruise.top`） |
 | `src/pages/index.astro` | トップ（新着一覧） |
 | `src/pages/about.astro` | 運営者情報 |
 | `src/pages/categories/` / `tags/` / `models/` | カテゴリ・タグ・モデル検索ページ |
@@ -334,7 +334,7 @@ npm run dev
 ## 今後の予定
 
 - [ ] プライバシーポリシー・運営者情報ページの整備
-- [ ] 本番ドメインの設定（`astro.config.mjs` の `site`）
+- [x] 本番ドメインの設定（`astro.config.mjs` の `site`）
 - [x] Cloudflare Pages へのデプロイ
 - [ ] Cloudflare Functions（Node.js）で外部 Web API 連携
 

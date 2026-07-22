@@ -94,7 +94,8 @@ export async function fetchDlsiteWork(
 		const res = await fetch(`${API}${encodeURIComponent(id)}`, {
 			headers: {
 				Accept: 'application/json',
-				'User-Agent': 'majyosoku-build/1.0 (+https://example.com)',
+				'User-Agent':
+					'majyosoku-build/1.0 (+https://rinasgrimoire.midnight-cruise.top)',
 			},
 			signal: AbortSignal.timeout(12_000),
 		});

@@ -38,7 +38,15 @@ const showTrend =
 
 <html lang="ja">
 	<head>
-		<BaseHead title={title} description={description} image={heroImage} />
+		<BaseHead
+			title={title}
+			description={description}
+			image={heroImage}
+			type="article"
+			publishedTime={pubDate}
+			modifiedTime={updatedDate}
+			imageAlt={title}
+		/>
 	</head>
 
 	<body>
