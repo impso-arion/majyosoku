@@ -17,6 +17,7 @@ const blog = defineCollection({
 					'greeting',
 					'reddit',
 					'shirt-lift',
+					'shorts-pull',
 					'twin-drills',
 					'goblin',
 					'japanese-armor',

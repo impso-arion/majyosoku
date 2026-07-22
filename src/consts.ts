@@ -26,6 +26,7 @@ export const CATEGORIES = [
 	{ slug: 'greeting', label: 'ごあいさつ', emoji: '🌙' },
 	{ slug: 'reddit', label: 'Redditまとめ', emoji: '👽' },
 	{ slug: 'shirt-lift', label: 'シャツ捲り', emoji: '👕' },
+	{ slug: 'shorts-pull', label: 'ショートパンツ捲り', emoji: '🩳' },
 	{ slug: 'twin-drills', label: 'ドリルツイン', emoji: '🎀' },
 	{ slug: 'goblin', label: 'ゴブリン', emoji: '👺' },
 	{ slug: 'japanese-armor', label: '和鎧', emoji: '⚔️' },

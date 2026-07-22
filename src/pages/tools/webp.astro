@@ -1,0 +1,501 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import { SITE_TITLE } from '../../consts';
+
+const pageTitle = `WebP変換ツール | ${SITE_TITLE}`;
+const pageDescription =
+	'PNG・JPEGなどの画像を、ブラウザだけでWebPへ変換してダウンロードできる無料ツール。画像はサーバーへアップロードされません。';
+
+const DLSITE_BANNER_HREF =
+	'https://dlaf.jp/maniax/dlaf/=/aid/rinasgrimoire/url/https%3A%2F%2Fwww.dlsite.com%2Fmaniax%2F%3Futm_medium%3Daffiliate%26utm_campaign%3Dbnlink%26utm_content%3Dbn_pc_468_60_dojin_01.jpg';
+const DLSITE_BANNER_SRC =
+	'https://www.dlsite.com/img/male/dojin/bn_pc_468_60_dojin_01.jpg';
+const DLSITE_BANNER_ALT = '同人誌、同人ゲーム、同人ソフトのダウンロードショップ - DLsite';
+---
+
+<!doctype html>
+<html lang="ja">
+	<head>
+		<BaseHead title={pageTitle} description={pageDescription} />
+	</head>
+	<body>
+		<Header />
+		<div class="wrap">
+			<div class="site-layout">
+				<Sidebar />
+				<main class="col-main">
+					<div class="section-bar"><span>🖼️</span>WebP変換ツール</div>
+
+					<article class="panel tool">
+						<div class="tool-head">
+							<h1>PNG・JPEGをWebPに変換</h1>
+							<p>
+								変換はこのブラウザ内で完結するわ。画像ファイルはサーバーへ送信・保存されないから安心して使いなさい。
+							</p>
+						</div>
+
+						<div class="tool-body">
+							<div
+								class="drop-zone"
+								id="drop-zone"
+								role="button"
+								tabindex="0"
+								aria-describedby="format-note"
+							>
+								<input
+									id="image-input"
+									type="file"
+									accept="image/png,image/jpeg,image/webp,image/gif,image/bmp,image/avif"
+									multiple
+								/>
+								<span class="drop-icon">📥</span>
+								<strong>画像をここへドロップ</strong>
+								<span>またはクリックして選択</span>
+							</div>
+							<p class="format-note" id="format-note">
+								PNG / JPEG / WebP / GIF / BMP / AVIF に対応。GIF は先頭フレームを静止画WebPへ変換するわ。AVIFなどはお使いのブラウザが読める場合のみ変換できるの。
+							</p>
+
+							<div class="quality-row">
+								<label for="quality">画質 <output id="quality-value">85</output>%</label>
+								<input id="quality" type="range" min="40" max="100" value="85" />
+								<span>高画質ほどファイルサイズは大きくなるわ。</span>
+							</div>
+
+							<div class="tool-actions">
+								<button class="convert-button" id="convert-button" type="button" disabled>
+									WebPに変換する
+								</button>
+								<button class="clear-button" id="clear-button" type="button" disabled>選択を解除</button>
+							</div>
+
+							<p class="tool-status" id="tool-status" aria-live="polite">
+								画像を選ぶと、ここに変換対象が並ぶわ。
+							</p>
+
+							<ul class="conversion-list" id="conversion-list" aria-live="polite"></ul>
+
+							<aside class="banner-slot" aria-label="スポンサーバナー">
+								<a
+									class="banner-link"
+									href={DLSITE_BANNER_HREF}
+									target="_blank"
+									rel="noopener sponsored"
+								>
+									<img
+										class="banner-image"
+										src={DLSITE_BANNER_SRC}
+										alt={DLSITE_BANNER_ALT}
+										width={468}
+										height={60}
+										loading="lazy"
+										decoding="async"
+									/>
+								</a>
+							</aside>
+						</div>
+					</article>
+				</main>
+			</div>
+		</div>
+		<Footer />
+
+		<script>
+			const input = document.getElementById('image-input') as HTMLInputElement;
+			const dropZone = document.getElementById('drop-zone') as HTMLDivElement;
+			const qualityInput = document.getElementById('quality') as HTMLInputElement;
+			const qualityValue = document.getElementById('quality-value') as HTMLOutputElement;
+			const convertButton = document.getElementById('convert-button') as HTMLButtonElement;
+			const clearButton = document.getElementById('clear-button') as HTMLButtonElement;
+			const status = document.getElementById('tool-status') as HTMLParagraphElement;
+			const list = document.getElementById('conversion-list') as HTMLUListElement;
+
+			let files: File[] = [];
+			const generatedUrls = new Set<string>();
+
+			const formatBytes = (bytes: number) => {
+				if (bytes < 1024) return `${bytes} B`;
+				if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
+				return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+			};
+
+			const baseName = (fileName: string) => fileName.replace(/\.[^.]+$/, '') || 'image';
+
+			const clearResults = () => {
+				for (const url of generatedUrls) URL.revokeObjectURL(url);
+				generatedUrls.clear();
+				list.replaceChildren();
+			};
+
+			const updateControls = () => {
+				const hasFiles = files.length > 0;
+				convertButton.disabled = !hasFiles;
+				clearButton.disabled = !hasFiles;
+			};
+
+			const selectFiles = (selected: FileList | File[]) => {
+				const accepted = Array.from(selected).filter((file) => file.type.startsWith('image/'));
+				clearResults();
+				files = accepted;
+				input.value = '';
+				updateControls();
+
+				if (accepted.length === 0) {
+					status.textContent = '画像ファイルを選んでちょうだい。';
+					return;
+				}
+
+				status.textContent = `${accepted.length}枚を選択中。画質を決めて変換ボタンを押してね。`;
+				for (const file of accepted) {
+					const item = document.createElement('li');
+					item.className = 'conversion-item';
+					item.innerHTML = `<span class="file-name"></span><span class="file-size">${formatBytes(file.size)}</span><span class="file-state">変換待ち</span>`;
+					(item.querySelector('.file-name') as HTMLSpanElement).textContent = file.name;
+					list.append(item);
+				}
+			};
+
+			const loadImage = (file: File) =>
+				new Promise<HTMLImageElement>((resolve, reject) => {
+					const image = new Image();
+					const sourceUrl = URL.createObjectURL(file);
+					image.onload = () => {
+						URL.revokeObjectURL(sourceUrl);
+						resolve(image);
+					};
+					image.onerror = () => {
+						URL.revokeObjectURL(sourceUrl);
+						reject(new Error('画像を読み込めませんでした'));
+					};
+					image.src = sourceUrl;
+				});
+
+			const convertFile = async (file: File, quality: number) => {
+				const image = await loadImage(file);
+				const canvas = document.createElement('canvas');
+				canvas.width = image.naturalWidth;
+				canvas.height = image.naturalHeight;
+				const context = canvas.getContext('2d');
+				if (!context) throw new Error('Canvasを初期化できませんでした');
+				context.drawImage(image, 0, 0);
+
+				return new Promise<Blob>((resolve, reject) => {
+					canvas.toBlob(
+						(blob) => (blob ? resolve(blob) : reject(new Error('WebPへの変換に失敗しました'))),
+						'image/webp',
+						quality,
+					);
+				});
+			};
+
+			const downloadName = (file: File) => `${baseName(file.name)}.webp`;
+
+			qualityInput.addEventListener('input', () => {
+				qualityValue.value = qualityInput.value;
+			});
+
+			input.addEventListener('change', () => selectFiles(input.files ?? []));
+
+			dropZone.addEventListener('click', () => input.click());
+			dropZone.addEventListener('keydown', (event) => {
+				if (event.key === 'Enter' || event.key === ' ') {
+					event.preventDefault();
+					input.click();
+				}
+			});
+			for (const eventName of ['dragenter', 'dragover']) {
+				dropZone.addEventListener(eventName, (event) => {
+					event.preventDefault();
+					dropZone.classList.add('is-dragging');
+				});
+			}
+			for (const eventName of ['dragleave', 'drop']) {
+				dropZone.addEventListener(eventName, (event) => {
+					event.preventDefault();
+					dropZone.classList.remove('is-dragging');
+				});
+			}
+			dropZone.addEventListener('drop', (event) => {
+				selectFiles(event.dataTransfer?.files ?? []);
+			});
+
+			clearButton.addEventListener('click', () => {
+				files = [];
+				clearResults();
+				updateControls();
+				status.textContent = '画像を選ぶと、ここに変換対象が並ぶわ。';
+			});
+
+			convertButton.addEventListener('click', async () => {
+				if (files.length === 0) return;
+
+				clearResults();
+				convertButton.disabled = true;
+				clearButton.disabled = true;
+				const quality = Number(qualityInput.value) / 100;
+				status.textContent = `${files.length}枚をブラウザ内で変換中……。`;
+
+				let converted = 0;
+				for (const file of files) {
+					const item = document.createElement('li');
+					item.className = 'conversion-item';
+					item.innerHTML = `<span class="file-name"></span><span class="file-size">${formatBytes(file.size)}</span><span class="file-state">変換中…</span>`;
+					(item.querySelector('.file-name') as HTMLSpanElement).textContent = file.name;
+					list.append(item);
+					const state = item.querySelector('.file-state') as HTMLSpanElement;
+
+					try {
+						const blob = await convertFile(file, quality);
+						const url = URL.createObjectURL(blob);
+						generatedUrls.add(url);
+						const link = document.createElement('a');
+						link.className = 'download-link';
+						link.href = url;
+						link.download = downloadName(file);
+						link.textContent = `${downloadName(file)} をダウンロード (${formatBytes(blob.size)})`;
+						state.textContent = '変換完了';
+						state.classList.add('is-success');
+						item.append(link);
+						converted++;
+					} catch (error) {
+						state.textContent =
+							error instanceof Error ? `失敗: ${error.message}` : '変換に失敗しました';
+						state.classList.add('is-error');
+					}
+				}
+
+				status.textContent =
+					converted === files.length
+						? `${converted}枚の変換が完了したわ。各リンクから保存してね。`
+						: `${converted}/${files.length}枚を変換できたわ。失敗した画像は対応ブラウザ・形式を確認してね。`;
+				updateControls();
+			});
+		</script>
+	</body>
+</html>
+
+<style>
+	.tool {
+		padding: 0;
+	}
+	.tool-head {
+		padding: 22px;
+		background: var(--surface-2);
+		border-bottom: 1px solid var(--border);
+	}
+	.tool-head h1 {
+		font-size: 1.45rem;
+		margin: 0 0 8px;
+	}
+	.tool-head p {
+		margin: 0;
+		font-size: 0.9rem;
+		color: var(--text);
+		line-height: 1.75;
+	}
+	.tool-body {
+		padding: 22px;
+	}
+	.drop-zone {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		min-height: 180px;
+		padding: 24px;
+		border: 2px dashed var(--accent-dim);
+		border-radius: 8px;
+		background: var(--bg-deep);
+		color: var(--muted);
+		cursor: pointer;
+		text-align: center;
+		transition:
+			border-color 0.15s ease,
+			background 0.15s ease;
+	}
+	.drop-zone:hover,
+	.drop-zone.is-dragging {
+		border-color: var(--accent);
+		background: var(--surface-2);
+	}
+	.drop-zone:focus-visible {
+		outline: 2px solid var(--pink);
+		outline-offset: 3px;
+	}
+	.drop-zone input {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		overflow: hidden;
+		clip: rect(0 0 0 0);
+		clip-path: inset(50%);
+		white-space: nowrap;
+	}
+	.drop-icon {
+		font-size: 2rem;
+		line-height: 1;
+		margin-bottom: 10px;
+	}
+	.drop-zone strong {
+		color: var(--text-strong);
+		font-size: 1.05rem;
+	}
+	.drop-zone span:last-child {
+		margin-top: 3px;
+		font-size: 0.85rem;
+	}
+	.format-note,
+	.quality-row > span {
+		font-size: 0.8rem;
+		color: var(--muted);
+		line-height: 1.7;
+	}
+	.format-note {
+		margin: 10px 0 20px;
+	}
+	.quality-row {
+		display: grid;
+		grid-template-columns: max-content minmax(100px, 1fr);
+		align-items: center;
+		gap: 6px 14px;
+		margin-bottom: 20px;
+		padding: 14px;
+		background: var(--bg-deep);
+		border: 1px solid var(--border);
+		border-radius: 6px;
+	}
+	.quality-row label {
+		font-size: 0.9rem;
+		font-weight: 700;
+		color: var(--text-strong);
+	}
+	.quality-row output {
+		color: var(--gold);
+	}
+	.quality-row input {
+		accent-color: var(--accent);
+	}
+	.quality-row > span {
+		grid-column: 2;
+	}
+	.tool-actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 10px;
+	}
+	.convert-button,
+	.clear-button {
+		border: 1px solid var(--accent-dim);
+		border-radius: 5px;
+		padding: 9px 16px;
+		font: inherit;
+		font-size: 0.9rem;
+		font-weight: 700;
+		cursor: pointer;
+	}
+	.convert-button {
+		color: var(--text-strong);
+		background: var(--accent-dim);
+	}
+	.clear-button {
+		color: var(--text);
+		background: transparent;
+		border-color: var(--border);
+	}
+	.convert-button:hover:not(:disabled) {
+		background: var(--accent);
+	}
+	.clear-button:hover:not(:disabled) {
+		color: var(--text-strong);
+		background: var(--surface-2);
+	}
+	button:disabled {
+		opacity: 0.5;
+		cursor: not-allowed;
+	}
+	.tool-status {
+		margin: 18px 0 10px;
+		font-size: 0.88rem;
+		color: var(--muted);
+	}
+	.conversion-list {
+		display: grid;
+		gap: 8px;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+	.conversion-item {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) max-content;
+		gap: 3px 12px;
+		align-items: center;
+		padding: 10px 12px;
+		background: var(--bg-deep);
+		border: 1px solid var(--border);
+		border-radius: 5px;
+		font-size: 0.82rem;
+	}
+	.file-name {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		font-weight: 700;
+		color: var(--text-strong);
+	}
+	.file-size,
+	.file-state {
+		color: var(--muted);
+	}
+	.file-state {
+		text-align: right;
+	}
+	.file-state.is-success {
+		color: #6dbf7a;
+	}
+	.file-state.is-error {
+		color: var(--pink);
+	}
+	.download-link {
+		grid-column: 1 / -1;
+		font-weight: 700;
+		color: var(--accent);
+	}
+	.banner-slot {
+		margin-top: 24px;
+		padding: 14px;
+		border: 1px solid var(--border);
+		border-radius: 6px;
+		background: var(--bg-deep);
+		text-align: center;
+	}
+	.banner-link {
+		display: inline-block;
+		line-height: 0;
+	}
+	.banner-link:hover {
+		opacity: 0.92;
+		text-decoration: none;
+	}
+	.banner-image {
+		display: block;
+		max-width: 100%;
+		height: auto;
+		border: 0;
+	}
+	@media (max-width: 540px) {
+		.tool-head,
+		.tool-body {
+			padding: 16px;
+		}
+		.quality-row {
+			grid-template-columns: 1fr;
+		}
+		.quality-row > span {
+			grid-column: auto;
+		}
+	}
+</style>
