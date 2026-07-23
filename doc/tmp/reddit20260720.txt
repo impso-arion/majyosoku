@@ -1,0 +1,506 @@
+
+OpenAI に移動する
+r/OpenAI
+•
+13日前
+robbed-by-barber123
+
+GPT-Live is life changing for language learners
+Discussion
+If you are partially bilingual and have a fear of talking in your 2nd language, like if you are a heritage speaker (me), or if you wish you were stronger in your 2nd language, you should try practicing with GPT-Live in that language.
+
+The model is like a personal tutor who understands my level so perfectly. It will translate back to my 1st language only for the hardest words. It can figure out what I mean from my bad grammar and correct me while keeping the conversation going. It will keep pushing me to speak in my 2nd language if I ask, and will only switch back to my 1st language when I give up and get tired.
+
+This is life changing technology for heritage speakers. I have almost been brought to tears multiple times in the past day hearing my 2nd language spoken so clearly at my level. The model somehow knows how to talk in a simple, teaching way that reminded me of my earliest life experience. I’m having conversations like I am a kid again.
+
+
+賛成に投票
+164
+
+反対に投票
+
+26
+コメントに移動
+
+3
+再投稿
+
+共有
+u/FigmaOfficial さんのアバター。
+FigmaOfficial
+•
+広告
+
+Figma Makeでアイデアを形に。ドキュメントでビジョンを説明するのはもう終わり。AIプロンプトによる概念実証を使ってアイデアを提案しましょう。
+詳細はこちら
+figma.com
+Thumbnail image: Figma Makeでアイデアを形に。ドキュメントでビジョンを説明するのはもう終わり。AIプロンプトによる概念実証を使ってアイデアを提案しましょう。
+並べ替え基準：
+
+賛成票率順
+
+コメントを検索する
+コメント検索を展開する
+コメントセクション
+u/micaroma さんのアバター。
+micaroma
+•
+13 日前
+Yep, with Live you have an infinitely patient conversation partner ready to talk about any topic at any level, available 24/7, and complete with a transcript.
+
+I won't recommend total beginners to rely on it, but for anyone with a solid foundation, it's great practice.
+
+
+賛成に投票
+40
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+MPforNarnia
+•
+13 日前
+I've noticed that any mention of AI gets zerod on the languagelearning subs, but it is brilliant. I asked chatgpt to make a summary of what I use it for
+
+You use ChatGPT for language learning mainly as a Chinese study buddy.
+
+You use it to:
+
+Review Chinese lessons You provide lesson transcripts, and ask for long-form Chinese reviews that turn messy class notes into readable, engaging study material.
+
+Build vocabulary You ask for key and extended vocabulary lists from lessons. 
+
+Create level-appropriate Chinese writing You often ask for texts rewritten at your level, around roughly HSK5, with clearer grammar and more natural phrasing.
+
+Practise sentence patterns You ask for extra example sentences using new words and structures, often with English translations to check meaning.
+
+Prepare speaking practice You use ChatGPT to support fluency training, including topic preparation, concept maps, sentence frames, and 4-3-2 speaking practice.
+
+Turn lesson content into listening material You ask for long, interesting Chinese reviews that you can listen to, with only occasional English glosses for new words.
+
+Study vocabulary through games You use ChatGPT as an interactive vocabulary quiz partner. 
+
+Translate and simplify content You ask for English ideas or short explanations to be rewritten into Chinese at your level, such as history topics or work-related content.
+
+Create and find Chinese learning resources You ask for worksheets, vocabulary activities, and structured practice materials, often connected to your recent lessons.
+
+
+賛成に投票
+28
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+productive-man
+•
+13 日前
+On your first point, its just that its cool to hate on ai now. Sure you can hate some aspects of it, but its a fact that it is an incredibly useful tool if used right
+
+
+賛成に投票
+8
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/micaroma さんのアバター。
+micaroma
+•
+13 日前
+praising AI anywhere that isn't explicitly pro-AI will get you tarred and feathered
+
+once I started seeing takes like "anyone who uses AI is smooth-brained," I decided to never mention AI unless I know everyone within earshot is okay with it
+
+
+賛成に投票
+6
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/OjinAI さんのアバター。
+OjinAI
+•
+13 日前
+I'm on the team building real-time voice AI at Ojin, and this tracks with what we've seen too, low-latency conversational practice is genuinely one of the best use cases for this tech, better than most of the flashier applications people build first. The thing that'll make or break it long term is handling accented or non-native speech patterns gracefully instead of just optimizing for clean native audio, that's usually where these systems start to feel less magical the longer you actually use them.
+
+
+賛成に投票
+6
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/rydan さんのアバター。
+rydan
+•
+13 日前
+I wish I'd known about GPT-Live about a year ago. Was hoping to go to Spain to watch the eclipse but abandoned my plans when I couldn't get any translators to travel with me. Had I known this was going to release a month before I'd have completed my plans and traveled solo.
+
+
+賛成に投票
+8
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/TheRobotCluster さんのアバター。
+TheRobotCluster
+•
+13 日前
+It didn’t exist until last month. And didn’t get included into the ChatGPT app until yesterday
+
+
+賛成に投票
+24
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+TheItalianDonkey
+•
+13 日前
+I understand the puzzlement, but he meant that the eclipse is coming next month, that's when he would have gone to spain, had he booked the flights and everything.
+
+That being said, to be fair, one month is sufficient notice for pretty much everything so ...
+
+
+賛成に投票
+2
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+IvanMalison
+•
+13 日前
+uh until a couple of days ago, it wasn't available to the publ.ic
+
+
+賛成に投票
+2
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/TheRobotCluster さんのアバター。
+TheRobotCluster
+•
+13 日前
+It was via API
+
+
+賛成に投票
+1
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+zyeus-guy
+•
+13 日前
+I see realtime on the api, but I can’t see gpt-live? I have added my name to the wait list, but did you get early access? How different is the API calls to realtime2.1?
+
+
+賛成に投票
+1
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+Plane-Pay-4948
+•
+13 日前
+I can help you, or, yo te puedo ayudar, haha
+
+
+賛成に投票
+3
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/exegenes1s さんのアバター。
+exegenes1s
+•
+12 日前
+You...need a translator? Just to go to Spain? You can get by in English with a few key words memorized. This is the strangest take I've seen.
+
+
+賛成に投票
+3
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+Yo-3
+•
+12 日前
+You could hire a local translator, why would you need to travel with one?
+
+Or you could hire me Lol. I wanted to go but the accommodation is too expensive already
+
+
+賛成に投票
+1
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/FidaroAI さんのアバター。
+u/FidaroAI
+•
+広告
+
+Big AI feeds on your data. Fidaro can't even if it wanted to.
+詳細はこちら
+fidaro.ai
+Thumbnail image: Big AI feeds on your data. Fidaro can't even if it wanted to.
+u/oussam1639 さんのアバター。
+oussam1639
+•
+13 日前
+Totally agree the live mode is a complete game changer for learning languages it’s like having a 24/7 personal tutor who never gets tired or judges your mistakes the patience of the aI makes it so much easier to practice without anxiety truly amazing tech!
+
+
+賛成に投票
+3
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+vancouvervibe
+•
+13 日前
+any promts you have to share, that made you promt window good for your language teaching experience?
+
+
+賛成に投票
+2
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/robbed-by-barber123 さんのアバター。
+robbed-by-barber123
+OP
+•
+13 日前
+I don’t really have a specific prompt, I just randomly switched to my second language and was able to have a natural dialogue like I was speaking with a language instructor
+
+
+賛成に投票
+1
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/Jonathan_Rivera さんのアバター。
+Jonathan_Rivera
+•
+13 日前
+I built a program that uses the API and creates a structured course with memory but it's way more expensive using the API then the app.
+
+
+賛成に投票
+1
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/youllmeltmorefan さんのアバター。
+youllmeltmorefan
+•
+13 日前
+I'd like to try it. Don't have it yet.
+
+
+賛成に投票
+1
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/GokuMK さんのアバター。
+GokuMK
+•
+13 日前
+For me the duplex speech flow is still worse than Sesame. My first benchmark is - teach me "our father" in choosen language. Sesame can better control sentence repetitions while gpt live mess up all. Maybe should I adjust some settings? But yes, the upside compared to Sesame is that gpt speaks a lot of languages while Sesame not so much. 
+
+
+賛成に投票
+1
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/Jumpy-Requirement589 さんのアバター。
+Jumpy-Requirement589
+•
+13 日前
+How to access
+
+
+賛成に投票
+1
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/ClickUp_App さんのアバター。
+u/ClickUp_App
+•
+広告
+
+Keeping projects on track shouldn’t require 10 different tools. ClickUp helps teams plan, track, and manage work in one workspace.
+さらに表示
+clickup.com
+Thumbnail image: Keeping projects on track shouldn’t require 10 different tools.
+ClickUp helps teams plan, track, and manage work in one workspace.
+aa_drian83
+•
+13 日前
+Isn’t it the same thing as Gemini’s Native Audio, being audio-to-audio?
+
+Any difference between the two?
+
+
+賛成に投票
+1
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/scottadams364 さんのアバター。
+scottadams364
+•
+11 日前
+I don’t know, I haven’t tried it for my second language yet, but even just speaking in English, it feels like a big step down from the previous model before Live. How am I the only one that’s not seeing it being better?
+
+
+賛成に投票
+1
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/MrRipley0 さんのアバター。
+MrRipley0
+•
+11 日前
+it speaks very slow compared to the old models

@@ -1,7 +1,7 @@
 # Redditまとめ記事（暇人速報風）作成ルール
 
 AI が新規 Redditまとめページを作るときに読む手順書。  
-参考実装: [`src/content/blog/reddit-character-consistency/`](../src/content/blog/reddit-character-consistency/) / [`reddit-ltx23-video-boom/`](../src/content/blog/reddit-ltx23-video-boom/) / [`reddit-webui-install-fail/`](../src/content/blog/reddit-webui-install-fail/)
+参考実装: [`src/content/blog/reddit-character-consistency/`](../src/content/blog/reddit-character-consistency/) / [`reddit-ltx23-video-boom/`](../src/content/blog/reddit-ltx23-video-boom/) / [`reddit-webui-install-fail/`](../src/content/blog/reddit-webui-install-fail/) / [`reddit-ai-friendly-subs-list/`](../src/content/blog/reddit-ai-friendly-subs-list/)（Bluesky 感想スレ導線あり）
 
 関連: [`doc/assets.md`](assets.md)、[`doc/dlsite-affiliate-page.md`](dlsite-affiliate-page.md)、[`README.md`](../README.md)
 
@@ -13,7 +13,7 @@ AI が新規 Redditまとめページを作るときに読む手順書。
 
 1. ユーザーが Reddit スレ（**URL必須**・本文・コメント要約など）を渡す
 2. AI が `src/content/blog/reddit-<テーマ>/index.mdx` を用意する
-3. 本文は **暇速風のフラットなレス流し（`MatomeRes`）＋ CharacterSpeech（リナの締め）＋元スレリンク**
+3. 本文は **暇速風のフラットなレス流し（`MatomeRes`）＋ CharacterSpeech（リナの締め）＋元スレリンク（＋任意で Bluesky 感想スレ導線）**
 4. 原文の丸写しはしない。**構造・論点レベルで会話調に焼き直す**
 
 **画面上の表示順**
@@ -23,7 +23,8 @@ matome-lead（導入・1〜2文）
   → matome-thread（MatomeRes × N）
   → hr
   → CharacterSpeech（リナの締め）
-  → matome-source（元スレ URL・記事最下部）
+  → matome-source（元スレ URL ＋ 任意で Bluesky 感想スレ・記事本文最下部）
+  → BlueskyReply（全記事共通・新規投稿用。matome-source とは別）
 ```
 
 ---
@@ -71,6 +72,7 @@ matome-lead（導入・1〜2文）
 | テーマ要約 | 「キャラ一貫性ワークフロー」など | ✅（無ければ AI が提案） |
 | スラッグ希望 | `reddit-character-consistency` | 任意 |
 | 強調したい論点 | 「三段構え」「sampler 調整」など | 任意 |
+| **Bluesky 感想スレ URL** | `https://bsky.app/profile/rinasgrimoire.bsky.social/post/...` | 任意（ユーザーが渡したとき `.matome-source` に載せる） |
 
 ---
 
@@ -160,6 +162,12 @@ import MatomeRes from '../../../components/MatomeRes.astro';
 	<a href={"https://www.reddit.com/r/<sub>/comments/<id>/<slug>/"} target="_blank" rel="noopener noreferrer">
 		r/&lt;sub&gt; — &lt;元投稿タイトル（短くて可）&gt;
 	</a>
+	<!-- 任意: ユーザーから Bluesky 投稿 URL をもらったときだけ足す（下記「Bluesky 感想スレ導線」参照） -->
+	<br /><br />
+	コメントをどこに書けばいいのか、って？ この投稿のレスにしてね：
+	<a href={"https://bsky.app/profile/rinasgrimoire.bsky.social/post/<post_id>/"} target="_blank" rel="noopener noreferrer">
+		Bluesky @rinasgrimoire.bsky.social — この記事の感想スレ
+	</a>
 </p>
 ```
 
@@ -173,6 +181,22 @@ import MatomeRes from '../../../components/MatomeRes.astro';
 | 表示テキスト | `r/<サブレ名> — <元タイトル>`。タイトルが長いときは要約可。開始タグの次の行に置く |
 | 属性 | `target="_blank"` と `rel="noopener noreferrer"` を付ける |
 | スタイル | 自前でカード化しない。`global.css` の `.matome-source` に任せる |
+
+### Bluesky 感想スレ導線（`.matome-source` 内・任意）
+
+本サイトは**コメント欄なし（プランC）**。記事下の [`BlueskyReply`](../src/components/BlueskyReply.astro) は「新規投稿を compose する」導線だが、読者が「どこに書けばいいの？」と迷うのを防ぐため、**記事ごとの既存 Bluesky 投稿へのレス**を `.matome-source` に載せてもよい。
+
+| 項目 | ルール |
+|------|--------|
+| いつ載せる | ユーザーがその記事用の Bluesky 投稿 URL を渡したとき。**必須ではない** |
+| 位置 | **元スレリンクの直後**（同じ `<p class="matome-source">` 内。`<br /><br />` で区切る） |
+| 文言 | `コメントをどこに書けばいいのか、って？ この投稿のレスにしてね：` |
+| リンク先 | ユーザー提供の Bluesky 投稿 URL（`bsky.app/profile/.../post/...`） |
+| 表示テキスト | 例: `Bluesky @rinasgrimoire.bsky.social — この記事の感想スレ` |
+| 属性 | `target="_blank"` と `rel="noopener noreferrer"` |
+| やらないこと | ハッシュタグだけの compose リンクに置き換える（それは `BlueskyReply` の役割） |
+
+参考: [`reddit-ai-friendly-subs-list`](../src/content/blog/reddit-ai-friendly-subs-list/index.mdx) の末尾。
 
 ### `MatomeRes` の props
 
@@ -195,8 +219,9 @@ import MatomeRes from '../../../components/MatomeRes.astro';
 3. 会話の流れを作る: OP の主張 → 賛否・比較 → 実務Tips → まとめレス。
 4. リナの締めは **実務エッセンスを 2〜4 段落**。スレの要約の焼き直し＋魔女口調。
 5. **元スレ URL を最下部の `.matome-source` に必ず置く。**
-6. タイトルは `【Redditまとめ】…`。必要なら `【悲報】` `【朗報】` 等の暇速語彙も可（やりすぎ注意）。
-7. 技術名はそのまま残してよい（`Krea 2`, `Qwen image edit`, `Flux2 Klein` など）。長文の英語原文は載せない。
+6. Bluesky 感想スレ URL をもらったら、**同じ `.matome-source` 内**に「この投稿のレスにしてね」導線を足す（`BlueskyReply` とは別）。
+7. タイトルは `【Redditまとめ】…`。必要なら `【悲報】` `【朗報】` 等の暇速語彙も可（やりすぎ注意）。
+8. 技術名はそのまま残してよい（`Krea 2`, `Qwen image edit`, `Flux2 Klein` など）。長文の英語原文は載せない。
 
 ---
 
@@ -210,7 +235,8 @@ import MatomeRes from '../../../components/MatomeRes.astro';
 | ロードマップ／余談 | 0〜2 | 開発状況の噂など（あれば） |
 | TL;DR レス | 1 | 読者が拾える一行まとめ |
 | リナ締め | （別ブロック） | サイトの顔としての解説 |
-| 元スレ | （最下部） | 出典リンク |
+| 元スレ | （最下部） | Reddit 出典リンク |
+| Bluesky 感想スレ | （任意・元スレの直後） | 「この投稿のレスへ」導線 |
 
 全体で **だいたい 8〜15 レス**。冗長な相槌だけのレスは削る。
 
@@ -227,8 +253,9 @@ import MatomeRes from '../../../components/MatomeRes.astro';
 7. [ ] `>>n` は `<span class="aa">`。カードスタイルを自前 CSS で足していない
 8. [ ] リナ締めで実務エッセンスを述べている
 9. [ ] **最下部に `.matome-source` で元スレリンク**（`target="_blank"` / `rel="noopener noreferrer"`）
-10. [ ] 未成年示唆コンテンツが無いか確認
-11. [ ] `/blog/<slug>/` と `/categories/reddit/` に出ること
+10. [ ] Bluesky 感想スレ URL がある場合、`.matome-source` に「この投稿のレスにしてね」導線を足した
+11. [ ] 未成年示唆コンテンツが無いか確認
+12. [ ] `/blog/<slug>/` と `/categories/reddit/` に出ること
 
 ---
 
@@ -250,4 +277,5 @@ import MatomeRes from '../../../components/MatomeRes.astro';
 - 作成パス（`src/content/blog/<slug>/`）と想定 URL（`/blog/<slug>/`）
 - レス数と、拾った主な論点（3点程度）
 - **元スレ URL（最下部に置いたリンク）**
+- Bluesky 感想スレ URL を載せた場合はそのリンクも
 - 著作権上、焼き直しにした旨の一言
