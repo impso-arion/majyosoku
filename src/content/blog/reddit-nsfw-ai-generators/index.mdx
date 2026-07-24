@@ -1,0 +1,158 @@
+---
+title: '【Redditまとめ】【悲報】NSFW AI画像ジェネ「Reddit的ベスト」スレ、宣伝地獄だった件'
+description: 'r/debtmarketadviceで話題の「ベストNSFW AI画像ジェネ」スレを2chまとめ風に再構成。賛成670・反対1709、クラウド宣伝 vs ローカルSD論、リアル/anime・一貫性の線引き。'
+pubDate: 2026-07-25
+featured: true
+category: 'reddit'
+tags:
+  - Reddit
+  - Stable Diffusion
+  - 画像生成AI
+  - NSFW
+  - Civitai
+---
+
+import CharacterSpeech from '../../../components/CharacterSpeech.astro';
+import MatomeRes from '../../../components/MatomeRes.astro';
+
+<p class="matome-lead">
+	海外板っぽいスレを拾ってきたわ。<strong>「Reddit的ベストNSFW AI画像ジェネ、どれ？」</strong>問題。
+	借金相談板（<code>r/debtmarketadvice</code>）に突然現れた謎スレで、賛成670・反対1709。宣伝レスと bot 臭コメントが大量。会話調に焼き直したから、ざっくり読みなさい。
+</p>
+
+<div class="matome-thread">
+
+<MatomeRes n={1} name="名無しさん" id="AskBest" date="2026/07/05(土) 14:22:08.44" op>
+	<p>
+		ベストNSFW AI画像ジェネ、Reddit的にはどれ？ 選択肢多すぎて決められん。
+	</p>
+	<p>
+		ざっくり調べた候補：<strong>Candy AI</strong>（写実＋キャラ一貫性）、<strong>Promptchan</strong>（速い・安い・検閲弱め）、
+		<strong>SoulGen</strong>（リアル/anime両対応・編集機能）、<strong>Seduced AI</strong>（フェチ特化・動画も）、
+		<strong>Perchance</strong>（無料・登録不要）。
+	</p>
+	<p>
+		聞きたいのはこのへん。<br />
+		・Reddit的ベスト総合<br />
+		・無料ベスト<br />
+		・写実ベスト / anime・hentaiベスト<br />
+		・キャラ一貫性 or 動画生成ベスト<br />
+		ローカル Stable Diffusion ＋ CivitAI モデルも歓迎、って書いてある。
+	</p>
+</MatomeRes>
+
+<MatomeRes n={2} name="名無しさん" id="DownV" date="2026/07/05(土) 14:28:33.17">
+	<p>
+		<span class="aa">&gt;&gt;1</span><br />
+		スレ主のリストは分かるけど、<strong>反対票1709</strong> 見てくれ。宣伝臭い外部サービスへの長文レス、Companion◯◯.al 系、動画 nudify サイトの URL 直貼り……
+		「Reddit的おすすめ」より「アフィリエイト地獄」に見える。
+	</p>
+</MatomeRes>
+
+<MatomeRes n={3} name="名無しさん" id="StyleSplit" date="2026/07/05(土) 14:35:01.02">
+	<p>
+		宣伝は置いといて、論点自体は整理できる。<strong>写実（photorealistic）と anime/hentai は別レース</strong>。
+		今のモデルは stylized な方が自然に出やすく、リアル NSFW は比例・照明・解剖で差が出やすい、って意見が多い。
+	</p>
+</MatomeRes>
+
+<MatomeRes n={4} name="名無しさん" id="LocalSD" date="2026/07/05(土) 14:41:18.55">
+	<p>
+		<span class="aa">&gt;&gt;1</span><br />
+		クラウド全部試すより、<strong>ローカル Stable Diffusion ＋ CivitAI コミュニティモデル</strong>は依然強い、って声。
+		プライバシー、カスタム、サブスクなし。代わりに GPU と学習コストは自分持ち。
+		「オンラインの便利さ vs ローカルの自由度」はトレードオフ。
+	</p>
+</MatomeRes>
+
+<MatomeRes n={5} name="名無しさん" id="Consist" date="2026/07/05(土) 14:48:44.90">
+	<p>
+		companion 系で求められるのは<strong>キャラ一貫性</strong>。同じ顔・体型をポーズ・衣装・照明変えても維持できるか。
+		クラウドは all-in-one（チャット＋画像）が売りの所多いけど、ローカルなら LoRA・参照画像・i2i パイプラインで同等以上を狙える、派も。
+	</p>
+</MatomeRes>
+
+<MatomeRes n={6} name="名無しさん" id="FreePaid" date="2026/07/05(土) 14:55:12.33">
+	<p>
+		無料枠は<strong>試しには十分、本番は足りない</strong>、が多数派。
+		透かし・生成上限・解像度制限が厳しく、量産や高解像度なら有料 or ローカルに移行する、って流れ。
+		Perchance みたいな「登録不要・無料・検閲弱め」はカジュアルテスト向き、って評価。
+	</p>
+</MatomeRes>
+
+<MatomeRes n={7} name="名無しさん" id="SamePrompt" date="2026/07/05(土) 15:02:08.71">
+	<p>
+		<span class="aa">&gt;&gt;5</span><br />
+		比較方法はシンプルでいい。<strong>同じキャラ設定＋同じポーズ/シーンのプロンプト</strong>を各ツールに投げて横並び。
+		一貫性・写実度・破綻率を目視。マーケ文よりこっちが早い。
+	</p>
+</MatomeRes>
+
+<MatomeRes n={8} name="名無しさん" id="PromptSk" date="2026/07/05(土) 15:09:33.44">
+	<p>
+		どのジェネでも<strong>プロンプト力で結果が変わる</strong>。ネガティブプロンプトで artifact 減らす、参照画像で顔・体型固定、は共通テク。
+		フェチ特化シーンほど prompt adherence（指示追従）が効く。
+	</p>
+</MatomeRes>
+
+<MatomeRes n={9} name="名無しさん" id="SpeedQ" date="2026/07/05(土) 15:16:01.88">
+	<p>
+		速度と品質はトレードオフ。速いクラウドは細部が落ちる、重いローカルモデルは精緻だけど待つ。
+		動画生成対応は「便利だけど品質はまだガチャ」、って温度感。
+	</p>
+</MatomeRes>
+
+<MatomeRes n={10} name="名無しさん" id="CommMdl" date="2026/07/05(土) 15:23:44.15">
+	<p>
+		<span class="aa">&gt;&gt;4</span><br />
+		<strong>コミュニティモデルは商用よりニッチ更新が速い</strong>、って指摘も。
+		最新スタイル・特定 fetish は CivitAI 側が先行しがち。クラウドは UI 楽だけどモデル更新に遅れやすい。
+	</p>
+</MatomeRes>
+
+<MatomeRes n={11} name="名無しさん" id="Privacy" date="2026/07/05(土) 15:31:02.19">
+	<p>
+		オンライン NSFW ジェネは<strong>プライバシー</strong>が論点。アップロード画像・プロンプトの扱いが気になる人は self-hosted / ローカル派。
+		便利さとデータ管理はセットで考える、ってコメントが散見された。
+	</p>
+</MatomeRes>
+
+<MatomeRes n={12} name="名無しさん" id="TLDR" date="2026/07/05(土) 15:38:55.71">
+	<p>
+		要するに<br />
+		<strong>目的（写実/anime/一貫性/動画）で分ける → 同プロンプトで横比較 → 本気ならローカルSD</strong><br />
+		スレ自体は宣伝レス多くて信用度低い。論点だけ持ち帰れ、って話。
+	</p>
+</MatomeRes>
+
+</div>
+
+<hr />
+
+<CharacterSpeech character="rina">
+	<p>まとめるとこうよ。</p>
+	<p>
+		<strong>このスレは「Reddit的ベスト」というより、クラウド NSFW ジェネの宣伝合戦の標本</strong>ね。
+		借金相談板に NSFW ランキング thread が立つ時点で草だけど、反対1709が物語ってる。URL 直貼りの companion 系レスは、比較記事としては信用しない方がいいわ。
+	</p>
+	<p>
+		それでも論点は拾える。<strong>写実と anime は別物、一貫性は companion 系の必須スペック、無料は試用・有料/ローカルは本番</strong>——この3つはどの era でも変わらない。
+		特に anime/hentai はモデルが得意分野、写実 NSFW はプロンプト・後処理・モデル選定で差が出る、って整理は当サイトの読者にもそのまま効く。
+	</p>
+	<p>
+		へっぽこ魔女の結論はシンプルよ。<strong>同じ Danbooru タグ・同じ seed 設定で横比較して、本気なら ComfyUI + CivitAI で自分の錬成釜を持ちなさい。</strong>
+		クラウドの「ベスト」表は更新より宣伝が速い。あんたの H なグリモワールは、他人のサブスクより自分の VRAM の上に築くのが正解ね。
+	</p>
+</CharacterSpeech>
+
+<p class="matome-source">
+	元スレ：
+	<a href={"https://www.reddit.com/r/debtmarketadvice/comments/1unf68z/best_nsfw_ai_image_generators_recommended_by/"} target="_blank" rel="noopener noreferrer">
+		r/debtmarketadvice — Best NSFW AI Image Generators Recommended by Everyone?
+	</a>
+	<br /><br />
+	意見・感想はこちらの Bluesky 投稿にレスしてね：
+	<a href={"https://bsky.app/profile/rinasgrimoire.bsky.social/post/3mrghmrs5w22n"} target="_blank" rel="noopener noreferrer">
+		Bluesky @rinasgrimoire.bsky.social — この記事の感想スレ
+	</a>
+</p>
