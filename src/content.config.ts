@@ -23,6 +23,7 @@ const blog = defineCollection({
 					'japanese-armor',
 					'idol',
 					'bikini-armor',
+					'outdoors',
 				])
 				.optional(),
 			tags: z.array(z.string()).optional(),
