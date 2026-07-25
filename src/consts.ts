@@ -46,3 +46,9 @@ export const HEADLINE_LIMIT = 5;
 
 /** サイドバー「人気記事」に出す featured 記事の上限 */
 export const FEATURED_LIMIT = 5;
+
+/** トップページ・メインカラムの1ページあたり記事数 */
+export const LATEST_MAIN_PER_PAGE = 10;
+
+/** サイドバー「最新記事」の表示件数 */
+export const LATEST_SIDEBAR_LIMIT = 7;

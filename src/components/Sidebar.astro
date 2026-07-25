@@ -1,12 +1,12 @@
 ---
 import FormattedDate from './FormattedDate.astro';
-import { BSKY_HANDLE, BSKY_HASHTAG, BSKY_URL, CATEGORIES } from '../consts';
+import { BSKY_HANDLE, BSKY_HASHTAG, BSKY_URL, CATEGORIES, LATEST_SIDEBAR_LIMIT } from '../consts';
 import { getFeaturedPosts, getModelCounts, getSortedPosts, getTagCounts } from '../lib/posts';
 
 const posts = await getSortedPosts();
 
-// 最新記事（新着順の上位10件）
-const latest = posts.slice(0, 10);
+// 最新記事（新着順）
+const latest = posts.slice(0, LATEST_SIDEBAR_LIMIT);
 
 // 人気記事（featured: true・新着順）
 const ranking = await getFeaturedPosts();

@@ -1,0 +1,57 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+import Pagination from '../../components/Pagination.astro';
+import PostCardList from '../../components/PostCardList.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import { LATEST_MAIN_PER_PAGE, SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
+import { getSortedPosts, paginatePosts } from '../../lib/posts';
+
+export async function getStaticPaths() {
+	const posts = await getSortedPosts();
+	const totalPages = Math.ceil(posts.length / LATEST_MAIN_PER_PAGE);
+	if (totalPages <= 1) return [];
+
+	return Array.from({ length: totalPages - 1 }, (_, i) => ({
+		params: { page: String(i + 2) },
+	}));
+}
+
+const pageNum = Number(Astro.params.page);
+if (!Number.isInteger(pageNum) || pageNum < 2) {
+	return Astro.redirect('/');
+}
+
+const allPosts = await getSortedPosts();
+const { posts, currentPage, totalPages } = paginatePosts(allPosts, pageNum, LATEST_MAIN_PER_PAGE);
+
+if (currentPage !== pageNum || currentPage === 1) {
+	return Astro.redirect('/');
+}
+
+const pageTitle = `${SITE_TITLE}（${currentPage}ページ目）`;
+---
+
+<!doctype html>
+<html lang="ja">
+	<head>
+		<BaseHead title={pageTitle} description={SITE_DESCRIPTION} />
+	</head>
+	<body>
+		<Header />
+		<div class="wrap">
+			<div class="site-layout">
+				<Sidebar />
+				<main class="col-main">
+					<div class="section-bar">
+						<span>🆕</span>最新記事（{currentPage}ページ目）
+					</div>
+					<PostCardList posts={posts} />
+					<Pagination currentPage={currentPage} totalPages={totalPages} />
+				</main>
+			</div>
+		</div>
+		<Footer />
+	</body>
+</html>

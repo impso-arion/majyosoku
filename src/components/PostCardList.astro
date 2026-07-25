@@ -1,0 +1,59 @@
+---
+import FormattedDate from './FormattedDate.astro';
+import { CATEGORIES } from '../consts';
+import type { Post } from '../lib/posts';
+
+interface Props {
+	posts: Post[];
+}
+
+const { posts } = Astro.props;
+const catInfo = (slug?: string) => CATEGORIES.find((c) => c.slug === slug);
+---
+
+<ul class="post-list">
+	{
+		posts.map((post) => {
+			const cat = catInfo(post.data.category);
+			return (
+				<li>
+					<article class="post-card">
+						{cat && (
+							<a class="cat-tag" href={`/categories/${cat.slug}/`}>
+								{cat.emoji} {cat.label}
+							</a>
+						)}
+						<h2 class="post-title">
+							<a href={`/blog/${post.id}/`}>{post.data.title}</a>
+						</h2>
+						<div class="post-meta">
+							<span>🗓 <FormattedDate date={post.data.pubDate} /></span>
+						</div>
+						<p class="post-excerpt">{post.data.description}</p>
+						{post.data.tags && post.data.tags.length > 0 && (
+							<div class="card-tags">
+								{post.data.tags.map((t) => (
+									<a class="tag-chip" href={`/tags/${encodeURIComponent(t)}/`}>
+										#{t}
+									</a>
+								))}
+							</div>
+						)}
+						<a class="readmore" href={`/blog/${post.id}/`}>
+							続きを読む »
+						</a>
+					</article>
+				</li>
+			);
+		})
+	}
+	{
+		posts.length === 0 && (
+			<li>
+				<article class="post-card">
+					<p>まだ記事がないわ…今夜の黒ミサ用に焚べておくから待ってなさい。</p>
+				</article>
+			</li>
+		)
+	}
+</ul>

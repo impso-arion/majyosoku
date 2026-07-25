@@ -1,0 +1,106 @@
+---
+interface Props {
+	currentPage: number;
+	totalPages: number;
+}
+
+const { currentPage, totalPages } = Astro.props;
+
+function pageHref(page: number): string {
+	return page === 1 ? '/' : `/page/${page}/`;
+}
+---
+
+{
+	totalPages > 1 && (
+		<nav class="pagination" aria-label="ページ送り">
+			{currentPage > 1 ? (
+				<a class="page-nav" href={pageHref(currentPage - 1)}>
+					« 前へ
+				</a>
+			) : (
+				<span class="page-nav disabled">« 前へ</span>
+			)}
+
+			<ol class="page-nums">
+				{Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+					<li>
+						{page === currentPage ? (
+							<span class="page-num current" aria-current="page">
+								{page}
+							</span>
+						) : (
+							<a class="page-num" href={pageHref(page)}>
+								{page}
+							</a>
+						)}
+					</li>
+				))}
+			</ol>
+
+			{currentPage < totalPages ? (
+				<a class="page-nav" href={pageHref(currentPage + 1)}>
+					次へ »
+				</a>
+			) : (
+				<span class="page-nav disabled">次へ »</span>
+			)}
+		</nav>
+	)
+}
+
+<style>
+	.pagination {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+		gap: 12px 16px;
+		margin-top: 28px;
+		padding-top: 20px;
+		border-top: 1px dashed var(--border);
+	}
+	.page-nums {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 6px;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+	.page-num,
+	.page-nav {
+		display: inline-grid;
+		place-items: center;
+		min-width: 36px;
+		height: 36px;
+		padding: 0 10px;
+		border-radius: 8px;
+		font-size: 0.85rem;
+		font-weight: 700;
+		text-decoration: none;
+		color: var(--accent);
+		background: var(--surface);
+		border: 1px solid var(--border);
+		transition: all 0.15s ease;
+	}
+	a.page-num:hover,
+	a.page-nav:hover {
+		border-color: var(--accent);
+		background: var(--surface-2);
+		text-decoration: none;
+	}
+	.page-num.current {
+		color: var(--text-strong);
+		background: var(--accent-dim);
+		border-color: transparent;
+	}
+	.page-nav.disabled {
+		color: var(--muted);
+		background: var(--surface);
+		border-color: var(--border);
+		opacity: 0.5;
+		cursor: default;
+	}
+</style>
