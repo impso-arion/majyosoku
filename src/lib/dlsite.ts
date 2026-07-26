@@ -39,7 +39,17 @@ export type DlsiteWorkCard = {
 const API =
 	'https://www.dlsite.com/maniax/api/=/product.json?workno=';
 
+/** DLsite 作品ID（RJ / VJ 等） */
+const WORKNO_RE = /^[A-Z]{2}\d+$/i;
+
 const cache = new Map<string, DlsiteWorkCard | null>();
+
+/** 作品IDプレフィックスからアフィリンク用フロアを推定 */
+function defaultSiteForWorkno(workno: string): string {
+	const prefix = workno.trim().slice(0, 2).toUpperCase();
+	if (prefix === 'VJ') return 'pro';
+	return 'maniax';
+}
 
 function absUrl(url?: string): string | null {
 	if (!url) return null;
@@ -57,7 +67,7 @@ export function extractDlsiteSite(url?: string): string | undefined {
 	return site;
 }
 
-/** 作品 URL / パスから product_id（RJ…）を拾う */
+/** 作品 URL / パスから product_id（RJ / VJ 等）を拾う */
 export function extractDlsiteWorkno(url?: string): string | undefined {
 	if (!url) return undefined;
 	const m =
@@ -73,7 +83,10 @@ export function extractDlsiteWorkno(url?: string): string | undefined {
  */
 export function affiliateWorkUrl(workno: string, siteId?: string): string {
 	const id = workno.trim().toUpperCase();
-	const site = siteId && /^[a-z0-9_-]+$/i.test(siteId) ? siteId.toLowerCase() : 'maniax';
+	const site =
+		siteId && /^[a-z0-9_-]+$/i.test(siteId)
+			? siteId.toLowerCase()
+			: defaultSiteForWorkno(id);
 	return `https://www.dlsite.com/${site}/dlaf/=/t/s/link/work/aid/${DLSITE_AFFILIATE_ID}/id/${id}.html`;
 }
 
@@ -131,7 +144,7 @@ function normalize(raw: unknown, workno: string, urlOverride?: string): DlsiteWo
 }
 
 /**
- * 作品ID（例: RJ01612853）からカード用メタを取得。
+ * 作品ID（例: RJ01612853 / VJ01005659）からカード用メタを取得。
  * 失敗時は null（ビルドは止めない）。workUrl は常にアフィ付き。
  */
 export async function fetchDlsiteWork(
@@ -139,7 +152,7 @@ export async function fetchDlsiteWork(
 	urlOverride?: string,
 ): Promise<DlsiteWorkCard | null> {
 	const id = workno.trim().toUpperCase();
-	if (!/^RJ\d+$/i.test(id)) return null;
+	if (!WORKNO_RE.test(id)) return null;
 
 	const cacheKey = `${id}|${urlOverride ?? ''}|${DLSITE_AFFILIATE_ID}`;
 	if (cache.has(cacheKey)) return cache.get(cacheKey) ?? null;

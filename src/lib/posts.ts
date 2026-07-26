@@ -1,5 +1,5 @@
 import { getCollection } from 'astro:content';
-import { CATEGORIES, FEATURED_LIMIT, type CategorySlug } from '../consts';
+import { CATEGORIES, FEATURED_LIMIT, LATEST_MAIN_PER_PAGE, type CategorySlug } from '../consts';
 
 export type Post = Awaited<ReturnType<typeof getCollection<'blog'>>>[number];
 
@@ -87,4 +87,30 @@ export async function getModelCounts(): Promise<ModelCount[]> {
 export async function getPostsByModel(name: string): Promise<Post[]> {
 	const posts = await getSortedPosts();
 	return posts.filter((post) => post.data.models?.name === name);
+}
+
+export type PaginatedPosts = {
+	posts: Post[];
+	currentPage: number;
+	totalPages: number;
+	totalPosts: number;
+};
+
+/** 記事一覧をページ分割（page は 1 始まり） */
+export function paginatePosts(
+	posts: Post[],
+	page: number,
+	perPage = LATEST_MAIN_PER_PAGE,
+): PaginatedPosts {
+	const totalPosts = posts.length;
+	const totalPages = Math.max(1, Math.ceil(totalPosts / perPage));
+	const currentPage = Math.min(Math.max(1, page), totalPages);
+	const start = (currentPage - 1) * perPage;
+
+	return {
+		posts: posts.slice(start, start + perPage),
+		currentPage,
+		totalPages,
+		totalPosts,
+	};
 }
