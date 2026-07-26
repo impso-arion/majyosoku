@@ -166,6 +166,24 @@ h6 {
 	border-color: var(--accent);
 	background: var(--surface-2);
 }
+.post-thumb {
+	display: block;
+	margin: -16px -18px 14px;
+	overflow: hidden;
+	border-radius: 7px 7px 0 0;
+	background: var(--bg);
+}
+.post-thumb img {
+	display: block;
+	width: 100%;
+	height: clamp(180px, 32vw, 340px);
+	object-fit: cover;
+	object-position: center;
+	transition: transform 0.2s ease;
+}
+.post-thumb:hover img {
+	transform: scale(1.015);
+}
 .post-card .cat-tag {
 	display: inline-block;
 	font-size: 0.72rem;

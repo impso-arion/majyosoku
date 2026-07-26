@@ -5,13 +5,13 @@ export const SITE_READING = 'へっぽこまじょのえっちなエーアイグ
 export const SITE_SUBTITLE = '賀田野リナのHなAIグリモワール';
 export const SITE_CATCH = 'AI画像生成 × エロ魔女';
 export const SITE_DESCRIPTION =
-	'AI画像生成×エロ魔女。Redditで気になったネタの2chまとめ風紹介、Danbooruタグの解剖、Stable Diffusionのモデル紹介、トレンド作品のプロンプト逆引きまで。へっぽこ魔女・賀田野リナが今夜の黒ミサ用に発信するまとめサイト。';
+	'AI画像生成×エロ魔女。Redditまとめ、Danbooruタグ解剖、Stable Diffusionモデル紹介、DLsiteトレンド逆引きまで。転生魔女・賀田野リナが、デジタル錬成で「1000の絶頂」を追うグリモワール。';
 
-// 管理人（魔女）プロフィール
+// 管理人（魔女）プロフィール — 詳細は doc/rinas_Personality.md
 export const AUTHOR_NAME = '賀田野リナ';
-export const AUTHOR_TITLE = 'へっぽこ見習い魔女 / 当サイト管理人';
+export const AUTHOR_TITLE = '現代のAI術師 / 転生魔女';
 export const AUTHOR_BIO =
-	'AI画像生成とエロの結界を彷徨うへっぽこ魔女。Redditの気になるスレを2chまとめ風に翻訳したり、Danbooruタグとモデル選びを研究したり。今夜も黒ミサのために記事を焚べるわ。';
+	'前世は中世の魔女カタリナ。人々の性欲を解放し「1000の絶頂」に到達したが火刑に処された転生魔女。現世ではGPUを祭壇にComfyUIで至高の錬成を追う。口調はドライだけどエロスへの執念だけはブレない。30年純潔の聖者（読者）を誰より肯定するわ。';
 
 // SNS（コメント欄の代わりに Bluesky へ誘導＝プランC）
 export const BSKY_HANDLE = '@rinasgrimoire.bsky.social';

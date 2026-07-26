@@ -59,7 +59,7 @@ heroImage: './hero.webp'
 ### 本文中の画像
 
 - **Markdown（.md）**: `![説明](./images/figure-01.webp)`
-- **MDX（.mdx）**: `import CharacterSpeech from '../../../components/CharacterSpeech.astro'` など可
+- **MDX（.mdx）**: `import CharacterSpeech from '../../../components/CharacterSpeech.astro'` など可。口調は [`doc/rinas_Personality.md`](rinas_Personality.md) を正本とする
 
 ### トレンド逆引き記事（DLsite）
 

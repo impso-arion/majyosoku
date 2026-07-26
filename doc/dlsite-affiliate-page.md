@@ -3,7 +3,7 @@
 AI が新規 DLsite アフィリエイトページを作るときに読む手順書。  
 参考実装: `src/content/blog/dlsite-idol-stage/` / `src/content/blog/dlsite-kurokami-shirt-lift/`
 
-関連: [`doc/assets.md`](assets.md)（画像の置き場所）、[`README.md`](../README.md)（サイト全体・検索・**Cloudflare デプロイ**）
+関連: [`doc/rinas_Personality.md`](rinas_Personality.md)（**リナの口調・世界観の正本**）、[`doc/assets.md`](assets.md)（画像の置き場所）、[`README.md`](../README.md)（サイト全体・検索・**Cloudflare デプロイ**）
 
 ---
 
@@ -191,11 +191,26 @@ WD14の使い魔にのぞき見させたら、<副タグ1>（`<tag1>`）や<副�
 ### 本文の書き方ルール
 
 1. **必ず MDX**（`CharacterSpeech` を import するため）。
-2. リナちゃんの口調: 強気・解説役。タグは `` `code` `` で示す。
+2. **口調は [`doc/rinas_Personality.md`](rinas_Personality.md) を読んでから書く**（下記「リナの口調」参照）。
 3. **生呪文・キータグ・モデル・DLsite は本文に書かない**（パネル自動）。
 4. **品質／トリガーは `models.trigger` のみ。** `prompt` 先頭には入れない。
 5. プロンプトはユーザー提供を基本そのまま（未成年示唆タグは削除・置換してから `prompt` へ）。
 6. タイトルは `【DLsite上位】トレンド逆引き：…` 形式。
+
+### リナの口調（CharacterSpeech）
+
+正本: [`doc/rinas_Personality.md`](rinas_Personality.md)。執筆前に必ず読む。
+
+| 要素 | 書き方 |
+|------|--------|
+| 定番の呼びかけ | 「ちょっとあんた！」で始めてよい |
+| 口調 | 現代的でドライ。強気な解説役。タグは `` `code` `` |
+| 世界観 | GPU＝悪魔/祭壇、ComfyUI＝黒魔術、WD14＝使い魔、生成＝錬成 |
+| 読者 | 「聖者」——純粋なリビドーを魔力（プロンプト）と肯定 |
+| 深夜テンション | たまに「1000の絶頂」「前世のカタリナ」など魔女口調が漏れてもよい |
+| やりすぎ注意 | 1記事1セリフ。宣伝口調・説教長文にしない |
+
+テンプレの「WD14の使い魔」「錬成」「拝みなさい」は世界観に沿った定型句。
 
 ---
 
@@ -234,7 +249,7 @@ WD14の使い魔にのぞき見させたら、<副タグ1>（`<tag1>`）や<副�
 3. [ ] スラッグ決定（`dlsite-...`）
 4. [ ] `category` slug 決定。未登録なら `CATEGORIES` + `content.config.ts` enum に追加
 5. [ ] 未成年示唆タグが無いか確認（あれば置換して報告）
-6. [ ] `index.mdx` 作成（本文は CharacterSpeech のみ）
+6. [ ] `index.mdx` 作成（本文は CharacterSpeech のみ。[`doc/rinas_Personality.md`](rinas_Personality.md) で口調確認）
 7. [ ] `prompt` / `models` / `danbooru_tags` / `category` / `tags` を埋める
 8. [ ] `images/` 用意。画像があれば配置し `images` を埋める（無ければ省略。プレースホルダ禁止）
 9. [ ] 表示確認: **画像 → 生呪文 → キータグ → モデル → DLsite**

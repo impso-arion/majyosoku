@@ -1,7 +1,9 @@
 # へっぽこ魔女のHなAIグリモワール
 
 **AIトレンド × エロ魔女**をテーマにしたまとめ風アフィリエイトブログです。  
-かつて流行した「暇人速報」系まとめブログのレイアウトをオマージュした2カラム構成で、AI画像生成・Danbooruタグ・Stable Diffusionのモデル紹介などを、へっぽこ魔女「賀田野リナ」の口調でお届けします。
+かつて流行した「暇人速報」系まとめブログのレイアウトをオマージュした2カラム構成で、AI画像生成・Danbooruタグ・Stable Diffusionのモデル紹介などを、転生魔女「賀田野リナ」の口調でお届けします。
+
+キャラクター設定の正本: [`doc/rinas_Personality.md`](doc/rinas_Personality.md)
 
 将来的には Cloudflare Pages / Functions 経由で外部 Web API（FANZA API など）と連携する予定です。
 
@@ -114,6 +116,7 @@ Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
 ├── public/                     # favicon など URL 固定の静的ファイル
 ├── doc/
 │   ├── assets.md                 # 画像・部品の置き場所
+│   ├── rinas_Personality.md      # ★ 賀田野リナの性格・口調・世界観（CharacterSpeech の正本）
 │   ├── dlsite-affiliate-page.md  # ★ DLsite トレンド逆引き記事の手順書
 │   └── reddit-matome-page.md     # ★ Redditまとめ（暇速風）記事の手順書
 ├── src/
@@ -133,8 +136,24 @@ Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
 ```
 
 - 画像の置き分け: [`doc/assets.md`](doc/assets.md)
+- リナの性格・口調: [`doc/rinas_Personality.md`](doc/rinas_Personality.md)
 - DLsite 逆引き記事の作り方（詳細）: [`doc/dlsite-affiliate-page.md`](doc/dlsite-affiliate-page.md)
 - Redditまとめ記事の作り方（詳細）: [`doc/reddit-matome-page.md`](doc/reddit-matome-page.md)
+
+## キャラクター設定（賀田野リナ）
+
+リナのセリフ（`CharacterSpeech`）を書くときは **[`doc/rinas_Personality.md`](doc/rinas_Personality.md)** を正本とする。
+
+| 項目 | 内容 |
+|------|------|
+| 肩書き | 現代のAI術師 / 転生魔女 |
+| 前世 | 中世の魔女カタリナ。「1000の絶頂」後に火刑 |
+| 口調 | 現代的でドライ。深夜は魔女口調が漏れる。「ちょっとあんた！」が定番 |
+| 使役 | GPU＝祭壇、ComfyUI＝黒魔術、プロンプト＝魔力 |
+| 読者 | 「聖者」——30年純潔などを肯定し、リビドーを魔力とみなす |
+| サイト反映 | `src/consts.ts`（`AUTHOR_*`）、`about.astro`、ごあいさつ記事 |
+
+DLsite逆引き・Redditまとめの執筆ルールにも同 doc への参照を書いてある。
 
 ## 記事の追加方法
 
@@ -157,7 +176,7 @@ tags: ['ごあいさつ', 'へっぽこ魔女']
 ```
 
 `.md` では `import` 不可。リナのセリフは `<div class="rina-say">…</div>`。  
-MDX なら `CharacterSpeech` コンポーネントも使える。
+MDX なら `CharacterSpeech` コンポーネントも使える。**口調は [`doc/rinas_Personality.md`](doc/rinas_Personality.md) に従う。**
 
 ### DLsite トレンド逆引き記事（メインの量産型）
 
@@ -211,7 +230,7 @@ MDX なら `CharacterSpeech` コンポーネントも使える。
 
 | ファイル | 編集内容 |
 |---------|---------|
-| `src/consts.ts` | サイト名・管理人・Bluesky・**CATEGORIES**・DLsite アフィID・ヘッドライン／人気記事の件数上限 |
+| `src/consts.ts` | サイト名・管理人（`AUTHOR_*`）・Bluesky・**CATEGORIES**・DLsite アフィID・ヘッドライン／人気記事の件数上限 |
 | `src/components/Headline.astro` | 解剖済み `dlsite_id` を product.json で埋めたトレンド枠 |
 | `src/content.config.ts` | フロントマター schema（`category` enum など） |
 | `astro.config.mjs` の `site` | 本番ドメイン（`https://rinasgrimoire.midnight-cruise.top`） |
@@ -340,7 +359,7 @@ npm run dev
 
 ## 参考リンク
 
-- サイト内ドキュメント: [`doc/dlsite-affiliate-page.md`](doc/dlsite-affiliate-page.md) / [`doc/reddit-matome-page.md`](doc/reddit-matome-page.md) / [`doc/assets.md`](doc/assets.md)
+- サイト内ドキュメント: [`doc/rinas_Personality.md`](doc/rinas_Personality.md) / [`doc/dlsite-affiliate-page.md`](doc/dlsite-affiliate-page.md) / [`doc/reddit-matome-page.md`](doc/reddit-matome-page.md) / [`doc/assets.md`](doc/assets.md)
 - [Astro ドキュメント](https://docs.astro.build/ja/)
 - [Astro Content Collections](https://docs.astro.build/ja/guides/content-collections/)
 - [Cloudflare Pages × Astro](https://developers.cloudflare.com/pages/framework-guides/deploy-an-astro-site/)

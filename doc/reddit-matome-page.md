@@ -3,7 +3,7 @@
 AI が新規 Redditまとめページを作るときに読む手順書。  
 参考実装: [`src/content/blog/reddit-character-consistency/`](../src/content/blog/reddit-character-consistency/) / [`reddit-ltx23-video-boom/`](../src/content/blog/reddit-ltx23-video-boom/) / [`reddit-webui-install-fail/`](../src/content/blog/reddit-webui-install-fail/) / [`reddit-ai-friendly-subs-list/`](../src/content/blog/reddit-ai-friendly-subs-list/)（Bluesky 感想スレ導線あり）
 
-関連: [`doc/assets.md`](assets.md)、[`doc/dlsite-affiliate-page.md`](dlsite-affiliate-page.md)、[`README.md`](../README.md)
+関連: [`doc/rinas_Personality.md`](rinas_Personality.md)（**リナの口調・世界観の正本**）、[`doc/assets.md`](assets.md)、[`doc/dlsite-affiliate-page.md`](dlsite-affiliate-page.md)、[`README.md`](../README.md)
 
 レイアウトの参考サイト: [暇人＼(^o^)／速報](http://himasoku.com/)
 
@@ -220,12 +220,26 @@ import MatomeRes from '../../../components/MatomeRes.astro';
 1. **必ず MDX**（`MatomeRes` / `CharacterSpeech` を import するため）。
 2. レスは **カードにしない**。`MatomeRes` を使い、`.matome-thread` で包む。
 3. 会話の流れを作る: OP の主張 → 賛否・比較 → 実務Tips → まとめレス。
-4. リナの締めは **実務エッセンスを 2〜4 段落**。スレの要約の焼き直し＋魔女口調。
+4. リナの締めは **実務エッセンスを 2〜4 段落**。スレの要約の焼き直し＋**[`doc/rinas_Personality.md`](rinas_Personality.md) に沿った口調**（下記「リナの口調」参照）。
 5. **元スレ URL を最下部の `.matome-source` に必ず置く。**
 6. **Bluesky 感想スレ導線を `.matome-source` 内に毎回置く**（未確定時は `post/TODO_REPLACE` → 告知投稿後に差し替え）。`BlueskyReply` とは別。
 7. タイトルは `【Redditまとめ】…`。必要なら `【悲報】` `【朗報】` 等の暇速語彙も可（やりすぎ注意）。
 8. 技術名はそのまま残してよい（`Krea 2`, `Qwen image edit`, `Flux2 Klein` など）。長文の英語原文は載せない。
 9. 記事完成時、**Bluesky 告知投稿文**（タグ付き）をユーザー向けに提示する。
+
+### リナの口調（CharacterSpeech 締め）
+
+正本: [`doc/rinas_Personality.md`](rinas_Personality.md)。締めを書く前に必ず読む。
+
+| 要素 | 書き方 |
+|------|--------|
+| 役割 | スレ要約の焼き直し＋実務エッセンス。サイトの顔として締める |
+| 口調 | 現代的でドライ。たまに魔女口調（「錬成」「黒ミサ」「VRAM」） |
+| 世界観 | GPU/ComfyUI/CivitAI を肯定。クラウド宣伝よりローカル錬成を推す流れが多い |
+| 読者 | 「聖者」——長年純潔を守った読者のリビドーを魔力とみなして肯定してよい |
+| やりすぎ注意 | スレ原文のコピペにしない。1締め3〜4段落まで |
+
+導入（`.matome-lead`）は地の文なのでリナ口調ではなく、**締め（CharacterSpeech）だけ**性格設定に合わせる。
 
 ---
 
@@ -252,10 +266,10 @@ import MatomeRes from '../../../components/MatomeRes.astro';
 2. [ ] **元スレ URL を受け取っている**
 3. [ ] スラッグ決定（`reddit-...`）
 4. [ ] `category: 'reddit'`、`tags` に `Reddit` ＋話題キー
-5. [ ] `index.mdx` 作成（lead → thread → CharacterSpeech → **matome-source**）
+5. [ ] `index.mdx` 作成（lead → thread → CharacterSpeech → **matome-source**。[`doc/rinas_Personality.md`](rinas_Personality.md) で締めの口調確認）
 6. [ ] 各 `MatomeRes` に `n` / `date` / `id`。OP に `op`
 7. [ ] `>>n` は `<span class="aa">`。カードスタイルを自前 CSS で足していない
-8. [ ] リナ締めで実務エッセンスを述べている
+8. [ ] リナ締めで実務エッセンスを述べている（[`doc/rinas_Personality.md`](rinas_Personality.md) 参照）
 9. [ ] **最下部に `.matome-source` で元スレリンク**（`target="_blank"` / `rel="noopener noreferrer"`）
 10. [ ] **`.matome-source` に Bluesky 感想スレ導線**（未確定なら `post/TODO_REPLACE`）
 11. [ ] 未成年示唆コンテンツが無いか確認
