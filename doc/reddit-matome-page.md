@@ -81,11 +81,14 @@ matome-lead（導入・1〜2文）
 
 ```text
 src/content/blog/<slug>/
-└── index.mdx
+├── index.mdx
+└── images/                 # 一覧用サムネイルがある場合
+    └── <slug>.webp
 ```
 
 - スラッグ＝URL パス。慣例は `reddit-<テーマ英語kebab>`（例: `reddit-character-consistency`）。
-- 画像が無い記事が基本。入れる場合だけ `images/` を足し、相対パスで参照。
+- 画像は任意。エロサムネを付ける場合は `images/` に置き、フロントマターの `images` から相対パスで参照する。
+- `images` の**先頭画像**がトップページと記事一覧のサムネイルになる。
 
 ---
 
@@ -103,6 +106,8 @@ tags:
   - <話題キー1>                # 例: ComfyUI / Flux2 / Krea
   - <話題キー2>
   - 画像生成AI
+images:                         # 任意。一覧サムネイルは先頭画像
+  - './images/<slug>.webp'
 ---
 ```
 
@@ -111,6 +116,7 @@ tags:
 | `title` | `【Redditまとめ】…` で始める |
 | `category` | 原則 `reddit` |
 | `tags` | `/tags` 用。必ず `Reddit` を含める |
+| `images` | 任意。`images[0]` をトップ・記事一覧のサムネイルに使用 |
 | `dlsite_*` / `prompt` / `danbooru_tags` / `models` | **使わない**（逆引き記事専用） |
 
 元スレ URL はフロントマターには持たない。**本文末尾の `.matome-source` に書く。**
@@ -274,7 +280,8 @@ import MatomeRes from '../../../components/MatomeRes.astro';
 10. [ ] **`.matome-source` に Bluesky 感想スレ導線**（未確定なら `post/TODO_REPLACE`）
 11. [ ] 未成年示唆コンテンツが無いか確認
 12. [ ] `/blog/<slug>/` と `/categories/reddit/` に出ること
-13. [ ] **Bluesky 告知投稿文**（`#へっぽこ魔女のHなAIグリモワール` 付き）をユーザーに提示
+13. [ ] サムネイルがある場合、`images[0]` がトップと記事一覧に表示されること
+14. [ ] **Bluesky 告知投稿文**（`#へっぽこ魔女のHなAIグリモワール` 付き）をユーザーに提示
 
 ---
 
