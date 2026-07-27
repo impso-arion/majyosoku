@@ -90,6 +90,24 @@ CharacterSpeech（本文）
 
 失敗時はカードがリンクのみになる（ビルドは止まらない）。非公式 API のため、将来壊れる可能性はある。
 
+**海外ビルド（Cloudflare Pages 等）で API が空 `[]` になる場合**
+
+`RegionHiddenFilter`（特定地域アクセス非表示）付き作品は、日本国外 IP から `product.json` を叩くと **空配列** が返ることがある。Cloudflare Pages のビルドは海外データセンターで走るため、ローカル `dev` では取れるのに本番だけ RJ 番号フォールバックになる。
+
+対処: フロントマターに `dlsite_meta` を入れる（ローカルや日本 IP で API を確認してから転記）。
+
+```yaml
+dlsite_meta:
+  title: '作品タイトル'
+  maker: 'サークル名'
+  price: 847
+  intro: '短い紹介文'
+  genres:
+    - 水着
+    - 学校/学園
+  thumb_url: 'https://img.dlsite.jp/modpub/images2/work/...'
+```
+
 ---
 
 ## 入力（ユーザーからもらうもの）

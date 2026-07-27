@@ -1,7 +1,12 @@
 ---
 import { Image, getImage } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
-import { affiliateWorkUrl, fetchDlsiteWork, toDlsiteAffiliateUrl } from '../lib/dlsite';
+import {
+	affiliateWorkUrl,
+	resolveDlsiteWork,
+	toDlsiteAffiliateUrl,
+	type DlsiteMetaFallback,
+} from '../lib/dlsite';
 
 interface ModelInfo {
 	name: string;
@@ -12,6 +17,7 @@ interface ModelInfo {
 interface Props {
 	dlsiteId?: string;
 	dlsiteUrl?: string;
+	dlsiteMeta?: DlsiteMetaFallback;
 	danbooruTags?: string[];
 	prompt?: string;
 	images?: ImageMetadata[];
@@ -22,6 +28,7 @@ interface Props {
 const {
 	dlsiteId,
 	dlsiteUrl,
+	dlsiteMeta,
 	danbooruTags = [],
 	prompt,
 	images = [],
@@ -30,7 +37,7 @@ const {
 } = Astro.props;
 
 const dlsite = dlsiteId
-	? await fetchDlsiteWork(dlsiteId, dlsiteUrl)
+	? await resolveDlsiteWork(dlsiteId, dlsiteUrl, dlsiteMeta)
 	: null;
 const dlsiteHref =
 	dlsite?.workUrl ??

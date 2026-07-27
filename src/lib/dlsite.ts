@@ -36,6 +36,16 @@ export type DlsiteWorkCard = {
 	workUrl: string;
 };
 
+/** API が海外 IP で空になる作品向け。記事フロントマターに手動で入れる */
+export type DlsiteMetaFallback = {
+	title: string;
+	maker?: string;
+	price?: number;
+	intro?: string;
+	genres?: string[];
+	thumb_url?: string;
+};
+
 const API =
 	'https://www.dlsite.com/maniax/api/=/product.json?workno=';
 
@@ -141,6 +151,42 @@ function normalize(raw: unknown, workno: string, urlOverride?: string): DlsiteWo
 		thumbUrl: absUrl(p.image_main?.url) ?? absUrl(p.image_thum?.url),
 		workUrl: workPageUrl(id, p.site_id, urlOverride),
 	};
+}
+
+export function dlsiteCardFromFallback(
+	workno: string,
+	meta: DlsiteMetaFallback,
+	urlOverride?: string,
+): DlsiteWorkCard {
+	const id = workno.trim().toUpperCase();
+	return {
+		workno: id,
+		title: meta.title.trim(),
+		maker: meta.maker?.trim() || null,
+		price: typeof meta.price === 'number' ? meta.price : null,
+		intro: meta.intro?.trim() || null,
+		genres: (meta.genres ?? [])
+			.map((g) => g.trim())
+			.filter(Boolean),
+		thumbUrl: absUrl(meta.thumb_url) ?? null,
+		workUrl: workPageUrl(id, extractDlsiteSite(urlOverride), urlOverride),
+	};
+}
+
+/**
+ * product.json を試し、失敗時は dlsite_meta フォールバックを使う。
+ */
+export async function resolveDlsiteWork(
+	workno: string,
+	urlOverride?: string,
+	fallback?: DlsiteMetaFallback,
+): Promise<DlsiteWorkCard | null> {
+	const fetched = await fetchDlsiteWork(workno, urlOverride);
+	if (fetched) return fetched;
+	if (fallback?.title?.trim()) {
+		return dlsiteCardFromFallback(workno, fallback, urlOverride);
+	}
+	return null;
 }
 
 /**

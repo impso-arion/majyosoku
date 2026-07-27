@@ -1,6 +1,6 @@
 ---
 import { CATEGORIES, HEADLINE_LIMIT } from '../consts';
-import { affiliateWorkUrl, fetchDlsiteWork, toDlsiteAffiliateUrl } from '../lib/dlsite';
+import { affiliateWorkUrl, resolveDlsiteWork, toDlsiteAffiliateUrl } from '../lib/dlsite';
 import { getSortedPosts } from '../lib/posts';
 
 const source = (await getSortedPosts())
@@ -10,7 +10,11 @@ const source = (await getSortedPosts())
 const items = await Promise.all(
 	source.map(async (post, i) => {
 		const id = post.data.dlsite_id!;
-		const card = await fetchDlsiteWork(id, post.data.dlsite_url);
+		const card = await resolveDlsiteWork(
+			id,
+			post.data.dlsite_url,
+			post.data.dlsite_meta,
+		);
 		const cat = CATEGORIES.find((c) => c.slug === post.data.category);
 		const price =
 			card?.price != null ? `¥${card.price.toLocaleString('ja-JP')}` : null;
