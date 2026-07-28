@@ -1,0 +1,1778 @@
+
+URL：https://www.reddit.com/r/StableDiffusion/comments/1v8dag3/i_love_how_krea2_makes_slight_out_of_the_focus/
+
+
+I love how Krea2 makes "slight out of the focus" pictures
+Workflow Included
+
+r/StableDiffusion - I love how Krea2 makes "slight out of the focus" pictures
+1 ページ (現在のページ)
+2 ページ
+3 ページ
+4 ページ
+5 ページ
+6 ページ
+
+
+項目 1/6
+I used to have troubles with local image generation when trying this, most models would make completely out of focus pictures even when I prompt "just a bit out of focus, slight camera shake, etc...", only Nano Banana/ChatGPT would do the way I wanted, balanced, but Krea2 is great at this and without any lora for it. Just by using these standard Prompt Modifiers at the end, I get really good results and realistic photos.
+
+The prompt used in all these photos is just something like:
+"Woman photographed at the Meeting Gala, looking to the camera."
+(the women's faces are from some loras I made).
+
+For slight out the focus (photos on the left), I added:
+
+A candid cinematic frame from a live-action film, captured during motion, slight motion blur, slight out-of-focus, natural handheld camera movement, imperfect framing, realistic rolling shutter, authentic camera shake, cinematic lighting, organic film grain, spontaneous moment, documentary feel, natural depth of field, imperfect focus pull, realistic compression artifacts, 35mm cinema lens, high-end digital cinema camera, unposed, believable.
+
+While for professional high quality photo (photos on the right) I added:
+
+professional RAW photograph, hyperrealistic, highly detailed skin texture, sharp focus, natural lighting, shot on Hasselblad 80mm, 8k resolution, masterpiece, photorealistic For professional high quality photo
+
+Info: I'm using the workflow: Winnougan_Krea_2_INT8_TE_Diffuser_WF with the model Krea2_Turbo_convrot_int8mixed.safetensors (way faster than the others on my RTX 5070)
+
+
+賛成に投票
+390
+
+反対に投票
+
+96
+コメントに移動
+
+再投稿
+
+共有
+u/CodeRabbitAI さんのアバター。
+CodeRabbitAI
+•
+広告
+
+Reviews for AI-powered teams who move fast (but don’t break things)
+詳細はこちら
+coderabbit.ai
+Thumbnail image: Reviews for AI-powered teams who move fast (but don’t break things)
+並べ替え基準：
+
+賛成票率順
+
+コメントを検索する
+コメント検索を展開する
+コメントセクション
+SoylentCreek
+•
+1 日前
+
+
+
+賛成に投票
+431
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/FiTroSky さんのアバター。
+FiTroSky
+•
+1 日前
+
+
+
+賛成に投票
+24
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/herr-tibalt さんのアバター。
+herr-tibalt
+•
+1 日前
+Guys am I the only one who needs an explanation team here?
+
+
+賛成に投票
+28
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+Top_Effect_5109
+•
+1 日前
+The first two do adults films, Xev Bellringer, Mia Khalifa. the third woman I don't know who that is.
+
+
+賛成に投票
+68
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/Gato_Puro さんのアバター。
+Gato_Puro
+OP
+•
+21 時間前
+i like seeing women who are not known for wearing elegant clothes, wearing elegant clothes. i dont know why
+
+
+賛成に投票
+43
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/FartingBob さんのアバター。
+FartingBob
+•
+14 時間前
+That's a wholesome kink.
+
+
+賛成に投票
+19
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/oritfx さんのアバター。
+oritfx
+•
+17 時間前
+All else aside, that should be a genre.
+
+
+賛成に投票
+14
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+Puzzleheaded_Smoke77
+•
+7 時間前
+Thats funny I do the same thing
+
+
+賛成に投票
+6
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/younestft さんのアバター。
+younestft
+•
+21 時間前
+People of that profession are the least likely to claim copyrights or take down ur AI Pic so yeah that's actually smart lol
+
+Why would they when they have undressed real pics of them all over the net
+
+
+賛成に投票
+-2
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+Zalkea
+•
+1 日前
+Nao Jinguji, of similar profession
+
+
+賛成に投票
+47
+
+反対に投票
+
+返信
+
+
+1
+
+共有
+
+u/AIgoonermaxxing さんのアバター。
+AIgoonermaxxing
+•
+7 時間前
+One of the GOATs fr
+
+
+賛成に投票
+3
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/pornaccount0123987 さんのアバター。
+pornaccount0123987
+•
+13 時間前
+Who would ever want to see them naked...
+
+
+賛成に投票
+-3
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+Auto_17
+•
+1 日前
+u/Smooth-Ad-8460 さんのアバター。
+Smooth-Ad-8460
+•
+1 日前
+You are a pure, innocent soul. Walk away, friend.
+
+
+賛成に投票
+15
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/Critical_Concert_689 さんのアバター。
+Critical_Concert_689
+•
+1 日前
+mfw "porn stars"
+
+The joke is porn.
+
+
+賛成に投票
+7
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/GifterSaucer さんのアバター。
+GifterSaucer
+•
+11 時間前
+Men of culture, we meet again.
+
+
+賛成に投票
+4
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+JeSyollu
+•
+8 時間前
+
+
+
+賛成に投票
+4
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/Trumpet_of_Jericho さんのアバター。
+Trumpet_of_Jericho
+•
+1 日前
+
+
+I see what you did there
+
+
+賛成に投票
+88
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+Schwartzen2
+•
+22 時間前
+Medic!!
+
+
+賛成に投票
+5
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/DlCkLess さんのアバター。
+DlCkLess
+•
+22 時間前
+Man of culture, Nao Jinguji, Xev Bellringer, and the Goat Mia
+
+
+賛成に投票
+27
+
+反対に投票
+
+返信
+
+
+1
+
+共有
+
+u/Hearcharted さんのアバター。
+Hearcharted
+•
+14 時間前
+Your name WTF 😂
+
+
+賛成に投票
+4
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/pornaccount0123987 さんのアバター。
+pornaccount0123987
+•
+13 時間前
+Don't pretend it doesn't apply to you.
+
+
+賛成に投票
+6
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/Hearcharted さんのアバター。
+Hearcharted
+•
+11 時間前
+😅
+
+
+賛成に投票
+2
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/AlexNae さんのアバター。
+AlexNae
+•
+13 時間前
+bro destroyed his dick
+
+
+賛成に投票
+4
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/Hearcharted さんのアバター。
+Hearcharted
+•
+11 時間前
+🤣
+
+
+賛成に投票
+1
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+Lucky-Necessary-8382
+•
+17 時間前
+All from the gooner universe
+
+
+賛成に投票
+2
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/the_bollo さんのアバター。
+the_bollo
+•
+1 日前
+コメントの画像
+
+賛成に投票
+47
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/Hyper3D_RodinAI さんのアバター。
+u/Hyper3D_RodinAI
+•
+広告
+
+Made a tiny kitty toy from one image. Took about an hour and I’m obsessed.
+詳細はこちら
+hyper3d.ai
+Thumbnail image: Made a tiny kitty toy from one image. Took about an hour and I’m obsessed.
+meechmeechmeecho
+•
+1 日前
+The first one looks just like my stepmom
+
+
+賛成に投票
+42
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/CruelAngelsPostgrad さんのアバター。
+CruelAngelsPostgrad
+•
+1 日前
+I think your stepmom is my babysitter
+
+
+賛成に投票
+34
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+dontbeanegatron
+•
+14 時間前
+Funny, she looks like my wife's sister
+
+
+賛成に投票
+8
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/DominusIniquitatis さんのアバター。
+DominusIniquitatis
+•
+5 時間前
+Wait, but she's actually my doctor.
+
+
+賛成に投票
+2
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/Broken-Arrow-D07 さんのアバター。
+Broken-Arrow-D07
+•
+1 日前
+I know all of them
+
+
+賛成に投票
+59
+
+反対に投票
+
+返信
+
+
+1
+
+共有
+
+u/stephenkingending さんのアバター。
+stephenkingending
+•
+1 日前
+A man of culture I see.
+
+
+賛成に投票
+18
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/beragis さんのアバター。
+beragis
+•
+1 日前
+I only recognized the second woman, but she’s a bit thinner in the face than I remember.
+
+
+賛成に投票
+3
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/PoshDota さんのアバター。
+PoshDota
+•
+1 日前
+
+
+
+賛成に投票
+33
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/IdleOn_Boii さんのアバター。
+u/IdleOn_Boii
+•
+広告
+
+Incremental Game with more to it than most - Fortune Mill - 20% off on Steam
+さらに表示
+store.steampowered.com
+Thumbnail image: Incremental Game with more to it than most - Fortune Mill - 20% off on Steam
+u/Significant-One-9465 さんのアバター。
+Significant-One-9465
+•
+23 時間前
+I think we all would like you to share the lora used to make these women in krea 2
+
+
+賛成に投票
+16
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/Gato_Puro さんのアバター。
+Gato_Puro
+OP
+•
+22 時間前
+i made a lot of loras but i dont even know if i can post here, if that would be self promotion or something
+
+
+賛成に投票
+9
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/Significant-One-9465 さんのアバター。
+Significant-One-9465
+•
+22 時間前
+I think thru GitHub or huggingface. There are ways to share. Someone else may help us out here by telling us.
+
+
+賛成に投票
+8
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/tovarischsht さんのアバター。
+tovarischsht
+•
+17 時間前
+CivitAI blocks loras trained on real persons, but if there is any other resource that allows hosting those I am interested in that too - got about 30 Krea loras of various celebrities.
+
+
+賛成に投票
+8
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+T_D_R_
+•
+18 時間前
+TensorHub Art or CivitAI Red will be good option for NSFW LoRAs
+
+
+賛成に投票
+4
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/fongletto さんのアバター。
+fongletto
+•
+17 時間前
+It'd only be self promotion I think if you were charging money for it.
+
+
+賛成に投票
+4
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/Tzontetiliztli さんのアバター。
+Tzontetiliztli
+•
+10 時間前
+You could upload them on gofile.io and then share the link on https://www.reddit.com/r/malcolmrey/
+
+
+賛成に投票
+3
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+Harddicc
+•
+23 時間前
+Yeah I want that too
+
+
+賛成に投票
+2
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+the_good_bad_dude
+•
+1 日前
+I wanna ring some bells
+
+
+賛成に投票
+15
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/Smooth-Ad-8460 さんのアバター。
+Smooth-Ad-8460
+•
+1 日前
+
+
+
+賛成に投票
+24
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+Schwartzen2
+•
+22 時間前
+pwned!
+
+
+賛成に投票
+4
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+jj4379
+•
+23 時間前
+If there is a xev lora.... I must know where to find it
+
+
+賛成に投票
+10
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/Gato_Puro さんのアバター。
+Gato_Puro
+OP
+•
+21 時間前
+i made it
+
+
+賛成に投票
+5
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/ExampleOtherwise4340 さんのアバター。
+ExampleOtherwise4340
+•
+1 日前
+Holy crap... I haven't seen Pam from The Office in so long!
+
+
+賛成に投票
+19
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+shorty_short
+•
+1 日前
+That's not Pam, are you blind? That's Kelly from office.
+
+
+賛成に投票
+6
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/warzone_afro さんのアバター。
+warzone_afro
+•
+1 日前
+Xev bellringer, a man of culture i see
+
+
+賛成に投票
+17
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/Dulbero さんのアバター。
+Dulbero
+•
+19 時間前
+Krea2 styles and photography is highly underrated. The model has great knowledge of photography! I recommend looking at examples from Krea itself at https://www.krea.ai/app?gallery=moodboards for some keywords and examples. It gives much more flavor to all your generations.
+
+
+賛成に投票
+7
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/fongletto さんのアバター。
+fongletto
+•
+17 時間前
+Please share Lora's my man.
+
+
+賛成に投票
+6
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+ikmalsaid
+•
+1 日前
+
+
+
+賛成に投票
+19
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/Outrageous-Wait-8895 さんのアバター。
+Outrageous-Wait-8895
+•
+1 日前
+the women's faces are from some loras I made
+
+Hmmm yeah gonna need a link.
+
+
+賛成に投票
+6
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/Gato_Puro さんのアバター。
+Gato_Puro
+OP
+•
+22 時間前
+i'll try to learn how to post my loras on hugging face later, but i can send you in dm
+
+
+賛成に投票
+10
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/000sk7 さんのアバター。
+000sk7
+•
+22 時間前
+Hey OP can you hook me up as well lmao Xev one is just too good
+
+
+賛成に投票
+3
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+Fatty-McDuffins
+•
+20 時間前
+Please
+
+
+賛成に投票
+2
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/Objective_Cheek3877 さんのアバター。
+Objective_Cheek3877
+•
+16 時間前
+Hey man, can you dm me those if you can and also more importantly I’d love to just get your Lora training Params
+and process. These might be the best loras I have seen
+
+
+賛成に投票
+2
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/Tzontetiliztli さんのアバター。
+Tzontetiliztli
+•
+10 時間前
+may i have mia lol
+
+
+賛成に投票
+1
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+WebHead007
+•
+4 時間前
+great work dude.
+
+I too would love to get those loras
+
+
+賛成に投票
+1
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+Fatty-McDuffins
+•
+21 時間前
+Definitely let us know when we can find these goodies my guy.
+
+
+賛成に投票
+3
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/ArmadstheDoom さんのアバター。
+ArmadstheDoom
+•
+22 時間前
+I know everyone is asking for the downloads, but I'm actually more curious about how you curated the dataset to get good likenesses. One issue I've had in training people with Krea is that it either just doesn't learn the person or it seems to 'average' them to the point where the likeness just isn't very exact.
+
+So I'm curious to know how big your dataset is and how many steps you trained it.
+
+
+賛成に投票
+3
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/Gato_Puro さんのアバター。
+Gato_Puro
+OP
+•
+22 時間前
+I'm actually a newbie on training, I got lucky because I downloaded OneTrainer and the app has a preset for Krea2 for 16GB VRAM and I haev a 5070TI. The app has 1 thousand options which i have no idea what they do, so I just used the krea2 preset for Lora basically, i didnt change a thing. If you dont have 16gb vram, try to change the "Transformer Data Type" or the "Optimizer".
+
+I made a Lora with 18 images (most of them high quality) and it looked amazing, while some Loras with 25 images didnt look that good, so it REALLY depends on the images you are choosing and also on the prompt describing the images, I use the Blip in OneTrainer to add captions but I edit them manually, always describing the environment, clothes, face expression... My best loras I used 22~26 images focusing on high quality images. I tried with 30+ images but didnt look good.
+
+On the OneTrainer, when adding the concept/dataset, I let all default settings including the Repeats being 1. To compensate that, I let epoch set to 100. That's what I did
+
+
+賛成に投票
+14
+
+反対に投票
+
+返信
+
+
+1
+
+共有
+
+u/Dangerous-Paper-8293 さんのアバター。
+Dangerous-Paper-8293
+•
+13 時間前
+Could someone please explain to me how OP got int8 models running natively, without using the Johnson nodes?
+
+
+賛成に投票
+3
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/PhrozenCypher さんのアバター。
+PhrozenCypher
+•
+11 時間前
+Part of official updated comfyui v28
+
+
+賛成に投票
+3
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+crinklypaper
+•
+9 時間前
+Its great to see how far we've come from flux. Where everything had same chin and the back bokeh background.
+
+
+賛成に投票
+3
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/SplurtingInYourHands さんのアバター。
+SplurtingInYourHands
+•
+23 時間前
+.... *mom* ahem.
+
+
+賛成に投票
+2
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/TwoFun6546 さんのアバター。
+TwoFun6546
+•
+18 時間前
+Miaaaaa
+
+
+賛成に投票
+2
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+Ballz0fSteel
+•
+10 時間前
+
+
+
+賛成に投票
+2
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+apostrophefee
+•
+8 時間前
+very sus
+
+
+賛成に投票
+2
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/Leather_Owl6186 さんのアバター。
+Leather_Owl6186
+•
+6 時間前
+Did u train their lora's for face??
+
+
+賛成に投票
+2
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+Fatty-McDuffins
+•
+1 日前
+How about a Lora download link 😆
+
+
+賛成に投票
+3
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/eggs-benedryl さんのアバター。
+eggs-benedryl
+•
+1 日前
+What I love is that people can't or refuse to just switch the subject when they come post here. Like people will post about their new discovery about reducing background noise or something but won't swap out the subject to like a sunset instead of princess Jasmine jamming her foot center frame.
+
+
+賛成に投票
+4
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/Individual_Holiday_9 さんのアバター。
+Individual_Holiday_9
+•
+1 日前
+Honestly I’m not even porn brained but nsfw is an interesting way to probe at model limitations and qualify relative strengths that no redditor has ever seen (a naked woman) but can imagine vividly
+
+
+賛成に投票
+6
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+blacklotusmag
+•
+1 日前
+Why should they switch the subject? What kind of fragile human are you that you can't even handle a fully-dressed adult woman in perfectly normal non-sexual poses, just because she does porn?
+
+
+賛成に投票
+7
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/thrownawaymane さんのアバター。
+thrownawaymane
+•
+1 日前
+It really gets me every time. Daily entertainment
+
+
+賛成に投票
+2
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/Cute_Addicted さんのアバター。
+Cute_Addicted
+•
+1 日前
+hmm sir imma need u to give those loras in dm thanks
+
+
+賛成に投票
+2
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+HocusP2
+•
+1 日前
+lolwtf... Search this subreddit and find thousands of post about 'background blurry omg too much bokeh' and now it's 'Hooray it looks like a photograph with actual depth of field!'
+
+
+賛成に投票
+2
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+Astral-Lemmons
+•
+1 日前
+there a huge difference between the forced blur flux applied and the intentional camera accurate blur OP is talking about.
+
+
+賛成に投票
+12
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/Slam_Bot さんのアバター。
+Slam_Bot
+•
+1 日前
+This has to be a bot. No way you don’t understand the difference.
+
+
+賛成に投票
+2
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+reeight
+•
+1 日前
+Is the left Krea2 & the right another model?
+
+
+賛成に投票
+1
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+-JuliusSeizure
+•
+20 時間前
+damn. btw you plan to drop the lora on hugging face or something?
+
+
+賛成に投票
+1
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+Illhoon
+•
+16 時間前
+How do people get such perfect character consistency across multiple renders which have varying outfits, poses, backgrounds, etc.? In this case, these are very well-known people; is this carried by LoRAs made of them? Would that also work with a fully generated new character, or a small sample size of photos?
+
+
+賛成に投票
+1
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/fongletto さんのアバター。
+fongletto
+•
+16 時間前
+These are Lora's trained on well known public figures which likely increases the quality somewhat because KREA2 already has a lot of the base information for those people baked in.
+
+It would work for fully generated new characters with some additional steps. A small sample size of photos would be better even as little as 5-6 photos from different angles is usually enough for decent quality. But obviously a better dataset will give better results.
+
+
+賛成に投票
+1
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/Dry-Judgment4242 さんのアバター。
+Dry-Judgment4242
+•
+14 時間前
+This is a NL model. Why are you treating it like it was SDXL with half the prompt or more filled with slop tags like Ultra CD 8k hypermax Super 800m hasselboff.
+
+
+賛成に投票
+1
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/Hearcharted さんのアバター。
+Hearcharted
+•
+14 時間前
+The 3rd IMG caught me off-guard WTHeck 😂
+
+
+賛成に投票
+1
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/l3urak1993 さんのアバター。
+l3urak1993
+•
+11 時間前
+
+
+
+賛成に投票
+1
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/TreeQuick421 さんのアバター。
+TreeQuick421
+•
+8 時間前
+Xev
+
+
+
+
+賛成に投票
+1
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+Sparksaiko
+•
+7 時間前
+
+
+
+賛成に投票
+1
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/DueMathematician6968 さんのアバター。
+DueMathematician6968
+•
+3 時間前
+コメントの画像
+
+賛成に投票
+1
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/HollowAbsence さんのアバター。
+HollowAbsence
+•
+1 日前
+•
+1 日前
+に編集
+is the first one Heather Idt ??? Hahahaha. Did you use Loras or Krea know them ?
+
+
+賛成に投票
+1
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+Tokey_TheBear
+•
+1 日前
+First one is Xev lol. An absolute legend.
+
+
+賛成に投票
+18
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+Maleficent-Squash746
+•
+1 日前
+"slightly out of focus"
+
+
+賛成に投票
+1
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/thegreatdivorce さんのアバター。
+thegreatdivorce
+•
+23 時間前
+Could get the exact same result with less than half the tokens in your prompt, you're just repeating the same thing over and over.
+
+
+賛成に投票
+1
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/pornaccount0123987 さんのアバター。
+pornaccount0123987
+•
+13 時間前
+Now generate a slight close up without a DOF. Dead giveaway of AI slop.

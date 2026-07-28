@@ -1,0 +1,151 @@
+---
+title: '【Redditまとめ】Krea2が「ちょいボケ」写真を再現できると話題——プロンプト修飾子付き'
+description: 'r/StableDiffusionでKrea2の自然な手ブレ・浅いピンボケが評判に。左ボケ右シャープの比較、末尾プロンプト修飾子、INT8 WF、OneTrainer LoRA tipsを暇速風にまとめ。'
+pubDate: 2026-07-29
+featured: true
+category: 'reddit'
+tags:
+  - Reddit
+  - Krea
+  - Krea2
+  - ComfyUI
+  - LoRA
+  - 画像生成AI
+  - 写真
+images:
+  - './images/reddit-krea2-out-of-focus.webp'
+---
+
+import CharacterSpeech from '../../../components/CharacterSpeech.astro';
+import MatomeRes from '../../../components/MatomeRes.astro';
+
+<p class="matome-lead">
+	海外板から拾ってきたわ。<strong>「Krea2 なら“ちょっとだけボケた”写真が作れる」</strong>投稿。
+	ローカル SD だと「slight out of focus」で全部潰れるのに、NL 系の Krea2 は末尾の写真修飾子だけでいけるらしい。Workflow 付き。会話調に焼き直したから読みなさい。
+</p>
+
+<div class="matome-thread">
+
+<MatomeRes n={1} name="名無しさん" id="KreaBlur0" date="2026/07/28(火) 09:14:22.41" op>
+	<p>
+		ローカル生成で「少しだけボケ」「軽い手ブレ」を狙うと、大抵モデルが全部ボケ散らかす。<br />
+		Nano Banana / ChatGPT くらいはバランスよく出せたけど、<strong>Krea2 も LoRA なしでかなり再現できる</strong>。<br />
+		ベースは <code>Woman photographed at the Meeting Gala, looking to the camera.</code> みたいな短い英文。顔は自作 LoRA。
+	</p>
+</MatomeRes>
+
+<MatomeRes n={2} name="名無しさん" id="KreaBlur0" date="2026/07/28(火) 09:18:05.88" op>
+	<p>
+		<strong>左：ちょいボケ</strong>用に末尾へ追加——<br />
+		<em>A candid cinematic frame from a live-action film, captured during motion, slight motion blur, slight out-of-focus, natural handheld camera movement, imperfect framing, realistic rolling shutter, authentic camera shake, cinematic lighting, organic film grain, spontaneous moment, documentary feel, natural depth of field, imperfect focus pull, realistic compression artifacts, 35mm cinema lens, high-end digital cinema camera, unposed, believable.</em><br />
+		<strong>右：シャープ写真</strong>用——<br />
+		<em>professional RAW photograph, hyperrealistic, highly detailed skin texture, sharp focus, natural lighting, shot on Hasselblad 80mm, 8k resolution, masterpiece, photorealistic</em>
+	</p>
+</MatomeRes>
+
+<MatomeRes n={3} name="名無しさん" id="Int8WF" date="2026/07/28(火) 09:26:33.12">
+	<p>
+		<span class="aa">&gt;&gt;1</span><br />
+		WF は <strong>Winnougan_Krea_2_INT8_TE_Diffuser_WF</strong>、モデルは <strong>Krea2_Turbo_convrot_int8mixed.safetensors</strong>。<br />
+		RTX 5070 で他よりかなり速い、とのこと。INT8 ネイティブは ComfyUI v0.3.28 以降の話も出てる。
+	</p>
+</MatomeRes>
+
+<MatomeRes n={4} name="名無しさん" id="BlurDebate" date="2026/07/28(火) 10:02:17.55">
+	<p>
+		「背景ボケ多すぎ問題」とは別物だろ。<br />
+		Flux 時代に強制かかってた<strong>均一なぼかし</strong>と、今回 OP が言ってる<strong>カメラとして自然な浅いピンボケ</strong>は別次元。
+	</p>
+</MatomeRes>
+
+<MatomeRes n={5} name="名無しさん" id="NLPrompt" date="2026/07/28(火) 10:18:44.03">
+	<p>
+		Krea2 は NL モデルなのに、右側プロンプトに <code>8k masterpiece hypermax</code> 系 SDXL スロップタグ入れてるの草。<br />
+		でも結果出てるから、<strong>「タグ盛り」より“写真の言い方”で方向付け</strong>が効いてる側面はある。
+	</p>
+</MatomeRes>
+
+<MatomeRes n={6} name="名無しさん" id="PhotoNerd" date="2026/07/28(火) 11:05:09.71">
+	<p>
+		Krea2 の写真知識、本当に過小評価されてる。<br />
+		公式ギャラリーの moodboards を見ると、照明・構図のキーワードの引き出しが多い。<strong>krea.ai の gallery から修飾子を借りる</strong>のも手。
+	</p>
+</MatomeRes>
+
+<MatomeRes n={7} name="名無しさん" id="LoraAsk" date="2026/07/28(火) 12:22:41.19">
+	<p>
+		顔 LoRA どこ？ CivitAI は実在人物 LoRA を弾くから、GitHub / Hugging Face / TensorHub Art / CivitAI Red あたりが候補、って流れ。<br />
+		OP は「自作 LoRA たくさんある、DM で送るかも」と言いつつ公開方法を模索中。
+	</p>
+</MatomeRes>
+
+<MatomeRes n={8} name="名無しさん" id="KreaBlur0" date="2026/07/28(火) 12:40:18.66" op>
+	<p>
+		LoRA 学習は OneTrainer の <strong>Krea2 16GB VRAM プリセット</strong>をそのまま使用（5070 Ti）。<br />
+		18枚 HQ で当たり、25枚でも微妙な例あり。<strong>画質とキャプション（Blip＋手直しで服・表情・背景まで書く）</strong>が命。<br />
+		Repeats=1 の代わりに epoch=100。30枚超は逆に崩れた、とのこと。
+	</p>
+</MatomeRes>
+
+<MatomeRes n={9} name="名無しさん" id="LikeTrain" date="2026/07/28(火) 13:11:02.34">
+	<p>
+		有名人 LoRA は Krea2 側にベース情報が既にある分、再現が楽、という指摘も。<br />
+		完全オリジナルキャラなら追加工程が要るが、<strong>5〜6枚・複数アングル</strong>でも一応いける、という経験談。
+	</p>
+</MatomeRes>
+
+<MatomeRes n={10} name="名無しさん" id="SideShow" date="2026/07/28(火) 13:28:55.80">
+	<p>
+		コメ欄は「誰の顔？」「LoRA ください」で大盛り上がり。技術スレなのに AV 顔当てゲー化してて笑う。<br />
+		「普段カジュアルな人がガラ衣装」フェチ、って OP 本人も認めてて、なんかそれもジャンルになりつつある。
+	</p>
+</MatomeRes>
+
+<MatomeRes n={11} name="名無しさん" id="PromptCut" date="2026/07/28(火) 14:02:33.47">
+	<p>
+		ボケ修飾子、同じこと言いすぎでトークン半分以下に圧縮できる、というツッコミも。<br />
+		ただ <strong>slight out-of-focus / handheld / documentary feel</strong> あたりの核は残せ、とのこと。
+	</p>
+</MatomeRes>
+
+<MatomeRes n={12} name="名無しさん" id="TLDRK2" date="2026/07/28(火) 14:15:08.91">
+	<p>
+		要するに<br />
+		<strong>「Krea2 + 末尾の写真修飾子で、意図した“ちょいボケ”とシャープを切り替えられる。INT8 WF で5070クラスでも回る。顔は LoRA、学習は画質とキャプション勝負」</strong><br />
+		ってスレ。
+	</p>
+</MatomeRes>
+
+</div>
+
+<hr />
+
+<CharacterSpeech character="rina">
+	<p>まとめるとこうよ。</p>
+	<p>
+		<strong>「ボケ」にも種類がある。</strong>
+		Flux 全盛期に嫌われた“全体がふわっとした AI ボケ”と、今回のような手ブレ・浅いピンボケ・ドキュメンタリー感は別物。
+		Krea2 は NL モデルなので、Danbooru タグより<strong>カメラと現像の言葉</strong>を末尾に足す方が効くわ。
+	</p>
+	<p>
+		実務では、ベース英文＋「左ボケ／右シャープ」の修飾子セットをプリセット化しておくのが早い。
+		WF は INT8 版で VRAM を抑えつつ RTX 5070 級でも回せる、という報告が多い。
+		顔固定したいなら LoRA 必須だけど、<strong>ボケ表現そのものに専用 LoRA は要らない</strong>のがポイント。
+	</p>
+	<p>
+		LoRA 学習メモ（OneTrainer プリセット、18〜26枚 HQ、epoch 100、キャプション手直し）もその場で出てて実用的。
+		コメ欄の顔当て大会は見なかったことにして、今夜は“写真っぽい錬成”だけ盗んでいきなさい。
+	</p>
+</CharacterSpeech>
+
+<p class="matome-source">
+	元スレ：
+	<a href={"https://www.reddit.com/r/StableDiffusion/comments/1v8dag3/i_love_how_krea2_makes_slight_out_of_the_focus/"} target="_blank" rel="noopener noreferrer">
+		r/StableDiffusion — I love how Krea2 makes "slight out of the focus" pictures
+	</a>
+	<br /><br />
+	意見・感想はこちらの Bluesky 投稿にレスしてね：
+	<a href={"https://bsky.app/profile/rinasgrimoire.bsky.social/post/3mrqjszrnrk2o"} target="_blank" rel="noopener noreferrer">
+		Bluesky @rinasgrimoire.bsky.social — この記事の感想スレ
+	</a>
+</p>
