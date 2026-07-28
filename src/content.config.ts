@@ -26,6 +26,8 @@ const blog = defineCollection({
 					'outdoors',
 					'competition-swimsuit',
 					'garter-belt',
+					'lactation',
+					'micro-bikini',
 				])
 				.optional(),
 			tags: z.array(z.string()).optional(),

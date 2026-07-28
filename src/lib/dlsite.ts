@@ -58,6 +58,7 @@ const cache = new Map<string, DlsiteWorkCard | null>();
 function defaultSiteForWorkno(workno: string): string {
 	const prefix = workno.trim().slice(0, 2).toUpperCase();
 	if (prefix === 'VJ') return 'pro';
+	if (prefix === 'BJ') return 'books';
 	return 'maniax';
 }
 
