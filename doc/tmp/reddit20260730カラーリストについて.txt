@@ -1,0 +1,1531 @@
+元URLはこれ
+https://www.reddit.com/r/colorists/comments/1uw108f/heres_how_to_tell_if_theyre_legit/
+
+
+気になる今回の画像プロンプトはこれ
+1girl, solo, underwear, swimsuit, ass, thighs, outdoors, sky, day, from_behind, blurry, blue_sky, fingernails, dutch_angle, v, blurry_background, topless, underwear_only, close-up, bikini, ass_focus, lower_body,
+
+
+
+Here's how to tell if they're legit
+Other
+I'm a seniour colorist with +15 years of experience at a facility you most likely heard of but shall remain unnamed... and I'm honestly so tired of seeing all these influencers calling themselves colorists and trying to shove luts, powergrades and courses down people's throats. It does nothing to bring our community up and only spreads misinformation and bad habits.
+
+We need to raise the bar of the quality of freely available education in this field, so I want to arm you with the tools to have some critical thinking of your own and not fall for these sales traps.
+
+Here's some tips to help filter out the posers:
+
+easy one... If they trying to sell you a LUT/Powergrade... very slim chances they're legit. Yes we use LUTs but no we didnt get them online from some dude selling them for under $100 bucks. The colorists using LUTs had those custom built either by themselves, a trusted collegue or more likely, a color scientist. AND if you really want that LUT then at the very least make sure they specify what the input/output are for it.
+
+And no we don't use other people's powergrades... Why? Very simple... to build speed and intuition we need to be intentional of every single click, swipe of the panel and operation. And you cant do that using someone else's foundation.
+
+2. If they don't use an I/O or a panel.... absolutely guarantee you they don't do professional work.
+
+3. Log to final grade before and afters.... do I even need to say anything about this...
+
+4. They're selling your their "secret sauce"... sorry to break it to you, but there is no secret sauce. Just salt... aka your eyes. Only thing that makes a colorist actually good is their taste and having a deep understanding of the toolset, especially knowing how to use the tools available to you at the most optimal way. And yes most of the work you're asking how did they achieve that was because the footage was really well shot. Now what makes a colorist sucessful is a whole different topic... and its not talent.
+
+5. Own your looks. Its easy to use plugins and pre made stuff but what happens when you're with a client and they send you that curveball asking for something completely different? If you don't know what to do then you're in trouble... and if all you do is slap a plugin/LUT and use that as a base every time, you're gonna be fighting that look. This is literally the most fun part of the process and most people give that away to a plugin... Creating your own looks and having full authorship over the image and pipeline is the most rewarding feeling you'll find in this career.
+
+6. There is no "Step by Step Guide to Becoming a Colorist". Each person's path is different. What worked for me might not work for you. This is the most subjective and non linearized industry there is. There is no one path, just experiences. Best you can do is persist, invest in yourself, learn the craft, learn to communicate effectively/be charismatic and network as much as possible. Its not for everyone, but it definitely is for those who have the hunger and persistance within them.
+
+7. Using qualifiers and magic mask on every shot... thats just not feasable. Simplicity is always the best strategy. If you can solve it without a magic mask, then do it. If you can instead do it without a key, even better... Now, if you can do it without even using a shape/mask... then you're onto something. I actually only track 1 in every 20 shots nowadays...
+
+8. They show you how to copy a look but only do it on one shot... Suffice to say that is a waste of time. Not to throw any shade on reverse engineering grades, as that can be a great way to learn (once you have a foundational knowledge)... but doing it on one or two, three shots is really not capturing the fine nuances of what that look is actually doing. When I build showluts I look at it on hundreds of shots, in all sorts of settings. You should stress test your looks. Its a great way to refine your craft.
+
+9. stay away from anything labelled "get the [insert hollywood movie name here] look". None of those guys have any actual idea how that look was made. Rough.. yes, but true.
+
+Hope these help some of you.
+
+*if you're a seniour colorist reading this... I encourage you to add to the list. Share your knowledge.
+
+
+賛成に投票
+328
+
+反対に投票
+
+81
+コメントに移動
+
+再投稿
+
+共有
+u/ClickUp_App さんのアバター。
+ClickUp_App
+•
+広告
+
+Campaign plans in docs. Tasks in another tool. Feedback in Slack. ClickUp brings your marketing work into one place so your team can move faster.
+さらに表示
+clickup.com
+Thumbnail image: Campaign plans in docs. Tasks in another tool. Feedback in Slack.
+ClickUp brings your marketing work into one place so your team can move faster.
+並べ替え基準：
+
+賛成票率順
+
+コメントを検索する
+コメント検索を展開する
+コメントセクション
+johndabaptist
+•
+15 日前
+10. If they have the time and willpower to sit in front of yet another screen and make tutorials all day, they probably aren’t doing color full time.
+
+
+賛成に投票
+101
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+avidresolver
+•
+15 日前
+Frenchie Colour Grading did a video recently about how if she's actually busy with work she won't be making youtube videos, and if people are doing near daily youtube videos then they clearly aren't doing other work.
+
+
+賛成に投票
+43
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+johndabaptist
+•
+15 日前
+Yeah, but I want to add that not having full-time color work doesn't mean you aren't a valid or professional colorist because I think it's incredibly rare and hard to get that level of work these days for color, as a few recent "should I do this for a living?" posts have made clear. Sounds like Frenchie said it better, a constant output of videos and other content is almost impossible outside of normal working hours unless you give up your life.
+
+
+賛成に投票
+23
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+I-am-into-movies
+•
+15 日前
+well. Being great at a craft and teaching that craft are two different skills. There are world-class guitar builders who aren't famous guitar players, and there are incredible guitar players who would make terrible teachers. Skill, reputation, and visibility are three different things.
+
+Another question is: where are young people supposed to learn color grading?
+
+For a long time, color grading wasn't even a dedicated subject at many film schools, at least not between 2005 and 2015. I still work in the industry, and I often hear that this hasn't improved as much as people think over the last decade. So it's only natural that people turn to YouTube.
+
+The problem is that there's no single reliable source. Even on training platforms like TAC, and on other course platforms as well, you'll find instructors who have "made it" in the industry but whose workflows or advice are, in my opinion, questionable. Every teacher has different methods, and beginners have to sort through a lot of conflicting information to figure out what actually works.
+
+That is why I think established colorists should also ask themselves how they are passing on their knowledge. Instead of only criticizing YouTube educators, why not contribute? Start a YouTube channel, write articles, or make a series called "10 Color Grading Myths Debunked." Share your experience instead of staying anonymous and complaining that the available education is not good enough.
+
+
+賛成に投票
+16
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+Sorry-Zombie5242
+•
+14 日前
+Someone posted here that the only way to learn was to get a job at a color post house so you can work and learn from experienced colorist. Which to be sounds like it would great in a perfect world in which a top color house is going to give a colorist position to someone who has no experience being a colorist, and then have their senior colorist teach you everything they know. That surely may have been the only path 20 years ago when access to training and knowledge was very limited. Now we do have those resources available...too much of it in fact. The trick to it, and I think the OP's point, is filtering and sorting out the bad from the good. I for one follow a few colorist's YouTube channels and disregard a tremendous number of them, mainly on the many of the points the OP makes. I prefer a teacher who tells me the why and when to use/do something and the underlying principles and concepts. They understand there isn't a secret sauce and that one size does not fit all projects. They know it's far better to teach you skills and concepts so that you can explore and have the knowledge to be able to apply them to any project when it requires it. More of the "give a man a fish/teach a man to fish" idea.
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+[削除されました]
+•
+14 日前
+u/nostril_ さんのアバター。
+nostril_
+•
+15 日前
+This ^
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/timbotheous さんのアバター。
+timbotheous
+•
+15 日前
+Senior colourist chiming in here to say that I agree with all of this.
+
+Keep it simple.
+Learn your tools.
+Don’t rely on plug ins or power grades.
+Grade in broad strokes to be faithful to the footage.
+Use shapes or keys when necessary not as a default
+Remember that 80% of grading is client relations and running the room, the other 20% is actually grading.
+Listen to your clients and take your ego out of it.
+Serve the work.
+Work really hard to be good at your craft.
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/nexttonormal さんのアバター。
+nexttonormal
+•
+15 日前
+I feel like the last four statements applies to any artist having to sell their wares to buyers, particularly non-artists.
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/Realistic-Anteater-4 さんのアバター。
+Realistic-Anteater-4
+•
+14 日前
+When I see those videos of they build a grade with a gazillion power windows on a static frame. Sure good luck tracking them perfectly. Less and less time to grade nowadays, no time to track 20 power windows on a 44min tv show with 700 cuts!
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/the_colorist さんのアバター。
+the_colorist
+•
+15 日前
+Senior colorist of 13 years here, at another post house that will remain unnamed.
+
+This is a very good list and I thank you for taking the time to do it. 100% agree with everything you’re saying and I will add my little two cents.
+
+If they don’t talk about how to match color between shots, I’m not quite sure what they think we do 1000s of times per day.
+
+Learn the scopes!!! recently had someone freelance to help me finish a few film restorations and I was like hey bro, why are the titles pink?
+He’s like “what do you mean they’re pink? They look fine to me”
+well have you look at the vector scope!!!
+You will never be able to match color across shots of you don’t know how to religiously understand the RGB parade and vector scopes.
+
+Just because a look, LUT, power grade looks good on a well curated shot does not mean that anything you apply to will automatically look good. Please stop buying LITs from Youtubers and the such. It only hurts our industry.
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/Nice-Assumption2325 さんのアバター。
+u/Nice-Assumption2325
+•
+広告
+
+Import a video, describe the mood, and get music that follows the picture.
+詳細はこちら
+acestudio.ai
+Clickable image which will reveal the video player: Import a video, describe the mood, and get music that follows the picture.
+ビデオプレーヤーを折りたたむ
+
+0:00 / 0:00
+
+
+
+
+Cata_dk
+•
+15 日前
+You forgot the worst one ‘I learned this from a pro colorist/michelin chef/pilot’ etc. they are almost always the worst advices.
+
+Good points though from you
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+No-Mammoth-807
+•
+15 日前
+or even worse putting "pro colourist in everything you publish ??"
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+EditFinishColorComp
+•
+15 日前
+30 year editor/finisher here who has also been on a 6-year intense journey learning color. I started with the “influencers” myself, and after realizing all the noise out there was making my quest harder, committed to a longer program because that’s all that’s available to someone like me in my market without quitting my daily and my personal obligations.
+
+I’m finally at the point where I’m “making it” instead of “faking it,” and I don’t obsess about all the constant “gotta” learn/do this hype so much anymore. I tried desperately to share some of the solid things I’ve learned when people needed it to help put an end to all the very incorrect stuff out there when others were struggling. But I soon realized that it was a losing battle.
+
+Unfortunately, the wrong info gets propagated in a completely unstoppable social media way, and I’ve resigned to the fact that nobody can stop it. When millions share and spread that wrong info, the solid info gets dissolved into a fossil in the mud.
+
+People are impatient, lazy and have short attention spans, and that only fuels the influencer.
+
+You either have the resolve (pun intended) to never stop pursuing—or validating what you learn— or you don’t, and those that don’t don’t deserve to get the free expert advice without blood sweat.
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/MissMayDoesNotExist さんのアバター。
+MissMayDoesNotExist
+•
+15 日前
+What course did you follow? I feel really confident in so many areas of production and post production, but one thing that I still feel is out of my grasp is a profound understanding of color, both in the abstract and as it relates to building palettes and coloring in post. I still eye ball it until it “feels” right, whereas everything else I do in filmmaking is a mixture of intuition and deliberate strategy. Would love to be pointed in a direction to learn this stuff that isn’t influenced grifters 🥰
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+EditFinishColorComp
+•
+15 日前
+I started my journey with a not-so-great online "master's" class that I'm not going to mention, then started following the "usual three" in earnest, and found it all to be too scattered, disconnected and not leaving me with the fundamentals I was looking for, so I eventually enrolled in Dado Valentic's Master's program.
+
+At the time (in 2024) it was a 6-month program. Some on this thread may lump him into the same category as the others (he sells products too), but his program was exactly what I needed, and I personally love the guy (friend of mine now) and he's a wonderful influence and really strives to take the time to encourage and help you along. So he's not a CO3 Snr. colorist working on the biggest features, I don't care, there's a LOT to be learned from the guy and he's been AROUND. And because his course usually has so many enrolled, you get to hear the feedback and be a part of the progress of people from all over the world which only increases your exposure to how people work, how THEY do things, and what can be learned from all of it.
+
+Any program is what you make of it, and I know my journey to learn color has been like a second full-time job since I began, but I love it so much it's not like work to me. But just taking a course isn't enough, one has to practice, apply, investigate, test, read and practice more. I'm a full-time editor, but I've developed enough that I do all of my small shop's grading now, so yeah, guess I've just increased my work-load (again) but I suppose that's job security!
+
+Speaking of reading... there's a TON out there about theory, application and the emotional effects of color, but two books that are well regarded for going over the fundamentals are Alexis Van Hurkman's Color Correction Handbook and his Color Correction Look Book. They're great!
+
+Best of luck.
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+RTXshredder84
+•
+15 日前
+I'm currently in Dado's master class and I have to agree with everything that you've said. I've learned more than I could imagine from him and the feedback that they give plus they extra sessions if students are having issues are incredible.
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+AdmirableTurnip2245
+•
+15 日前
+Big Brush Theory needs to make a comeback. I'm seeing node after node after node of secondaries manipulation attempting to create a cohesive shot. It doesn't work that way at least not efficiently. Big tools first, then go in and fine tune if you absolutely have to (I rarely do). I knew something felt off when I started seeing the proliferation of 30-40 node shots being touted as definitive pro grading. I'm paid over 5 but usually 10 working days to grade an independent feature film. My node trees simply can't look that way out of practicality. I'm also not fighting DP or Director intent to make it something it's not.
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+WantDownvotesOnly
+•
+11 日前
+コメントの画像
+people need to remember this more
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/pavoatreddit さんのアバター。
+pavoatreddit
+•
+14 日前
+So how many nodes do you use per shot on average? What would they be? CSTs, Exposure, contrast (you do curves and contrast on the same node?), white balance, saturation, maybe skin and windows, some halation, CST? And than the look itself?
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+AdmirableTurnip2245
+•
+13 日前
+•
+13 日前
+に編集
+I don't usually use CST as it's typically a Resolve color managed workflow. On the clip level, 3-5 nodes. I'll have additional nodes at the group Pre-Clip/Post-Clip level for scene-wide corrections and at the timeline level for global decisions so the total is higher than just the clip level count. I do a lot of balance work inside the RAW controls when I have access to them. If not, the clip level node count certainly goes up.
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/interservermike さんのアバター。
+u/interservermike
+•
+広告
+
+VPS Hosting For Self Hosted AI Tools.
+詳細はこちら
+interserver.net
+Thumbnail image: VPS Hosting For Self Hosted AI Tools.
+u/HakimeHomewreckru さんのアバター。
+HakimeHomewreckru
+•
+15 日前
+If they don't use an I/O or a panel.... absolutely guarantee you they don't do professional work.
+
+I know many smaller companies (5-10 employees) that don't use panels or I/O. They produce corporate videos for fortune500 companies. Pretty sure they do professional work.
+
+I agree with all the rest.
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+lildudereallyouthere
+•
+15 日前
+I don’t use an I/o or panel at 16 person company… I’m no where near the crème de la crème but I am a professional colorist
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+f-stop8
+•
+15 日前
+Pro/confidence monitor 🌟 📺
+Full panels these days can almost be entirely replaced by a tangent ripple and a macro board if you're using a solid DCTL workflow.
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/elliotwith2ts さんのアバター。
+elliotwith2ts
+•
+15 日前
+As a cinematographer. I hate mask. Yes I will use them but my god the way I see people mask every single aspect of an image is so in natural
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+bread_and_circuits
+•
+15 日前
+Great points, but just for point 2, I trained on the Advanced Panel, and use it when available (I’m freelance now). But my current home setup has a micro panel and a stream deck and honestly I don’t really use them, I’m much faster with the mouse and keyboard and having a virtual macro keyboard pop up in the UI.
+
+I personally know two seasoned colorists in my location who work on MAJOR European productions and commercials, and they also rarely use panels anymore. It’s preference and not a mark of a professional or not.
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/inviolate_light さんのアバター。
+inviolate_light
+•
+15 日前
+Pro/confidence monitor 🌟 📺
+I agree. You learn to make use of what you got and get really fast at it. I remember waaaaay back when my facility got into the Digital Intermediate game. Our senior colourist was well adept at using the DaVinci 2k 3 panel setup. We invested in Autodesk Lustre for DI. We didn’t have the Lustre Control panels for the first year. (couldn’t afford them?) Our Sr Colourist had to train on and make do with keyboard and mouse. One of those first films went on to win the Oscar for Cinematography.
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+f-stop8
+•
+15 日前
+Pro/confidence monitor 🌟 📺
+virtual macro keyboard pop up in the UI.
+
+Would love to hear more about this. How are you utilizing this and what exactly does it look like?
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+bread_and_circuits
+•
+15 日前
+AutoHotKey, I’ve just recorded a lot of various macros and assign them to my Logitech side buttons, keyboard F-keys when on and have the pop up UI for other things.
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+I-am-into-movies
+•
+15 日前
+Panels sucks. Who is using Lift Gamma Gain these days anymore? Seriously. Or the default exosure / contrast math. Same for Sat, Tint, Temp and so on. Blackmagic should release a panel just for DCTLs & OFX.
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+mllyllw
+•
+15 日前
+Pro/confidence monitor 🌟 📺
+I do lol. The wheels work fine for me
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+bread_and_circuits
+•
+14 日前
+I actually work fastest with the Advanced Panel V2A layout, it’s amazing and you can work entirely without a mouse.
+
+I find when I start using a mouse, panel, keyboard shortcuts and stream deck combo it just slows me way down, even when I had given it a legit shot to try to get faster. It’s either the Advanced panel or mouse/keyboard for me.
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+pyramid-worker
+•
+15 日前
+I agree 100% with all of these points; well said and sage advice for people who are process driven and want to learn the art of colour grading.
+
+I am not a senior colourist; my background is full scale production from pre through capture to post. Just so happens that I fell in love with digital colour workflow through DR, did the cert, increasingly made ends meet polishing turds for corporate videographers.
+
+My caveat for users reading the incredibly insightful OP, and who are shooters with a focus on post and looking to make a living in today's altered media landscape: Use the LUTs, take the shortcuts, acquire the influencer powergrades and don't invest time in learning correct order of operations, or workflow.
+
+Your clients won't reward it. Chances are, the look they're naively stuck on is a cheap emulation anyway.
+
+In the age of UGC, phone capture and the influencer marketplace, the need for professional colourists or, indeed, any quality visual media, has been diminished. Focus elsewhere if you want to make your mark in that sphere.
+
+Everyone else ignore these statements, you know who you are mostly, but especially people who have embarked on their colour journey through genuine passion.
+
+One thing is for sure - yes, OP, we need more reliable, free, and accessible educational resources for budding colourists. But it would be naive of us not to include a warning about the state of play, career-wise, of post production in that education.
+
+I'm still full scale, and will continue to spend my agency's money on fruitless colour work - I love it and believe it matters.
+
+These youtubers are not colourists, no, and they're largely not getting hired for genuine, large scale post.
+
+But they're still making bank. Choose your lane.
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/MarkSongGrades さんのアバター。
+MarkSongGrades
+•
+14 日前
+I'm a senior colorist with 10 years experience. One of the things that no one tells you - and which I remind my juniors of - is that people see what they want to see.
+
+"Natural" is one of the most used adjectives a client will say when describing the look they want, but it means different things to everyone, and oftentimes it might mean something far removed from what you think is natural.
+
+Our job, then, is to get on the same wavelength as them, find out what they like, be agreeable and give it to them. It's not about literally interpreting what the client says. It also requires having deep knowledge of your tools for granular adjustments, because clients (especially the more experienced ones) can feel nuance. That will be what sets you apart.
+
+By extension, this means that the client's impression of you, or your reputation, is key to running a good session. Being able to grade is the minimum requirement in this profession, and frankly all or almost the entire toolset in Resolve is enough for this. Being able to create a pretty image isn't hard, and the tools are available to everyone. Which means that social proof, like prestigious projects, or who you've worked with before, is a shorthand for clients who need to choose among a sea of options. That, and referrals.
+
+There are legit colorists creating valid content, and even selling useful tools, but it is hard to cut through the noise of unqualified influencers overselling themselves / their products. It's easy to see why they do it though, when views and follower numbers are the new social proof for making a quick buck.
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+inknpaint
+•
+13 日前
+I had a client ask to change the look back to the "default color"
+They gave me h265 s-log with the white balance 1000 out of whack.
+"natural" is apparently not natural to everyone.
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/findtime121 さんのアバター。
+findtime121
+•
+15 日前
+•
+15 日前
+に編集
+Not using I/O is a dead giveaway that they don’t do pro broadcast/film work. Agree very much on PowerGrades, I have my own fixed structure that I use on each project, and can be tailored to each project, as needed.
+
+Very good point on qualifiers/magic mask, when the image pipeline is properly setup, balancing my shot gets me more than 80% there. I avoid using qualifiers/shapes as much as possible, as I am working on 700+ cut shows regularly.
+
+And again agree with you on reverse matching a single or a few shots 🤦‍♂️
+
+I would add, external scopes. I have a Mac Mini running Omniscopes through the I/O, on a 14 inch touch screen positioned below my reference monitor. Wouldn’t have it any other way.
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+ButterscotchonMars
+•
+15 日前
+Je suis 100% d’accord avec tout ce que tu dis !mais je ne comprends pas ce que tu appelles l’I/O (Google trad ne m’aide pas je parle français). Tu parles du worflow et du color management ?
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+CrustyBread-420
+•
+15 日前
+I’m guessing they’re referring to a monitoring IO device, like the Blackmagic UltraStudio 4K Mini. That would make more sense than a color panel if they’re running Omniscopes through it.
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/findtime121 さんのアバター。
+findtime121
+•
+15 日前
+Blackmagic UltraStudio, or AJA IO, such devices, as well as, desktop cards for input/output.
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+thereischris
+•
+15 日前
+They're talking about input/output, aka external hardware such as a color panel or control device.
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+ButterscotchonMars
+•
+15 日前
+Ok un mini color panel par exemple et des scopes
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+InLoveWithInternet
+•
+13 日前
+The last part on external scopes is very interesting, even tho I’m a photographer, do you think it can work for my workflow?
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/findtime121 さんのアバター。
+findtime121
+•
+13 日前
+Can definitely be implemented. Have a look at Nobe Omniscopes software website.
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+I-am-into-movies
+•
+15 日前
+Thanks for sharing this!
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/balaj_i さんのアバター。
+balaj_i
+•
+15 日前
+Finally someone said it.
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/imajez さんのアバター。
+imajez
+•
+15 日前
+You get the same in photography and presets for say Lightroom.
+Now I make my own presets for anything that gets repeated and what is very quickly obvious that unless you use one camera, one ISO and just one lighting setup, the greatest preset ever often look awful on another camera/ISO/lighting setup and that's not taking into account different jobs want different looking results or the content of the image. Base grades for each camera are a handy starting point, but then you cook and season to taste.
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/juanmagrama さんのアバター。
+juanmagrama
+•
+14 日前
+Love this conversation.
+Put that false gurus in front of an advertising spot shot with 3 different color sciences, with creatives, client and director at 3 AM with a straight deadline. They’ll be cry 2 weeks and run to psychologist claiming for a pill.
+Crystal generation waiting for magic and no-effort / no-study tip or tutorial.
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/SameSceneDiffDay さんのアバター。
+SameSceneDiffDay
+•
+11 日前
+Same thing goes on in still photography / LR YouTube videos. Some are very informative though and they can be educational especially for a newbie if one just picks up the high points and doesn’t fall for the magic wand pitch.
+
+A little historical musing on the subject…
+I’ve been doing photography for 60 years+. Used Ansel Adams Zone system in the lab as a teen…I remember in the late 70s dreaming of this stuff, of what could be… electronic color correction!
+40 years ago few had heard of a LUT except for CG hardware engineers who used them for realtime animation effects.
+30 years ago few users heard of them.
+In 2005 we demoed Resolve 1.0 at Cinegear and Thompson offered Luther, a hardware/software LUT development toolset to go along with the Spirit.
+Now everyone’s talking about LUTs.
+And trying to sell them 😆
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+Electronic-Guard9049
+•
+15 日前
+It's crazy to me how all of a sudden every 2nd IG creator is capable of crafting film emulation LUT which looks very similiar to the other film emulations.
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/timbotheous さんのアバター。
+timbotheous
+•
+15 日前
+They’re all using well known powergrade luts/filmbox luts or 2383 etc and rebadging them as their own.
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+historyisaweapon
+•
+15 日前
+This is great. I'm not a senior colorist, but truly appreciate this as the person constantly being shoveled the sort of solutions and products you lament here.
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+AndrewMirm
+•
+15 日前
+Preach
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+HDJoey
+•
+15 日前
+This is great insight and pitfalls to avoid when newer colorists are starting out, hungry and looking for education, but it would be a bit more valuable post if there were alternative paths to education presented as a counterpoint.
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+Chrono604
+•
+15 日前
+👏🏻👏🏻👏🏻👏🏻👏🏻👏🏻
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/ale_mvri さんのアバター。
+ale_mvri
+•
+15 日前
+🙏🏻🙏🏻🙏🏻🙏🏻🙏🏻
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/Adwait_r_c さんのアバター。
+Adwait_r_c
+•
+15 日前
+I have been working independently as a colorist since 2024, I am not senior enough but with all the points you have mentioned are my standard practice so I'll add to this anyways.
+
+What I have seen is that there are a few terms most people have learned like cinematic, magic, film look etc. these fellas have not moved past it and are doing damage to actual color work by diluting the essence of actual film looks by making cheap copies of it available everywhere and nearly for everything.
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/gangly_han さんのアバター。
+gangly_han
+•
+15 日前
+Can anyone recommend any resources to learn from?
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/shaheedmalik さんのアバター。
+shaheedmalik
+•
+15 日前
+Notice how the "senior colorists" will never tell you.
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/timbotheous さんのアバター。
+timbotheous
+•
+15 日前
+It’s because we all learned on the job doing late nights after assisting all day and training after our shifts, not using YouTube or tik tok videos.
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/gangly_han さんのアバター。
+gangly_han
+•
+15 日前
+Not even any books or courses you’d go to look at after whilst training?
+
+Learning on the job is ideal, however, i can’t get the job because i have no experience. It’s one thing to talk bad of YT & TT, to say who not to learn from, but what’s the alternative? And what does training after your shifts look like?
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/timbotheous さんのアバター。
+timbotheous
+•
+15 日前
+So I didn’t really use any books or anything like that. There was always the old classic “colour correction” and “if it’s purple someone’s going to die” books knocking around the assist room etc.
+
+What I’d suggest is to really delve into the tools yourself. Learn how they work and why they work. Don’t try and run before you can walk.
+
+Colour is all about making an image look it’s best, in line with a brief or to fit a narrative so think about that carefully.
+
+Remember it’s not about you, it’s about the image and the work.
+
+Training after my shifts meant that I’d assist 3 colourists all day, prep all material for 2D and 3D departments, do their renders at the end of the day and then practice grading, matching other colourists work and or grade music videos etc.
+
+Id do 8:30am til 1-2am 4 days a week.
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/shaheedmalik さんのアバター。
+shaheedmalik
+•
+15 日前
+That's why I never listen to posts like this. They are trying to gatekeep. And you see they always hide their actual name.
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/timbotheous さんのアバター。
+timbotheous
+•
+15 日前
+No gatekeeping going on at all. Just honesty. I learned by starting as a runner and working my way up to being an assist and then a colourist and then after 15 years of that I’m a senior. It took time, effort and dedication. I didn’t have any family to help me out. I just worked my ass off and dedicated my life to it. You can find my work if you look hard enough. I’m on a lot of high profile work. If you want advice then ask. Don’t get salty in the comments here. Just ask me a question if you want to know something. But I can’t recommend resources because I don’t use them and haven’t used them.
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/guy-in-a-dark-room さんのアバター。
+guy-in-a-dark-room
+•
+14 日前
+Exactly. I am always willing to explain. But often when a youngster asks me a question, and I don't give a simple answer, but try to explain them, that it is a complex issue (you have to consider this, and that, etc.), I notice they stop listening. If everything was super easy, why would a client pay top whack for it?
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+doreg_p
+•
+13 日前
+Honestly, that sounds like exactly the type of answer I'd actually like.
+
+The advice that's going around here is:
+Avoid things like PowerWindows and Qualifiers unless you absolutely need to use them.
+
+Sounds good, but my question is: What do you take into consideration before you DO reach for the secondaries?
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/DroneHigher さんのアバター。
+DroneHigher
+•
+15 日前
+Excellent points! I/O & panel one needs to be said more… Not a senior colorist myself but if I may build on what you have said, so many of these YouTubers/influencers are teaching how to make things look good, but they don’t actually teach workflow, often because they don’t have any idea what an actual color grading pipeline is. Sure, they can make S-Log 3 look really nice with things like magic mask, depth map, cinematic haze, all these buzzword features, but you can’t do that on every shot for an entire feature length film. Aside from our taste/intuition on the creative side of things, the next most important thing is workflow, because time is money, especially in this industry.
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/Greeksoopaman さんのアバター。
+Greeksoopaman
+•
+15 日前
+No i/o is kind of a tell for any editor.
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+No-Mammoth-807
+•
+15 日前
+its really simple look toward your local agencies and credits, yes there are some exceptions but you need to follow your nose with this stuff.
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/Intelligent_Web2247 さんのアバター。
+Intelligent_Web2247
+•
+14 日前
+If you see some Instagramers posting video of them color grading on a MacBook or a gaming monitor, or even worse, some curved screens…..
+
+Or if you see those “senior colorists working in their own LLC (usually their-name.LLC) and their works are just Stock footages….
+
+Or, even worse: posting their color suite but it was actually AI-generated image……..
+
+Those are huge red flags.
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/Mad_waste さんのアバター。
+Mad_waste
+•
+13 日前
+Ouch, I wouldn't want to be Qazi and reading this.. It's not saying it's for him, but I'm convinced it is 😂
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+inknpaint
+•
+13 日前
+Youtube has largely just turned into a marketing platform.
+I'm slow but when I figured this out I became very reluctant to look there for anything more than "this tool does this" type of videos.
+If one more client or student references a LUT they saw on YouTube ...
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+Daniel_Not_found
+•
+12 日前
+I had this shit in my head for a year! Thanks god someone else is thinking this way... I'm still junior colorist, but I've refused to use luts to grade from the start. Now I'm thankful for that decision because it learned me how to do some stuff from the scratch. I love to get some stills from new films and practice my knowledge on how to get that grade on my shots.
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/Kidbushwick さんのアバター。
+Kidbushwick
+•
+12 日前
+Yes!
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+river_flowing1
+•
+12 日前
+thoughts on Cullen Kelly? My professor is a Senior colorist and strongly recommneded him.
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+TakemesomewhereAngel
+•
+15 日前
+A colourist have to think first: what color need this scene? This sky really needs blue at 4:30 am or maybe i have to think how the light work during the day on the surface of elements: water, heart, clouds, leaf, cortex, skin and how the light work inside the emotional state of a subject.
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+spaceboy79
+•
+15 日前
+Adobe 🖌️
+I'm still surprised how many hucksters there are in this space. It seems way too niche for so many people to flood YouTube and try to sell us their tools and lut packs.
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+mykitten6
+•
+15 日前
+The colorists using LUTs had those custom built either by themselves, a trusted collegue or more likely, a color scientist.
+
+Hello color scientist here for 15+ in broadcast environment, we don't even call them LUTs, the visual language of each project is established in collaboration with the director of photography, and I ensure that the final grade consistently follows that creative vision, the look bible.
+
+Each project has its own unique visual identity, and no two grades are ever the same. I never recycle looks or reuse creative decisions from previous projects.
+
+Every grade is built from the ground up, starting with a clean video signal, and refined until it fully matches the director of photography's creative vision.
+
+I always like to share this information because I believe it's valuable for anyone who wants to learn and build a solid foundation in color grading.
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+u/acoopervideo さんのアバター。
+acoopervideo
+•
+15 日前
+This turning into a Jeff Foxworthy joke “If you use stock footage for your tutorial examples…you might be a fake colorist”
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
+
+共有
+
+AceBH13
+•
+15 日前
+You forgot to mention the cannabis. Every good colorist I worked with smoked a prodigious amount all day long
+
+
+賛成に投票
+
+反対に投票
+
+返信
+
+アワードを贈る
