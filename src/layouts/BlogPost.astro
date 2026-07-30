@@ -23,6 +23,9 @@ const {
 	dlsite_id,
 	dlsite_url,
 	dlsite_meta,
+	fanza_product_id,
+	fanza_url,
+	fanza_meta,
 	danbooru_tags,
 	prompt,
 	images,
@@ -30,7 +33,7 @@ const {
 } = Astro.props;
 const cat = CATEGORIES.find((c) => c.slug === category);
 const showTrend =
-	Boolean(dlsite_id || dlsite_url) ||
+	Boolean(dlsite_id || dlsite_url || fanza_url) ||
 	(danbooru_tags?.length ?? 0) > 0 ||
 	Boolean(prompt) ||
 	(images?.length ?? 0) > 0 ||
@@ -94,6 +97,9 @@ const showTrend =
 										dlsiteId={dlsite_id}
 										dlsiteUrl={dlsite_url}
 										dlsiteMeta={dlsite_meta}
+										fanzaProductId={fanza_product_id}
+										fanzaUrl={fanza_url}
+										fanzaMeta={fanza_meta}
 										danbooruTags={danbooru_tags}
 										prompt={prompt}
 										images={images}

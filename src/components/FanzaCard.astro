@@ -1,0 +1,210 @@
+---
+import {
+	extractFanzaProductId,
+	resolveFanzaMeta,
+	toFanzaAffiliateUrl,
+	type FanzaMetaFallback,
+} from '../lib/fanza';
+
+interface Props {
+	productUrl: string;
+	productId?: string;
+	meta?: FanzaMetaFallback;
+}
+
+const { productUrl, productId, meta } = Astro.props;
+const href = toFanzaAffiliateUrl(productUrl);
+const resolvedProductId = productId || extractFanzaProductId(productUrl);
+const resolvedMeta = await resolveFanzaMeta(productUrl, resolvedProductId, meta);
+const priceLabel =
+	resolvedMeta?.price != null
+		? `¥${resolvedMeta.price.toLocaleString('ja-JP')}`
+		: null;
+const genrePreview = resolvedMeta?.genres?.slice(0, 6) ?? [];
+---
+
+<div class="fanza-box">
+	<p class="fanza-label">- 元ネタ / FANZA -</p>
+	{
+		resolvedMeta ? (
+			<a
+				class="fanza-card"
+				href={href}
+				target="_blank"
+				rel="noopener nofollow sponsored"
+			>
+				{resolvedMeta.thumb_url && (
+					<img
+						class="fanza-thumb"
+						src={resolvedMeta.thumb_url}
+						alt=""
+						width={160}
+						height={120}
+						loading="lazy"
+						decoding="async"
+						referrerpolicy="no-referrer"
+					/>
+				)}
+				<div class="fanza-meta">
+					<p class="fanza-title">{resolvedMeta.title}</p>
+					{resolvedMeta.maker && <p class="fanza-maker">{resolvedMeta.maker}</p>}
+					{(priceLabel || resolvedProductId) && (
+						<p class="fanza-sub">
+							{priceLabel && <span class="fanza-price">{priceLabel}</span>}
+							<span class="fanza-id">{resolvedProductId}</span>
+						</p>
+					)}
+					{genrePreview.length > 0 && (
+						<ul class="fanza-genres">
+							{genrePreview.map((genre) => <li>{genre}</li>)}
+						</ul>
+					)}
+					{resolvedMeta.intro && <p class="fanza-intro">{resolvedMeta.intro}</p>}
+					<span class="fanza-cta">FANZA で見る »</span>
+				</div>
+			</a>
+		) : (
+			<>
+				<a
+					class="fanza-link"
+					href={href}
+					target="_blank"
+					rel="noopener nofollow sponsored"
+				>
+					{resolvedProductId} をFANZAで見る »
+				</a>
+				<p class="fanza-id">product_id: {resolvedProductId}</p>
+			</>
+		)
+	}
+</div>
+
+<style>
+	.fanza-box {
+		background: var(--surface-2);
+		border: 1px solid var(--border);
+		border-radius: 8px;
+		padding: 14px 16px;
+	}
+	.fanza-label {
+		margin: 0 0 6px;
+		font-size: 0.7rem;
+		letter-spacing: 0.12em;
+		color: var(--muted);
+		font-weight: 700;
+	}
+	.fanza-card {
+		display: grid;
+		grid-template-columns: 140px 1fr;
+		gap: 14px;
+		align-items: start;
+		color: inherit;
+		text-decoration: none;
+		border-radius: 6px;
+		padding: 4px;
+		margin: 0 -4px;
+		transition: background 0.15s ease;
+	}
+	.fanza-card:hover {
+		background: var(--surface);
+		text-decoration: none;
+	}
+	.fanza-thumb {
+		display: block;
+		width: 140px;
+		height: auto;
+		aspect-ratio: 4 / 3;
+		object-fit: cover;
+		border-radius: 4px;
+		border: 1px solid var(--border);
+		background: var(--surface);
+	}
+	.fanza-meta {
+		min-width: 0;
+	}
+	.fanza-title {
+		margin: 0 0 4px;
+		font-size: 1.05rem;
+		font-weight: 800;
+		line-height: 1.4;
+		color: var(--text-strong);
+	}
+	.fanza-card:hover .fanza-title {
+		color: var(--accent);
+	}
+	.fanza-maker {
+		margin: 0 0 6px;
+		font-size: 0.85rem;
+		color: var(--muted);
+	}
+	.fanza-sub {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px 12px;
+		align-items: baseline;
+		margin: 0 0 8px;
+		font-size: 0.8rem;
+	}
+	.fanza-price {
+		font-weight: 800;
+		color: var(--accent);
+	}
+	.fanza-id {
+		margin: 6px 0 0;
+		font-size: 0.75rem;
+		color: var(--muted);
+		font-variant-numeric: tabular-nums;
+	}
+	.fanza-sub .fanza-id {
+		margin: 0;
+	}
+	.fanza-genres {
+		list-style: none;
+		margin: 0 0 8px;
+		padding: 0;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 6px;
+	}
+	.fanza-genres li {
+		font-size: 0.72rem;
+		font-weight: 700;
+		color: var(--muted);
+		border: 1px solid var(--border);
+		border-radius: 4px;
+		padding: 2px 8px;
+		background: var(--surface);
+	}
+	.fanza-intro {
+		margin: 0 0 8px;
+		font-size: 0.82rem;
+		line-height: 1.55;
+		color: var(--text);
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+	}
+	.fanza-cta,
+	.fanza-link {
+		color: var(--accent);
+		font-weight: 800;
+	}
+	.fanza-cta {
+		display: inline-block;
+		font-size: 0.85rem;
+	}
+	.fanza-link {
+		display: inline-block;
+		font-size: 0.95rem;
+	}
+	@media (max-width: 520px) {
+		.fanza-card {
+			grid-template-columns: 1fr;
+		}
+		.fanza-thumb {
+			width: 100%;
+			max-width: 280px;
+		}
+	}
+</style>

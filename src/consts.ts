@@ -21,6 +21,9 @@ export const BSKY_HASHTAG = '#へっぽこ魔女のHなAIグリモワール';
 /** DLsite アフィリエイト ID（全作品リンクに自動付与） */
 export const DLSITE_AFFILIATE_ID = 'rinasgrimoire';
 
+/** FANZA アフィリエイト ID（全作品リンクに自動付与） */
+export const FANZA_AFFILIATE_ID = 'rinasgrimoir-001';
+
 // カテゴリー（日本語シチュの棚。新規シチュはここに1行足してから記事で使う）
 export const CATEGORIES = [
 	{ slug: 'greeting', label: 'ごあいさつ', emoji: '🌙' },
@@ -45,7 +48,7 @@ export type CategorySlug = (typeof CATEGORIES)[number]['slug'];
 export const AGE_GATE_STORAGE_KEY = 'majyosoku_age_verified';
 export const AGE_GATE_STORAGE_VALUE = '1';
 
-/** ヘッドラインに出す解剖済み DLsite 作品数（記事の dlsite_id から新着順） */
+/** ヘッドラインに出す解剖済み作品数（DLsite / FANZA記事から新着順） */
 export const HEADLINE_LIMIT = 5;
 
 /** サイドバー「人気記事」に出す featured 記事の上限 */

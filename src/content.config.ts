@@ -48,6 +48,19 @@ const blog = defineCollection({
 					thumb_url: z.string().url().optional(),
 				})
 				.optional(),
+			// FANZA トレンド逆引き記事用（商品URLはアフィリエイト化前のURL）
+			fanza_product_id: z.string().optional(),
+			fanza_url: z.string().url().optional(),
+			fanza_meta: z
+				.object({
+					title: z.string(),
+					maker: z.string().optional(),
+					price: z.number().optional(),
+					intro: z.string().optional(),
+					genres: z.array(z.string()).optional(),
+					thumb_url: z.string().url().optional(),
+				})
+				.optional(),
 			danbooru_tags: z.array(z.string()).optional(),
 			// フルプロンプト（本文コピペ用。品質／トリガーは含めない）
 			prompt: z.string().optional(),

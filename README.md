@@ -5,14 +5,14 @@
 
 キャラクター設定の正本: [`doc/rinas_Personality.md`](doc/rinas_Personality.md)
 
-将来的には Cloudflare Pages / Functions 経由で外部 Web API（FANZA API など）と連携する予定です。
+FANZA商品情報はDMM商品情報APIからビルド時に取得し、取得失敗時はフロントマターまたはリンク表示へフォールバックします。
 
 ## サイトの特徴
 
 - 暇人速報オマージュの2カラム（メイン＋サイドバー）レイアウト
 - ダークマジカルな配色（魔女パープル × ホットピンク）
 - **カテゴリ**＝日本語シチュの棚／**タグ**＝Danbooru英語＋メタ検索／**モデル検索**＝生成モデル横断
-- DLsite トレンド逆引き記事（プロンプト解剖＋アフィカード＋錬成サンプル）
+- DLsite / FANZA トレンド逆引き記事（プロンプト解剖＋アフィカード＋錬成サンプル）
 - Redditまとめ記事（暇人速報風のレス流し＋リナの締め）
 - **コメント欄なし**（プランC）：感想は Bluesky（`@rinasgrimoire.bsky.social`）の `#へっぽこ魔女のHなAIグリモワール` タグで誘導
 
@@ -31,7 +31,7 @@
 
 - Markdown / MDX による記事投稿
 - カテゴリ・タグ・モデル名での横断検索
-- DLsite トレンド逆引きパネル（画像 → 生呪文 → キータグ → モデル → アフィ）
+- DLsite / FANZA トレンド逆引きパネル（画像 → 生呪文 → キータグ → モデル → アフィ）
 - SEO（canonical URL・OGP）／サイトマップ／RSS（`/rss.xml`）
 - Cloudflare 向けビルド設定済み
 
@@ -118,6 +118,7 @@ Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
 │   ├── assets.md                 # 画像・部品の置き場所
 │   ├── rinas_Personality.md      # ★ 賀田野リナの性格・口調・世界観（CharacterSpeech の正本）
 │   ├── dlsite-affiliate-page.md  # ★ DLsite トレンド逆引き記事の手順書
+│   ├── fanza-affiliate-page.md   # ★ FANZA トレンド逆引き記事の手順書
 │   └── reddit-matome-page.md     # ★ Redditまとめ（暇速風）記事の手順書
 ├── src/
 │   ├── assets/
@@ -138,6 +139,7 @@ Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
 - 画像の置き分け: [`doc/assets.md`](doc/assets.md)
 - リナの性格・口調: [`doc/rinas_Personality.md`](doc/rinas_Personality.md)
 - DLsite 逆引き記事の作り方（詳細）: [`doc/dlsite-affiliate-page.md`](doc/dlsite-affiliate-page.md)
+- FANZA 逆引き記事の作り方（詳細）: [`doc/fanza-affiliate-page.md`](doc/fanza-affiliate-page.md)
 - Redditまとめ記事の作り方（詳細）: [`doc/reddit-matome-page.md`](doc/reddit-matome-page.md)
 
 ## キャラクター設定（賀田野リナ）
@@ -188,6 +190,16 @@ MDX なら `CharacterSpeech` コンポーネントも使える。**口調は [`d
 4. パネル表示順は **画像 → 生呪文 → キータグ → モデル → DLsite**
 5. 画像未着時は `images` 省略。プレースホルダー画像は作らず、報告に追加用 YAML を出す
 
+### FANZA トレンド逆引き記事
+
+手順・テンプレ・URL変換規則・初回基盤実装は **[`doc/fanza-affiliate-page.md`](doc/fanza-affiliate-page.md)** を参照。
+
+1. スラッグは `fanza-<テーマ英語>`
+2. 記事には `book.dmm.co.jp` のプレーン商品URLを保存する
+3. アフィリエイトIDは `rinasgrimoir-001`。共通関数でリンクへ自動付与する
+4. 商品ページがログイン画面になる場合があるため、取得できない作品情報は推測しない
+5. FANZAブックスとDVDレンタルに対応。DMM商品情報API、`fanza_meta`、商品コード付きリンクの順にフォールバックする
+
 ### Redditまとめ記事（暇人速報風）
 
 手順・テンプレ・禁止事項の正本は **[`doc/reddit-matome-page.md`](doc/reddit-matome-page.md)**。要約だけ書くと:
@@ -212,6 +224,7 @@ MDX なら `CharacterSpeech` コンポーネントも使える。**口調は [`d
 | `tags` | 任意 | `/tags` 用。Danbooru英語＋メタ |
 | `heroImage` | 任意 | アイキャッチ（相対パス） |
 | `dlsite_id` / `dlsite_url` | 任意 | DLsite 元ネタ → アフィカード |
+| `fanza_product_id` / `fanza_url` / `fanza_meta` | 任意 | FANZA 元ネタ → アフィカード |
 | `danbooru_tags` | 任意 | パネル用キータグ（代表のみ） |
 | `prompt` | 任意 | フルプロンプト → パネル「生呪文」 |
 | `images` | 任意 | 錬成サンプル → ギャラリー |
@@ -230,8 +243,8 @@ MDX なら `CharacterSpeech` コンポーネントも使える。**口調は [`d
 
 | ファイル | 編集内容 |
 |---------|---------|
-| `src/consts.ts` | サイト名・管理人（`AUTHOR_*`）・Bluesky・**CATEGORIES**・DLsite アフィID・ヘッドライン／人気記事の件数上限 |
-| `src/components/Headline.astro` | 解剖済み `dlsite_id` を product.json で埋めたトレンド枠 |
+| `src/consts.ts` | サイト名・管理人（`AUTHOR_*`）・Bluesky・**CATEGORIES**・DLsite / FANZA アフィID・ヘッドライン／人気記事の件数上限 |
+| `src/components/Headline.astro` | 解剖済みDLsite / FANZA作品を新着順で表示するアフィリエイト枠 |
 | `src/content.config.ts` | フロントマター schema（`category` enum など） |
 | `astro.config.mjs` の `site` | 本番ドメイン（`https://rinasgrimoire.midnight-cruise.top`） |
 | `src/pages/index.astro` | トップ（新着一覧） |
@@ -359,7 +372,7 @@ npm run dev
 
 ## 参考リンク
 
-- サイト内ドキュメント: [`doc/rinas_Personality.md`](doc/rinas_Personality.md) / [`doc/dlsite-affiliate-page.md`](doc/dlsite-affiliate-page.md) / [`doc/reddit-matome-page.md`](doc/reddit-matome-page.md) / [`doc/assets.md`](doc/assets.md)
+- サイト内ドキュメント: [`doc/rinas_Personality.md`](doc/rinas_Personality.md) / [`doc/dlsite-affiliate-page.md`](doc/dlsite-affiliate-page.md) / [`doc/fanza-affiliate-page.md`](doc/fanza-affiliate-page.md) / [`doc/reddit-matome-page.md`](doc/reddit-matome-page.md) / [`doc/assets.md`](doc/assets.md)
 - [Astro ドキュメント](https://docs.astro.build/ja/)
 - [Astro Content Collections](https://docs.astro.build/ja/guides/content-collections/)
 - [Cloudflare Pages × Astro](https://developers.cloudflare.com/pages/framework-guides/deploy-an-astro-site/)

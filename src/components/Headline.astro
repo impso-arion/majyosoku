@@ -1,26 +1,61 @@
 ---
 import { CATEGORIES, HEADLINE_LIMIT } from '../consts';
 import { affiliateWorkUrl, resolveDlsiteWork, toDlsiteAffiliateUrl } from '../lib/dlsite';
+import {
+	extractFanzaProductId,
+	resolveFanzaMeta,
+	toFanzaAffiliateUrl,
+} from '../lib/fanza';
 import { getSortedPosts } from '../lib/posts';
 
 const source = (await getSortedPosts())
-	.filter((post) => post.data.dlsite_id)
+	.filter((post) => post.data.dlsite_id || post.data.fanza_url)
 	.slice(0, HEADLINE_LIMIT);
 
 const items = await Promise.all(
 	source.map(async (post, i) => {
+		const cat = CATEGORIES.find((c) => c.slug === post.data.category);
+
+		if (post.data.fanza_url) {
+			const id =
+				post.data.fanza_product_id ??
+				extractFanzaProductId(post.data.fanza_url);
+			const meta = await resolveFanzaMeta(
+				post.data.fanza_url,
+				id,
+				post.data.fanza_meta,
+			);
+			const price =
+				meta?.price != null ? `¥${meta.price.toLocaleString('ja-JP')}` : null;
+			const noteParts = [
+				'FANZA',
+				meta?.maker,
+				price,
+				cat ? `解剖・${cat.label}` : 'トレンド逆引き済み',
+			].filter(Boolean);
+
+			return {
+				rank: i + 1,
+				title: meta?.title ?? id,
+				note: noteParts.join(' / '),
+				url: toFanzaAffiliateUrl(post.data.fanza_url),
+			};
+		}
+
 		const id = post.data.dlsite_id!;
 		const card = await resolveDlsiteWork(
 			id,
 			post.data.dlsite_url,
 			post.data.dlsite_meta,
 		);
-		const cat = CATEGORIES.find((c) => c.slug === post.data.category);
 		const price =
 			card?.price != null ? `¥${card.price.toLocaleString('ja-JP')}` : null;
-		const noteParts = [card?.maker, price, cat ? `解剖・${cat.label}` : 'トレンド逆引き済み'].filter(
-			Boolean,
-		);
+		const noteParts = [
+			'DLsite',
+			card?.maker,
+			price,
+			cat ? `解剖・${cat.label}` : 'トレンド逆引き済み',
+		].filter(Boolean);
 
 		return {
 			rank: i + 1,
@@ -49,7 +84,12 @@ const items = await Promise.all(
 				{items.map((item) => (
 					<li>
 						<span class={`hl-rank r${item.rank}`}>{item.rank}</span>
-						<a class="hl-item" href={item.url} target="_blank" rel="noopener nofollow">
+						<a
+							class="hl-item"
+							href={item.url}
+							target="_blank"
+							rel="noopener nofollow sponsored"
+						>
 							<span class="hl-item-title">{item.title}</span>
 							<span class="hl-item-note">{item.note}</span>
 						</a>
