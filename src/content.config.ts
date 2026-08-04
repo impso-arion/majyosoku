@@ -28,6 +28,7 @@ const blog = defineCollection({
 					'garter-belt',
 					'lactation',
 					'micro-bikini',
+					'vibrator',
 				])
 				.optional(),
 			tags: z.array(z.string()).optional(),

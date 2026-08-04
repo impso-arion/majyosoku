@@ -40,6 +40,7 @@ export const CATEGORIES = [
 	{ slug: 'garter-belt', label: 'ガーターベルト', emoji: '🎀' },
 	{ slug: 'lactation', label: '搾乳', emoji: '🍼' },
 	{ slug: 'micro-bikini', label: 'マイクロビキニ', emoji: '👙' },
+	{ slug: 'vibrator', label: '電マ', emoji: '🔌' },
 ] as const;
 
 export type CategorySlug = (typeof CATEGORIES)[number]['slug'];
