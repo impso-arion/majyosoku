@@ -62,6 +62,10 @@ function isSupportedProductUrl(url: URL): boolean {
 		return /^\/product\/[^/]+\/[^/]+\/?$/.test(url.pathname);
 	}
 
+	if (url.hostname === 'dlsoft.dmm.co.jp') {
+		return /^\/detail\/[^/]+\/?$/.test(url.pathname);
+	}
+
 	if (url.hostname === 'www.dmm.co.jp') {
 		return /^\/rental\/-\/detail\/=\/cid=[^/]+\/?$/.test(url.pathname);
 	}
@@ -91,6 +95,11 @@ export function extractFanzaProductId(productUrl: string): string {
 	const url = new URL(normalizeFanzaProductUrl(productUrl));
 
 	if (url.hostname === 'book.dmm.co.jp') {
+		const segments = url.pathname.split('/').filter(Boolean);
+		return segments.at(-1)!;
+	}
+
+	if (url.hostname === 'dlsoft.dmm.co.jp') {
 		const segments = url.pathname.split('/').filter(Boolean);
 		return segments.at(-1)!;
 	}
@@ -161,6 +170,10 @@ function apiQueries(productUrl: string, productId: string): DmmQuery[] {
 		return digitalCid
 			? [{ service: 'digital', floor: 'videoa', cid: digitalCid }]
 			: [];
+	}
+
+	if (url.hostname === 'dlsoft.dmm.co.jp') {
+		return [];
 	}
 
 	return ['comic', 'novel', 'photo'].map((floor) => ({

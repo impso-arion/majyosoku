@@ -1,7 +1,7 @@
 # FANZA アフィリエイト記事（トレンド逆引き）作成ルール
 
 AI が新規 FANZA アフィリエイトページを作るときに読む手順書。  
-現在は **FANZAブックス**（`https://book.dmm.co.jp/product/.../`）と **DVDレンタル**（`https://www.dmm.co.jp/rental/-/detail/=/cid=.../`）に対応する。
+現在は **FANZAブックス**（`https://book.dmm.co.jp/product/.../`）、**FANZA DL/ソフト系**（`https://dlsoft.dmm.co.jp/detail/.../`）、**DVDレンタル**（`https://www.dmm.co.jp/rental/-/detail/=/cid=.../`）に対応する。
 
 関連: [`doc/dlsite-affiliate-page.md`](dlsite-affiliate-page.md)（DLsite版）、[`doc/rinas_Personality.md`](rinas_Personality.md)（**リナの口調・世界観の正本**）、[`doc/assets.md`](assets.md)（画像の置き場所）、[`README.md`](../README.md)（サイト全体・検索・Cloudflare デプロイ）
 
@@ -33,6 +33,20 @@ DMM商品情報APIによる作品メタデータの自動取得に対応済み�
 2. AI が `src/content/blog/fanza-<テーマ>/index.mdx` を用意する
 3. 本文は **CharacterSpeech（リナのセリフ）だけ**
 4. フロントマターの値から、記事末尾パネルにFANZA作品カードが自動表示される
+
+### 記事に入れる要素
+
+`src/content/blog/fanza-hitachi-magic-wand-comic/index.mdx` と同じ形を基準にする。
+
+- `images`: ローカル錬成サンプル画像
+- `prompt`: 実際に使った生呪文
+- `danbooru_tags`: WD14で拾ったキータグ
+- `models`: 使用モデル名と補足
+- `fanza_url` / `fanza_product_id` / `fanza_meta`: 元ネタリンクと作品メタ
+
+この4つの見出し相当の情報がそろうと、記事末尾のパネルで
+`画像 → 生呪文 → キータグ → 使用モデル → 元ネタ / FANZA`
+の順に表示される。
 
 **画面上の表示順**
 
@@ -101,7 +115,7 @@ const href = toFanzaAffiliateUrl(productUrl);
 ### 安全上のルール
 
 - フロントマターには対応サービスのプレーンURLだけを保存する
-- 許可するのは `book.dmm.co.jp/product/...` と `www.dmm.co.jp/rental/-/detail/=/cid=.../`
+- 許可するのは `book.dmm.co.jp/product/...`、`dlsoft.dmm.co.jp/detail/.../`、`www.dmm.co.jp/rental/-/detail/=/cid=.../`
 - `http:`、ユーザー情報を含むURL、別ドメインは拒否する
 - `al.fanza.co.jp` の完成済みURLを `fanza_url` に入れない
 - リンクには `target="_blank"` と `rel="noopener nofollow sponsored"` を付ける
