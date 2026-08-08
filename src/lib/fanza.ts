@@ -66,6 +66,10 @@ function isSupportedProductUrl(url: URL): boolean {
 		return /^\/detail\/[^/]+\/?$/.test(url.pathname);
 	}
 
+	if (url.hostname === 'video.dmm.co.jp') {
+		return /^\/av\/content\/?$/.test(url.pathname);
+	}
+
 	if (url.hostname === 'www.dmm.co.jp') {
 		return /^\/rental\/-\/detail\/=\/cid=[^/]+\/?$/.test(url.pathname);
 	}
@@ -102,6 +106,14 @@ export function extractFanzaProductId(productUrl: string): string {
 	if (url.hostname === 'dlsoft.dmm.co.jp') {
 		const segments = url.pathname.split('/').filter(Boolean);
 		return segments.at(-1)!;
+	}
+
+	if (url.hostname === 'video.dmm.co.jp') {
+		const id = url.searchParams.get('id')?.trim();
+		if (!id) {
+			throw new Error(`FANZA product ID not found: ${productUrl}`);
+		}
+		return id;
 	}
 
 	const match = url.pathname.match(/\/cid=([^/]+)\/?$/);
@@ -174,6 +186,10 @@ function apiQueries(productUrl: string, productId: string): DmmQuery[] {
 
 	if (url.hostname === 'dlsoft.dmm.co.jp') {
 		return [];
+	}
+
+	if (url.hostname === 'video.dmm.co.jp') {
+		return [{ service: 'digital', floor: 'videoa', cid: productId }];
 	}
 
 	return ['comic', 'novel', 'photo'].map((floor) => ({

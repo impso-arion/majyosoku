@@ -1,7 +1,7 @@
 # FANZA アフィリエイト記事（トレンド逆引き）作成ルール
 
 AI が新規 FANZA アフィリエイトページを作るときに読む手順書。  
-現在は **FANZAブックス**（`https://book.dmm.co.jp/product/.../`）、**FANZA DL/ソフト系**（`https://dlsoft.dmm.co.jp/detail/.../`）、**DVDレンタル**（`https://www.dmm.co.jp/rental/-/detail/=/cid=.../`）に対応する。
+現在は **FANZAブックス**（`https://book.dmm.co.jp/product/.../`）、**FANZA DL/ソフト系**（`https://dlsoft.dmm.co.jp/detail/.../`）、**FANZA動画**（`https://video.dmm.co.jp/av/content/?id=...`）、**DVDレンタル**（`https://www.dmm.co.jp/rental/-/detail/=/cid=.../`）に対応する。
 
 関連: [`doc/dlsite-affiliate-page.md`](dlsite-affiliate-page.md)（DLsite版）、[`doc/rinas_Personality.md`](rinas_Personality.md)（**リナの口調・世界観の正本**）、[`doc/assets.md`](assets.md)（画像の置き場所）、[`README.md`](../README.md)（サイト全体・検索・Cloudflare デプロイ）
 
@@ -115,7 +115,7 @@ const href = toFanzaAffiliateUrl(productUrl);
 ### 安全上のルール
 
 - フロントマターには対応サービスのプレーンURLだけを保存する
-- 許可するのは `book.dmm.co.jp/product/...`、`dlsoft.dmm.co.jp/detail/.../`、`www.dmm.co.jp/rental/-/detail/=/cid=.../`
+- 許可するのは `book.dmm.co.jp/product/...`、`dlsoft.dmm.co.jp/detail/.../`、`video.dmm.co.jp/av/content/?id=...`、`www.dmm.co.jp/rental/-/detail/=/cid=.../`
 - `http:`、ユーザー情報を含むURL、別ドメインは拒否する
 - `al.fanza.co.jp` の完成済みURLを `fanza_url` に入れない
 - リンクには `target="_blank"` と `rel="noopener nofollow sponsored"` を付ける

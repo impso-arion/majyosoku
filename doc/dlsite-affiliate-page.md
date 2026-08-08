@@ -5,6 +5,8 @@ AI が新規 DLsite アフィリエイトページを作るときに読む手順
 
 関連: [`doc/rinas_Personality.md`](rinas_Personality.md)（**リナの口調・世界観の正本**）、[`doc/assets.md`](assets.md)（画像の置き場所）、[`README.md`](../README.md)（サイト全体・検索・**Cloudflare デプロイ**）
 
+**重要**: 執筆前に必ず [`doc/rinas_Personality.md`](rinas_Personality.md) を読み、本文の口調・価値観・「聖者」へのスタンスを反映する。
+
 ---
 
 ## この記事タイプで何が起きるか
